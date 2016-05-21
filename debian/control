@@ -1,0 +1,128 @@
+Source: budgie-desktop
+Section: gnome
+Priority: optional
+Maintainer: David Mohammed <foss.freedom@gmail.com>
+Homepage: https://github.com/solus-project/budgie-desktop
+Build-Depends: debhelper (>=9), 
+ dh-buildinfo,
+ dh-autoreconf,
+ gtk-doc-tools, 
+ gir1.2-gee-0.8, 
+ gnome-common, 
+ gobject-introspection, 
+ intltool, 
+ libgee-0.8-dev, 
+ libglib2.0-dev, 
+ libgtk-3-dev, 
+ libpulse-dev, 
+ libpulse-mainloop-glib0, 
+ libgnome-bluetooth-dev (>=3.16),
+ libmutter-dev (>=3.16), 
+ libgnome-desktop-3-dev, 
+ libgnome-menu-3-dev, 
+ libpeas-dev, libgee-0.8-dev, 
+ libgnome-desktop-3-dev, 
+ libpolkit-agent-1-dev, 
+ libpolkit-gobject-1-dev, 
+ libupower-glib-dev, 
+ libwnck-3-dev, 
+ pkg-config, 
+ python-enum34, 
+ python2.7, 
+ uuid-dev, 
+ valac
+Standards-Version: 3.9.8
+Vcs-Browser: https://github.com/solus-project/budgie-desktop.git
+
+Package: budgie-desktop
+Architecture: any
+Depends: ${misc:Depends},
+ budgie-core, 
+ gir1.2-budgie-desktop-1.0,
+ gnome-control-center
+Description: Desktop package for budgie-desktop
+ Budgie is the flagship desktop of the Solus Linux Distribution,
+ a Solus project. Designed with the modern user in mind, it focuses on 
+ simplicity and elegance. A huge advantage for the Budgie desktop is 
+ that it is not a fork of another project, but rather one written from 
+ scratch with integration in mind.
+ 
+Package: budgie-core
+Architecture: any
+Depends: ${shlibs:Depends},
+ ${misc:Depends},
+ gnome-session-bin, 
+ gnome-session-common, 
+ gnome-settings-daemon, 
+ gnome-control-center, 
+ gnome-menus, 
+ libgee-0.8-2, 
+ libglib2.0-0, 
+ libgtk-3-0, 
+ libpeas-1.0-0, 
+ libpulse0, 
+ libpulse-mainloop-glib0, 
+ libupower-glib3, 
+ libgnome-menu-3-0, 
+ libwnck-3-0, 
+ libmutter0g, 
+ nautilus, 
+ libpolkit-agent-1-0, 
+ libpolkit-gobject-1-0, 
+ upower,
+ libbudgie-plugin0,
+ libbudgietheme0,
+ libraven0,
+ libgnome-bluetooth13
+Description: Core package for budgie-desktop
+ This is the base package for budgie-desktop
+ 
+Package: libbudgie-plugin0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: plugin library for budgie-desktop
+ This adds the plugin library to budgie-desktop
+ 
+Package: libbudgietheme0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: theme library for budgie-desktop
+ This adds the theme controls for budgie-desktop
+
+Package: libraven0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: raven library for budgie-desktop
+ This provides the budgie-desktop user-defined settings called raven.
+ 
+Package: budgie-core-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends},
+         gir1.2-budgie-desktop-1.0 (= ${binary:Version}),
+         libglib2.0-dev,
+         libgtk-3-dev
+Description: development package for budgie-desktop
+ Development library allowing compiling against the budgie-desktop API
+  
+Package: gir1.2-budgie-desktop-1.0
+Section: introspection
+Architecture: any
+Depends: ${misc:Depends}
+Description: GNOME introspection library for budgie-desktop
+ This is the introspection library against the budgie-desktop API
+ and allows creating plugins in python and Vala
+
+Package: budgie-desktop-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: devhelp
+Description: documentation files for the budgie-desktop
+ This package contains the API documentation in HTML format

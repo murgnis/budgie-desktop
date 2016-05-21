@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+
+#export DEB_BUILD_HARDENING=1
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+build build-arch:
+	autoreconf
+	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc $(shell dpkg-buildflags --export=configure)
+ 
+binary binary-arch:
+	dh_testroot
+	dh_auto_install
+	dh_installdocs
+	dh_installchangelogs
+	dh_lintian
+	dh_fixperms	
+	dh_compress
+	# remove unneeded build files
+	find debian/tmp -name \*.la -exec rm {} \;
+	find debian/tmp -name \*.a -exec rm {} \;
+	# correct permissions on build shared object libraries
+	find debian/tmp -name \*.so* -exec chmod 644 {} \;
+	dh_install
+	# install override but budgie has to take precedence over
+	# gnome-shell defaults
+	dh_installgsettings --priority=15
+	dh_strip -p budgie-core
+	dh_strip -p libbudgie-plugin0
+	dh_strip -p libbudgietheme0
+	dh_strip -p libraven0
+	dh_makeshlibs
+	dh_shlibdeps
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+			
+%:
+	dh $@ --with autoreconf

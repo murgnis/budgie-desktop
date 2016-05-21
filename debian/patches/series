@@ -1,0 +1,4 @@
+nm-applet.diff
+0001-raven-Kill-the-opacity-change-on-slide-in-looks-naff.patch
+0001-Fix-compilation-for-out-of-tree-builds.patch
+missing-maths-library

@@ -1,0 +1,56 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: budgie-desktop-10.2.2
+Source: https://github.com/solus-project/budgie-desktop
+
+Files: *
+Copyright: 2013-2016 Ikey Doherty <ikey.doherty@gmail.com>
+License: GPL-2+ or LGPL-2.1
+ budgie-desktop is available under a split license model. This enables 
+ developers to link against the libraries of budgie-desktop without 
+ affecting their choice of license and distribution.
+ .
+ The shared libraries are available under the terms of the LGPL-2.1, 
+ allowing developers to link against the API without any issue, and to 
+ use all exposed APIs without affecting their project license.
+ .
+ The remainder of the project (i.e. installed binaries) is available 
+ under the terms of the GPL 2.0 license. This is clarified in the 
+ headers of each source file.
+
+Files: debian/*
+Copyright: 2016 David "fossfreedom" Mohammed <foss.freedom@gmail.com>
+License: GPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+ 
+License: LGPL-2.1
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.

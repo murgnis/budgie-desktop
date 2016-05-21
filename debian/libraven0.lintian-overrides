@@ -1,0 +1,2 @@
+# manual build rules - false positive
+postinst-must-call-ldconfig

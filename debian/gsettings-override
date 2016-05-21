@@ -1,0 +1,7 @@
+[org.gnome.settings-daemon.plugins.xsettings]
+hinting='slight'
+antialiasing='rgba'
+overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize,maximize,close'>}
+
+[org.freedesktop.ibus.panel]
+show-icon-on-systray=false
