@@ -1,4 +1,2 @@
-# upstream does not provide a manpage
-budgie-core binary: binary-without-manpage *
 # upstream key which is used
 budgie-core binary: desktop-entry-contains-unknown-key *

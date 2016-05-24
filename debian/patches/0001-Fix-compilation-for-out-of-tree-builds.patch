@@ -1,9 +1,6 @@
-From b7e3b0fe97dc7009491234ee70c0087d6e4a6c5e Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@solus-project.com>
-Date: Thu, 5 May 2016 22:08:04 +0100
 Subject: [PATCH] Fix compilation for out of tree builds
-
-Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/b7e3b0fe97dc7009491234ee70c0087d6e4a6c5e
 ---
  plugin/Makefile.am     | 5 ++++-
  plugin/budgie-1.0.deps | 1 +

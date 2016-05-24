@@ -1,11 +1,7 @@
-Description: add missing maths library
- .
- commit 9dc9fc9b6756ab3a4bb96acd380e671236ea4d94
- required to allow compilation under ubuntu gnome
- .
-   * add out of tree compilation patch
-Author: Ikey Doherty <ikey@solus-project.com>com>
-
+From: Ikey Doherty <ikey@solus-project.com>
+Subject: add missing maths library
+Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/9dc9fc9b6756ab3a4bb96acd380e671236ea4d94
+---
 --- budgie-desktop-10.2.5.orig/lib/Makefile.am
 +++ budgie-desktop-10.2.5/lib/Makefile.am
 @@ -19,7 +19,8 @@ libtoplevel_la_CFLAGS = \

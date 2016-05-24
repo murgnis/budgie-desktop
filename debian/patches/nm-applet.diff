@@ -1,9 +1,7 @@
-Index: budgie-desktop-10.2.4/session/budgie-desktop-nm-applet.desktop.in
-Author: David Mohammed <foss.freedom@gmail.com>
 Description: allow nm-applet to popup wireless connections
- . 
- Debian specific patch to ensure nm-applet behaves correctly in its
- fallback xembed mode to list wireless and other connection types
+ on Debian based systems nm-applet working in legacy mode needs to be
+ called via dbus otherwise the wireless popup does not work
+Forwarded: not-needed
 Origin: Other
 ===================================================================
 --- budgie-desktop-10.2.4.orig/session/budgie-desktop-nm-applet.desktop.in

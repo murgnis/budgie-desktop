@@ -1,9 +1,6 @@
-From c8436288a5af24da31bf0477736f764ef37d26c6 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey@solus-project.com>
-Date: Sat, 2 Apr 2016 19:08:19 +0100
 Subject: [PATCH] raven: Kill the opacity change on slide-in, looks naff.
-
-Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/c8436288a5af24da31bf0477736f764ef37d26c6
 ---
  raven/raven.vala | 5 -----
  1 file changed, 5 deletions(-)

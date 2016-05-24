@@ -1,56 +1,192 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: budgie-desktop-10.2.2
+Upstream-Name: budgie-desktop-10.2.5
 Source: https://github.com/solus-project/budgie-desktop
 
 Files: *
-Copyright: 2013-2016 Ikey Doherty <ikey.doherty@gmail.com>
-License: GPL-2+ or LGPL-2.1
- budgie-desktop is available under a split license model. This enables 
- developers to link against the libraries of budgie-desktop without 
- affecting their choice of license and distribution.
- .
- The shared libraries are available under the terms of the LGPL-2.1, 
- allowing developers to link against the API without any issue, and to 
- use all exposed APIs without affecting their project license.
- .
- The remainder of the project (i.e. installed binaries) is available 
- under the terms of the GPL 2.0 license. This is clarified in the 
- headers of each source file.
+Copyright: 2015, Ikey Doherty
+License: LGPL-2.1+
 
-Files: debian/*
-Copyright: 2016 David "fossfreedom" Mohammed <foss.freedom@gmail.com>
+Files: compile
+  depcomp
+  missing
+  test-driver
+Copyright: 1996-2013, Free Software Foundation, Inc
 License: GPL-2+
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public
- License as published by the Free Software Foundation; either
- version 2 of the License, or (at your option) any later version.
+
+Files: configure
+Copyright: 1991-1996, 1998-2012, Free Software Foundation, Inc
+License: GPL-2+
+
+Files: gvc/*
+Copyright: 2008, 2009, Red Hat, Inc
+License: GPL-2+
+
+Files: gvc/gvc-channel-map.c
+  gvc/gvc-mixer-event-role.c
+  gvc/gvc-mixer-sink-input.c
+  gvc/gvc-mixer-sink.c
+  gvc/gvc-mixer-source-output.c
+  gvc/gvc-mixer-source.c
+  gvc/gvc-mixer-stream.c
+Copyright: 2008, William Jon McCann
+License: GPL-2+
+
+Files: gvc/gvc-mixer-card.c
+Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2009, Bastien Nocera / 2008, William Jon McCann
+License: GPL-2+
+
+Files: gvc/gvc-mixer-card.h
+Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2008-2009, Red Hat, Inc
+License: GPL-2+
+
+Files: gvc/gvc-mixer-control.c
+Copyright: 2012, Conor Curran
+  2008, William Jon McCann
+  2008, Sjoerd Simons <sjoerd@luon.net>
+  2006-2008, Lennart Poettering
+License: GPL-2+
+
+Files: gvc/gvc-mixer-ui-device.c
+Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2012, David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
+License: GPL-2+
+
+Files: gvc/gvc-mixer-ui-device.h
+Copyright: Conor Curran 2011, <conor.curran@canonical.com>
+License: GPL-2+
+
+Files: imports/*
+Copyright: 2003-2006, Vincent Untz
+  2002, Anders Carlsson <andersca@gnu.org>
+License: LGPL-2+
+
+Files: imports/natray/fixedtip.c
+Copyright: 2003-2006, Vincent Untz
+  2001, Havoc Pennington
+License: GPL-2+
+
+Files: imports/natray/fixedtip.h
+Copyright: 2003-2006, Vincent Untz
+  2001, Havoc Pennington, 2002, Red Hat Inc
+License: GPL-2+
+
+Files: imports/natray/na-tray-child.c
+  imports/natray/na-tray-child.h
+Copyright: 2008, Red Hat, Inc
+  2003-2006, Vincent Untz
+  2002, Anders Carlsson <andersca@gnu.org>
+License: LGPL-2+
+
+Files: imports/natray/na-tray.c
+Copyright: 2007, Christian Persch
+  2003-2006, Vincent Untz
+  2002, Red Hat, Inc
+License: GPL-2+
+
+Files: install-sh
+Copyright: 1994, X Consortium
+License: Expat
+
+Files: ltmain.sh
+Copyright: 1996-2001, 2003-2011, Free Software Foundation, Inc.
+License: GPL-2+
+
+Files: panel/*
+Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+Files: panel/applets/icon-tasklist/*
+Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
+License: GPL-2+
+
+Files: panel/applets/status/*
+Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
+License: GPL-2+
+
+Files: panel/applets/status/BluetoothIndicator.c
+  panel/applets/status/BluetoothIndicator.vala
+Copyright: 2016, Ikey Doherty <ikey@solus-project.com>
+  2015, Alberts Muktupāvels
+License: GPL-2+
+
+Files: panel/popovers.c
+  panel/popovers.vala
+  panel/uuid.c
+  panel/uuid.vala
+Copyright: 2015, Ikey Doherty
+License: LGPL-2.1+
+
+Files: polkit/*
+Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+Files: raven/*
+Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+Files: rundialog/*
+Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
+License: GPL-2+
+
+Files: wm/*
+Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+Files: wm/keyboard.c
+  wm/keyboard.vala
+Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2015, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+License: Expat
+ The MIT License
  .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated
+ documentation files (the "Software"), to deal in the Software
+ without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense,
+ and/or sell copies of the Software, and to permit persons to
+ whom the Software is furnished to do so, subject to the
+ following conditions:
  .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ The above copyright notice and this permission notice shall
+ be included in all copies or substantial portions of the
+ Software.
  .
- On Debian systems, the complete text of the GNU General
- Public License can be found in `/usr/share/common-licenses/GPL-2'.
- 
-License: LGPL-2.1
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+ WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+ SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 dated June, 1991, or (at
+ your option) any later version.
  .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
+ On Debian systems, the complete text of version 2 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-2'.
+
+License: LGPL-2+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Library General Public License as published by the
+ Free Software Foundation; version 2 of the License, or (at
+ your option) any later version.
  .
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ On Debian systems, the complete text of version 2 of the GNU Library
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2'.
+
+License: LGPL-2.1+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 2.1 of the License, or (at
+ your option) any later version.
  .
- On Debian systems, the complete text of the GNU General
- Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+ On Debian systems, the complete text of version 2.1 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
