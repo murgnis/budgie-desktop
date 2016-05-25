@@ -1,10 +1,9 @@
 #!/usr/bin/make -f
 
-#export DEB_BUILD_HARDENING=1
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 build build-arch:
-	autoreconf
+	autoreconf -i
 	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc $(shell dpkg-buildflags --export=configure)
  
 binary binary-arch:
@@ -34,6 +33,17 @@ binary binary-arch:
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
+	
+clean:
+	dh_testdir
+	dh_auto_clean
+	rm -f configure
+	rm -f install-sh
+	rm -f ltmain.sh
+	rm -f missing
+	rm -f test-driver
+	dh_autoreconf_clean
+	dh_clean
 			
 %:
 	dh $@ --with autoreconf
