@@ -1,10 +1,11 @@
 #!/usr/bin/make -f
 
-export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 build build-arch:
 	autoreconf -i
-	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc $(shell dpkg-buildflags --export=configure)
+	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
+# ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc $(shell dpkg-buildflags --export=configure)
  
 binary binary-arch:
 	dh_testroot

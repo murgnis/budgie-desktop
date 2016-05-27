@@ -57,7 +57,12 @@ Architecture: any
 Depends:
  budgie-core,
  gir1.2-budgie-desktop-1.0,
- ${misc:Depends}
+ ${misc:Depends},
+ gnome-session-bin, 
+ gnome-session-common, 
+ gnome-settings-daemon, 
+ gnome-control-center, 
+ gnome-menus 
 Description: Desktop package for budgie-desktop
  Budgie is the flagship desktop of the Solus Linux Distribution,
  a Solus project. Designed with the modern user in mind, it focuses on
