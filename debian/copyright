@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: budgie-desktop-10.2.5
+Upstream-Name: budgie-desktop
 Source: https://github.com/solus-project/budgie-desktop
 
 Files: *
