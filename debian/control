@@ -1,5 +1,5 @@
 Source: budgie-desktop
-Section: misc
+Section: x11
 Priority: optional
 Maintainer: David Mohammed <foss.freedom@gmail.com>
 Homepage: https://solus-project.com/budgie/

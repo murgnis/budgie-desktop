@@ -1,4 +1,4 @@
-From: Ikey Doherty <ikey@solus-project.com>
+Author: Ikey Doherty <ikey@solus-project.com>
 Subject: [PATCH] Fix compilation for out of tree builds
 Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/b7e3b0fe97dc7009491234ee70c0087d6e4a6c5e
 ---

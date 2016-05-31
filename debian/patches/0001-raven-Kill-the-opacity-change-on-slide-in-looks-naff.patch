@@ -1,4 +1,4 @@
-From: Ikey Doherty <ikey@solus-project.com>
+Author: Ikey Doherty <ikey@solus-project.com>
 Subject: [PATCH] raven: Kill the opacity change on slide-in, looks naff.
 Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/c8436288a5af24da31bf0477736f764ef37d26c6
 ---
