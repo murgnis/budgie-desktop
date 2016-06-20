@@ -2,7 +2,7 @@ Source: budgie-desktop
 Section: x11
 Priority: optional
 Maintainer: David Mohammed <foss.freedom@gmail.com>
-Homepage: https://solus-project.com/budgie/
+Homepage: http://horst3180.deviantart.com
 Build-Depends:
  debhelper (>= 9),
  dh-autoreconf,
@@ -32,6 +32,7 @@ Build-Depends:
  uuid-dev,
  valac
 Standards-Version: 3.9.8
+Vcs-Browser: https://github.com/solus-project/budgie-desktop.git
 
 Package: budgie-core
 Architecture: any
