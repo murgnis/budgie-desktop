@@ -32,7 +32,8 @@ Build-Depends:
  uuid-dev,
  valac
 Standards-Version: 3.9.8
-Vcs-Browser: https://github.com/solus-project/budgie-desktop.git
+Vcs-Browser: https://github.com/budgie-remix/budgie-desktop/tree/debian
+Vcs-Git: https://github.com/budgie-remix/budgie-desktop -b debian
 
 Package: budgie-core
 Architecture: any
