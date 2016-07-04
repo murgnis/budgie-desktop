@@ -6,12 +6,10 @@ Homepage: http://horst3180.deviantart.com
 Build-Depends:
  debhelper (>= 9),
  dh-autoreconf,
- dh-buildinfo,
  gir1.2-gee-0.8,
  gnome-common,
  gobject-introspection,
  gtk-doc-tools,
- intltool,
  libgee-0.8-dev,
  libglib2.0-dev,
  libgnome-bluetooth-dev (>= 3.16),
@@ -26,9 +24,6 @@ Build-Depends:
  libpulse-mainloop-glib0,
  libupower-glib-dev,
  libwnck-3-dev,
- pkg-config,
- python-enum34,
- python2.7,
  uuid-dev,
  valac
 Standards-Version: 3.9.8
@@ -40,8 +35,20 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Description: Core package for budgie-desktop
- This is the base package for budgie-desktop
+Description: Core package for Budgie-Desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ This is the base package for budgie-desktop.  This package provides:
+  GNOME Network Manager autostart file specifically for Budgie
+  budgie-desktop plugins
+  locales and icons for budgie-desktop
+  budgie-desktop executables
+  GLib schemas for budgie-desktop
+  Session file for budgie-desktop
 
 Package: budgie-core-dev
 Section: libdevel
@@ -51,9 +58,20 @@ Depends:
  libglib2.0-dev,
  libgtk-3-dev,
  ${misc:Depends}
-Description: development package for budgie-desktop
- Development library allowing compiling against the budgie-desktop API
-
+Suggests: budgie-desktop-doc
+Description: Development package for budgie-desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ This package provides the development files allowing compilation
+ through the budgie-desktop API.  This package provides:
+  C Header files
+  Vala .vapi files
+  budgie-desktop libraries (raven, plugin and theme) to link against
+ 
 Package: budgie-desktop
 Architecture: any
 Depends:
@@ -66,11 +84,15 @@ Depends:
  gnome-control-center, 
  gnome-menus 
 Description: Desktop package for budgie-desktop
- Budgie is the flagship desktop of the Solus Linux Distribution,
- a Solus project. Designed with the modern user in mind, it focuses on
- simplicity and elegance. A huge advantage for the Budgie desktop is
- that it is not a fork of another project, but rather one written from
- scratch with integration in mind.
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ This package installs the minimal GNOME based package-set together with
+ the key budgie-desktop packages to produce a working desktop
+ environment. 
 
 Package: budgie-desktop-doc
 Section: doc
@@ -80,6 +102,12 @@ Depends:
 Suggests:
  devhelp
 Description: documentation files for the budgie-desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
  This package contains the API documentation in HTML format
 
 Package: gir1.2-budgie-desktop-1.0
@@ -88,8 +116,14 @@ Architecture: any
 Depends:
  ${misc:Depends}
 Description: GNOME introspection library for budgie-desktop
- This is the introspection library against the budgie-desktop API
- and allows creating plugins in python and Vala
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ This is the introspection library and allows creating plugins in 
+ python3, C and Vala
 
 Package: libbudgie-plugin0
 Section: libs
@@ -97,7 +131,13 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Description: plugin library for budgie-desktop
+Description: Plugin library for budgie-desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
  This adds the plugin library to budgie-desktop
 
 Package: libbudgietheme0
@@ -106,7 +146,13 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Description: theme library for budgie-desktop
+Description: Theme library for budgie-desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
  This adds the theme controls for budgie-desktop
 
 Package: libraven0
@@ -115,5 +161,11 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Description: raven library for budgie-desktop
+Description: Raven library for budgie-desktop
+ Budgie-Desktop is a GTK based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based 
+ sub-systems such as GNOME-Session and Mutter.
+ .
  This provides the budgie-desktop user-defined settings called raven.
