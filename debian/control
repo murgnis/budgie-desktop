@@ -70,7 +70,6 @@ Description: Development package for budgie-desktop
  through the budgie-desktop API.  This package provides:
   C Header files
   Vala .vapi files
-  budgie-desktop libraries (raven, plugin and theme) to link against
  
 Package: budgie-desktop
 Architecture: any
