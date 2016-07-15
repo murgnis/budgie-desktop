@@ -11,20 +11,19 @@ binary binary-arch:
 	dh_installdocs
 	dh_installchangelogs
 	dh_lintian
+	dh_strip_nondeterminism
 	dh_compress
 	# remove unneeded build files
-	find debian -name \*.la -exec rm {} \;
-	find debian -name \*.a -exec rm {} \;
+	find debian/tmp -name \*.la -exec rm {} \;
+	find debian/tmp -name \*.a -exec rm {} \;
 	# correct permissions on build shared object libraries
-	find debian -name \*.so* -exec chmod 644 {} \;
-	# correct permissions on gtk-doc generated files
-	find debian -name \*.html -exec chmod 644 {} \;
+	find debian/tmp -name \*.so* -exec chmod 644 {} \;
 	# correct permissions on folders
-	find ./debian -type d | xargs chmod 755
+	find ./debian/tmp -type d | xargs chmod 755
 	# install override but budgie has to take precedence over
 	# gnome-shell defaults
 	dh_installgsettings --priority=15
-	dh_fixperms
+	dh_fixperms	
 	dh_strip -p budgie-core
 	dh_strip -p libbudgie-plugin0
 	dh_strip -p libbudgietheme0

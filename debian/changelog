@@ -1,5 +1,5 @@
-budgie-desktop (10.2.5-1) unstable; urgency=medium
+budgie-desktop (10.2.6-1) unstable; urgency=medium
 
   * Initial Release (Closes: #828765)
 
- -- David Mohammed <foss.freedom@gmail.com>  Sat, 21 May 2016 15:53:24 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 15 Jul 2016 15:53:24 +0100
