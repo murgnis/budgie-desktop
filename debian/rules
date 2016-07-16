@@ -37,4 +37,4 @@ binary binary-arch:
 	dh_builddeb
 	
 %:
-	dh $@ --with autoreconf
+	dh $@ --with autoreconf,gir
