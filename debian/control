@@ -57,8 +57,12 @@ Section: libdevel
 Architecture: any
 Depends:
  gir1.2-budgie-desktop-1.0 (= ${binary:Version}),
+ libbudgie-plugin0 (= ${binary:Version}),
+ libbudgietheme0 (= ${binary:Version}),
+ libraven0 (= ${binary:Version}),
  libglib2.0-dev,
  libgtk-3-dev,
+ libpeas-dev,
  ${misc:Depends}
 Suggests: budgie-desktop-doc
 Description: Development package for budgie-desktop
@@ -115,7 +119,9 @@ Package: gir1.2-budgie-desktop-1.0
 Section: introspection
 Architecture: any
 Depends:
- ${misc:Depends}
+ ${misc:Depends},
+ ${shlibs:Depends},
+ ${gir:Depends}
 Description: GNOME introspection library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
