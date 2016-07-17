@@ -1,3 +1,12 @@
+budgie-desktop (10.2.7-1) unstable; urgency=medium
+
+  * New upstream release
+  * Packaging changes
+    - add relro hardening
+    - maintainer change of email address
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 17 Jul 2016 22:56:58 +0100
+
 budgie-desktop (10.2.6-1) unstable; urgency=medium
 
   * Initial Release (Closes: #828765)

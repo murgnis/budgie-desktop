@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+relro
+
 build build-arch:
 	autoreconf -i
 	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
