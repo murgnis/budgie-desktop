@@ -25,6 +25,7 @@ Build-Depends:
  libpulse-mainloop-glib0,
  libupower-glib-dev,
  libwnck-3-dev,
+ libaccountsservice-dev,
  uuid-dev,
  libc6-dev (>= 2.23),
  libgdk-pixbuf2.0-dev,
