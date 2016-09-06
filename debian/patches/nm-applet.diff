@@ -12,7 +12,7 @@ Origin: Other
  Comment=Manage your network connections
  Icon=nm-device-wireless
 -Exec=nm-applet
-+Exec=dbus-launch nm-applet
++Exec=dbus-run-session nm-applet
  TryExec=nm-applet
  Terminal=false
  Type=Application
