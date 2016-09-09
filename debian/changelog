@@ -7,7 +7,6 @@ budgie-desktop (10.2.6-2) unstable; urgency=medium
     - replace dbus-launch with dbus-run-session to display nm-applet
       on budgie-desktop panel
   * Packaging changes
-    - add relro + bindnow hardening
     - maintainer change of email address
     - add debugging symbols packages
   * inc patch to display budgie-icon for lightdm greeter (LP:#1562182)
