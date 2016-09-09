@@ -1,2 +1,3 @@
 gtk-link
 nm-applet.diff
+0001-wm-Forcibly-set-the-rpath-for-the-private-Mutter-API.patch

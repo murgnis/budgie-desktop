@@ -1,3 +1,14 @@
+budgie-desktop (10.2.6-2) unstable; urgency=medium
+
+  * Bug Fix for GNOME 3.22 build (Closes: #)
+    - Add upstream patch 0001 to enable build due to mutter uplift
+  * Bug Fix to replace dbus-launch (Closes: #836083)
+    - nm-applet now uses dbus-run-session to display icon in budgie-panel
+  * packaging change:
+    - maintainer email address change
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 09 Sep 2016 19:54:35 +0100
+
 budgie-desktop (10.2.6-1) unstable; urgency=medium
 
   * Initial Release (Closes: #828765)
