@@ -1,7 +1,7 @@
 budgie-desktop (10.2.6-2) unstable; urgency=medium
 
   * Bug-fix release
-  * bug-fix for GNOME 3.22 build (Closes: #836083)
+  * bug-fix for GNOME 3.22 build (Closes: #837077)
     - add upstream maintainer patch to enable build due to mutter api change
   * bug-fix for nm-applet dbus-launch (Closes: #836083)
     - replace dbus-launch with dbus-run-session to display nm-applet
