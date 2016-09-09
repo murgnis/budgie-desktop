@@ -1,13 +1,18 @@
 budgie-desktop (10.2.6-2) unstable; urgency=medium
 
-  * Bug Fix for GNOME 3.22 build (Closes: #)
-    - Add upstream patch 0001 to enable build due to mutter uplift
-  * Bug Fix to replace dbus-launch (Closes: #836083)
-    - nm-applet now uses dbus-run-session to display icon in budgie-panel
-  * packaging change:
-    - maintainer email address change
+  * New upstream release
+  * bug-fix for GNOME 3.22 build (Closes: #836083)
+    - add upstream maintainer patch to enable build due to mutter api change
+  * bug-fix for nm-applet dbus-launch (Closes: #836083)
+    - replace dbus-launch with dbus-run-session to display nm-applet
+      on budgie-desktop panel
+  * Packaging changes
+    - add relro + bindnow hardening
+    - maintainer change of email address
+    - add debugging symbols packages
+  * inc patch to display budgie-icon for lightdm greeter (LP:#1562182)
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 09 Sep 2016 19:54:35 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 17 Jul 2016 22:56:58 +0100
 
 budgie-desktop (10.2.6-1) unstable; urgency=medium
 
