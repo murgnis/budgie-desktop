@@ -1,0 +1,4 @@
+libbudgietheme.so.0 libbudgietheme0 #MINVER#
+ budgie_desktop_theme_get_resource@Base 10.2.6
+ budgie_form_theme_path@Base 10.2.6
+ budgie_please_link_me_libtool_i_have_great_themes@Base 10.2.6
