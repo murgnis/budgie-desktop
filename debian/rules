@@ -27,10 +27,10 @@ binary binary-arch:
 	# gnome-shell defaults
 	dh_installgsettings --priority=15
 	dh_fixperms
-	dh_strip -p budgie-core --dbg-package=budgie-core-dbg
-	dh_strip -p libbudgie-plugin0 --dbg-package=libbudgie-plugin0-dbg
-	dh_strip -p libbudgietheme0 --dbg-package=libbudgietheme0-dbg
-	dh_strip -p libraven0 --dbg-package=libraven0-dbg
+	dh_strip -p budgie-core
+	dh_strip -p libbudgie-plugin0
+	dh_strip -p libbudgietheme0
+	dh_strip -p libraven0
 	dh_makeshlibs
 	dh_shlibdeps
 	dh_installdeb

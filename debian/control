@@ -37,7 +37,6 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: budgie-core-dbg
 Description: Core package for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -52,21 +51,6 @@ Description: Core package for Budgie-Desktop
   budgie-desktop executables
   GLib schemas for budgie-desktop
   Session file for budgie-desktop
-  
-Package: budgie-core-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: budgie-core (= ${binary:Version}), ${misc:Depends}
-Description: Debug core package for Budgie-Desktop
- Budgie-Desktop is a GTK+ based desktop environment which focuses on
- simplicity and elegance.  It provides a traditional desktop metaphor
- based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
- sub-systems such as GNOME-Session and Mutter.
- .
- This package contains the debug symbols used to diagnose issues
- with debugging tools such as gdb
 
 Package: budgie-core-dev
 Section: libdevel
@@ -154,7 +138,6 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: libbudgie-plugin0-dbg
 Description: Plugin library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -164,29 +147,12 @@ Description: Plugin library for budgie-desktop
  .
  This adds the plugin library to budgie-desktop
  
-Package: libbudgie-plugin0-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: libbudgie-plugin0 (= ${binary:Version}), ${misc:Depends}
-Description: Debug plugin library for budgie-desktop
- Budgie-Desktop is a GTK+ based desktop environment which focuses on
- simplicity and elegance.  It provides a traditional desktop metaphor
- based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
- sub-systems such as GNOME-Session and Mutter.
- .
- This adds the debug version of the plugin library to budgie-desktop
- The package contains the debug symbols used to diagnose issues
- with debugging tools such as gdb
-
 Package: libbudgietheme0
 Section: libs
 Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: libbudgietheme0-dbg
 Description: Theme library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -196,29 +162,12 @@ Description: Theme library for budgie-desktop
  .
  This adds the theme controls for budgie-desktop
  
-Package: libbudgietheme0-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: libbudgietheme0 (= ${binary:Version}), ${misc:Depends}
-Description: Debug theme library for budgie-desktop
- Budgie-Desktop is a GTK+ based desktop environment which focuses on
- simplicity and elegance.  It provides a traditional desktop metaphor
- based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
- sub-systems such as GNOME-Session and Mutter.
- .
- This adds the debug theme controls for budgie-desktop
- The package contains the debug symbols used to diagnose issues
- with debugging tools such as gdb
-
 Package: libraven0
 Section: libs
 Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: libraven0-dbg
 Description: Raven library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -228,18 +177,3 @@ Description: Raven library for budgie-desktop
  .
  This provides the budgie-desktop user-defined settings called raven.
  
-Package: libraven0-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: libraven0 (= ${binary:Version}), ${misc:Depends}
-Description: Debug Raven library for budgie-desktop
- Budgie-Desktop is a GTK+ based desktop environment which focuses on
- simplicity and elegance.  It provides a traditional desktop metaphor
- based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
- sub-systems such as GNOME-Session and Mutter.
- .
- This provides the debug budgie-desktop user-defined settings called 
- raven. The package contains the debug symbols used to diagnose issues
- with debugging tools such as gdb

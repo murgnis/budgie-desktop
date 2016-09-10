@@ -8,10 +8,9 @@ budgie-desktop (10.2.6-2) unstable; urgency=medium
       on budgie-desktop panel
   * Packaging changes
     - maintainer change of email address
-    - add debugging symbols packages
   * inc patch to display budgie-icon for lightdm greeter (LP:#1562182)
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 17 Jul 2016 22:56:58 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 10 Sep 2016 12:36:58 +0100
 
 budgie-desktop (10.2.6-1) unstable; urgency=medium
 
