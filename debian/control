@@ -27,6 +27,7 @@ Build-Depends:
  uuid-dev,
  libc6-dev (>= 2.23),
  libgdk-pixbuf2.0-dev,
+ libaccountsservice-dev,
  valac
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/budgie-remix/budgie-desktop/tree/debian

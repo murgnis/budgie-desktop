@@ -1,3 +1,20 @@
+budgie-desktop (10.2.7-0ubuntu2) xenial; urgency=medium
+
+  * Add upstream recommended patch
+    - 0001 - fix icontask lisk spacing after reboot
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 11 Sep 2016 15:57:52 +0100
+
+budgie-desktop (10.2.7-0ubuntu1) xenial; urgency=medium
+
+  * New upstream release
+    - upstream release 10.2.7
+  * Packaging changes
+    - drop patches gtk-link and GNOME 3.22 build since
+      these are included in the 10.2.7 release
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 10 Sep 2016 20:51:54 +0100
+
 budgie-desktop (10.2.6-2) unstable; urgency=medium
 
   * Bug-fix release

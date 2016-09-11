@@ -1,3 +1,2 @@
 nm-applet.diff
-gtk-link.diff
-0001-wm-Forcibly-set-the-rpath-for-the-private-Mutter-API.patch
+0001-applets-icon-tasklist-Fix-pinned-icon-squishing-on-l.patch
