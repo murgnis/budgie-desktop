@@ -1,0 +1,28 @@
+Description: disable menu refresh to prevent crash
+ When installing apps that has a menu .desktop, the menu should update.
+ On debian based systems this can cause the panel to crash and if the
+ panel repeatedly crashes, the whole gnome-session will terminate.
+ This patch stops this auto menu update and thus the crash - its a
+ workaround for upstream issue #527 and is required until this issue
+ is fully diagnosed and resolved.
+Bug: https://github.com/solus-project/budgie-desktop/issues/527
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Forwarded: not-needed
+Origin: Other
+Index: budgie-desktop-10.2.7/panel/applets/budgie-menu/BudgieMenuWindow.vala
+===================================================================
+--- budgie-desktop-10.2.7.orig/panel/applets/budgie-menu/BudgieMenuWindow.vala	2016-09-10 14:57:52.000000000 +0100
++++ budgie-desktop-10.2.7/panel/applets/budgie-menu/BudgieMenuWindow.vala	2016-09-11 21:14:52.032024339 +0100
+@@ -182,10 +182,10 @@
+                 return;
+             }
+             /* Think of deferred routines.. */
+-            Idle.add(()=> {
++            /*Idle.add(()=> {
+                 tree.changed.connect(refresh_tree);
+                 return false;
+-            });
++            });*/
+         }
+         if (tree_root == null) {
+             root = tree.get_root_directory();

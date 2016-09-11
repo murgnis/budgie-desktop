@@ -1,4 +1,17 @@
-budgie-desktop (10.2.7-0ubuntu2) xenial; urgency=medium
+budgie-desktop (10.2.7-0ubuntu4~xenial) xenial; urgency=medium
+
+  * add volume patch
+    - 0002 - fix volume usability for panel indicator
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 11 Sep 2016 21:49:55 +0100
+
+budgie-desktop (10.2.7-0ubuntu3~xenial) xenial; urgency=medium
+
+  * add patch to stop menu crash on refresh
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 11 Sep 2016 21:20:36 +0100
+
+budgie-desktop (10.2.7-0ubuntu2~xenial) xenial; urgency=medium
 
   * Add upstream recommended patch
     - 0001 - fix icontask lisk spacing after reboot

@@ -1,2 +1,4 @@
+disable_menu_refresh_to_stop_crash.patch
 nm-applet.diff
 0001-applets-icon-tasklist-Fix-pinned-icon-squishing-on-l.patch
+0002-applets-status-Implement-a-volume-popover-on-the-vol.patch
