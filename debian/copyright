@@ -1,10 +1,16 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: budgie-desktop
-Source: https://github.com/solus-project/budgie-desktop
 
 Files: *
-Copyright: 2015, Ikey Doherty
+Copyright: 2014-2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
+
+Files: config/*
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
+
+Files: config/budgie-config.h
+Copyright: 2015, Ikey Doherty
+License: LGPL-2.1+
 
 Files: gvc/*
 Copyright: 2008, 2009, Red Hat, Inc
@@ -71,50 +77,58 @@ Copyright: 2007, Christian Persch
   2002, Red Hat, Inc
 License: GPL-2+
 
-Files: panel/*
-Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
+Files: lib/*
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
 
-Files: panel/applets/icon-tasklist/*
-Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
-License: GPL-2+
-
-Files: panel/applets/status/*
-Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
-License: GPL-2+
+Files: libsession/*
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
 
 Files: panel/applets/status/BluetoothIndicator.c
   panel/applets/status/BluetoothIndicator.vala
-Copyright: 2016, Ikey Doherty <ikey@solus-project.com>
-  2015, Alberts Muktupāvels
+Copyright: 2015, Alberts Muktupāvels
+  2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: GPL-2+
+
+Files: panel/applets/user-indicator/*
+Copyright: 2015, 2016, Solus Project
 License: GPL-2+
 
 Files: panel/popovers.c
   panel/popovers.vala
   panel/uuid.c
   panel/uuid.vala
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
+
+Files: plugin/*
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
+
+Files: plugin/applet-info.h
+  plugin/applet.h
+  plugin/plugin.h
+  plugin/popover-manager.h
 Copyright: 2015, Ikey Doherty
 License: LGPL-2.1+
 
-Files: polkit/*
-Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
+Files: raven/notifications_view.c
+ raven/notifications_view.vala
+Copyright: 2015-2016 Ikey Doherty <ikey@solus-project.com>
+ 2014 Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
 
-Files: raven/*
-Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
+Files: theme/*
+Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+License: LGPL-2.1+
 
-Files: rundialog/*
-Copyright: 2014, Ikey Doherty <ikey.doherty@gmail.com>
-License: GPL-2+
-
-Files: wm/*
-Copyright: 2014, 2015, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
+Files: theme/theme.h
+Copyright: 2015, Ikey Doherty
+License: LGPL-2.1+
 
 Files: wm/keyboard.c
   wm/keyboard.vala
-Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2015, Ikey Doherty <ikey@solus-project.com>
+Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2015-2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
 License: GPL-2+

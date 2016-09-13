@@ -10,6 +10,8 @@ budgie-desktop (10.2.7-1) unstable; urgency=medium
   * Packaging changes
     - drop patches gtk-link and GNOME 3.22 build since
       these are included in the 10.2.7 release
+    - add new dependency required for build libaccountsservice-dev
+    - revised debian/copyright
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 12 Sep 2016 20:43:29 +0100
 
