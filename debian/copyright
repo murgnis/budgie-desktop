@@ -114,9 +114,10 @@ Copyright: 2015, Ikey Doherty
 License: LGPL-2.1+
 
 Files: raven/notifications_view.c
- raven/notifications_view.vala
+  raven/notifications_view.vala
 Copyright: 2015-2016 Ikey Doherty <ikey@solus-project.com>
- 2014 Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
+  2014 Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
+License: GPL-2+
 
 Files: theme/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
