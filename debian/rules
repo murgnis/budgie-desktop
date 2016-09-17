@@ -2,10 +2,14 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+relro,+bindnow
 
+# we use make maintainer-clean to remove all generated C files
+# and then force another autoreconf/configure to regenerate these
+# this allows a no change rebuild to fix any vala compiler changes
+
 build build-arch:
 	autoreconf -i
 	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
- 
+
 binary binary-arch:
 	dh_testroot
 	dh_auto_install
