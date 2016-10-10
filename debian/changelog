@@ -7,6 +7,8 @@ budgie-desktop (10.2.7-3) unstable; urgency=medium
       upstream issue #632
   * Add upstream patch to stop spamming of log
     - 0004-panel-Chain-methods-to-fix-GtkBox-allocation-spam-ev.patch
+  * Add upstream patch to fix GTK+3.22 theme display
+    - 0005-Fix-theme-for-GTK-3.22.patch
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 09 Oct 2016 20:32:29 +0100
 

@@ -3,3 +3,4 @@ nm-applet.diff
 0002-applets-status-Implement-a-volume-popover-on-the-vol.patch
 0003-Correctly-port-to-upower-0.99API.patch
 0004-panel-Chain-methods-to-fix-GtkBox-allocation-spam-ev.patch
+0005-Fix-theme-for-GTK-3.22.patch
