@@ -1,3 +1,10 @@
+budgie-desktop (10.2.7-3ubuntu1) yakkety; urgency=medium
+
+  * Add patch to fix another menu crash
+    - 0006-applets-budgie-menu-Stop-using-weak-references-leadi.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 18 Oct 2016 07:46:38 +0100
+
 budgie-desktop (10.2.7-3) unstable; urgency=medium
 
   * Drop patch to stop refresh of menus

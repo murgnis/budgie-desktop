@@ -1,0 +1,43 @@
+From 0fe1b23fe576f191176794939fb5d84e10b36a35 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Tue, 18 Oct 2016 00:53:55 +0100
+Subject: [PATCH] applets/budgie-menu: Stop using weak references leading to
+ null pointers
+
+We used weak references, meaning when the underlying menu went walkabouts
+due to a change event, we broke the buttons too. This can be tested prior
+to the change by removing an application providing a .desktop file, and
+noticing the spew of Gtk markup issues from null strings.
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+---
+ panel/applets/budgie-menu/BudgieMenuWindow.vala | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/panel/applets/budgie-menu/BudgieMenuWindow.vala b/panel/applets/budgie-menu/BudgieMenuWindow.vala
+index bac0d3e..ed488e0 100644
+--- a/panel/applets/budgie-menu/BudgieMenuWindow.vala
++++ b/panel/applets/budgie-menu/BudgieMenuWindow.vala
+@@ -18,7 +18,7 @@ const string LOGOUT_BINARY = "budgie-session-dialog";
+ public class CategoryButton : Gtk.RadioButton
+ {
+ 
+-    public new unowned GMenu.TreeDirectory? group { public get ; protected set; }
++    public new GMenu.TreeDirectory? group { public get ; protected set; }
+ 
+     public CategoryButton(GMenu.TreeDirectory? parent)
+     {
+@@ -54,8 +54,8 @@ public class CategoryButton : Gtk.RadioButton
+ public class MenuButton : Gtk.Button
+ {
+ 
+-    public unowned DesktopAppInfo info { public get ; protected set ; }
+-    public unowned GMenu.TreeDirectory parent_menu { public get ; protected set ; }
++    public DesktopAppInfo info { public get ; protected set ; }
++    public GMenu.TreeDirectory parent_menu { public get ; protected set ; }
+ 
+     public int score { public set ; public get; }
+ 
+-- 
+2.7.4
+
