@@ -1,7 +1,3 @@
 nm-applet.diff
-0001-applets-icon-tasklist-Fix-pinned-icon-squishing-on-l.patch
-0002-applets-status-Implement-a-volume-popover-on-the-vol.patch
-0003-Correctly-port-to-upower-0.99API.patch
-0004-panel-Chain-methods-to-fix-GtkBox-allocation-spam-ev.patch
-0005-Fix-theme-for-GTK-3.22.patch
-0006-applets-budgie-menu-Stop-using-weak-references-leadi.patch
+0001-Lower-the-ibus-requirement-to-1.5.11-for-our-Debuntu.patch
+0002-wm-ibus-Always-try-to-use-an-existing-ibus-daemon-if.patch

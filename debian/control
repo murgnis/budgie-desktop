@@ -28,7 +28,8 @@ Build-Depends:
  libc6-dev (>= 2.23),
  libgdk-pixbuf2.0-dev,
  libaccountsservice-dev,
- valac
+ valac,
+ libibus-1.0-dev (>= 1.5.11)
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/budgie-remix/budgie-desktop/tree/debian
 Vcs-Git: https://github.com/budgie-remix/budgie-desktop -b debian
