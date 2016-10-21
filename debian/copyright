@@ -129,12 +129,14 @@ License: LGPL-2.1+
 
 Files: wm/keyboard.c
   wm/keyboard.vala
-Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2015-2016, Ikey Doherty <ikey@solus-project.com>
+Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
+  2015-2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
 Files: wm/ibus.c
   wm/ibus.vala
-Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2016 Ikey Doherty <ikey@solus-project.com>
+Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
+  2016 Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
 Files: data/icons/*
