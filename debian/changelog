@@ -5,6 +5,8 @@ budgie-desktop (10.2.8-1) unstable; urgency=medium
     - Drop all now obsolete previous patches named 000*
     - add new build dependency libibus-1.0-dev
     - Updated debian/copyright with revised info for new source files
+    - add recommendation to install gnome-screensaver; screenlock capability
+      in budgie-desktop does not work without this package
   * add patch upstream patch to allow the ibus applet to compile:
       0001-Lower-the-ibus-requirement-to-1.5.11-for-our-Debuntu.patch
   * add patch to ensure ibus is connected correctly if already running

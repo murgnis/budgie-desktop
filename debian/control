@@ -89,7 +89,8 @@ Depends:
  gnome-session-common, 
  gnome-settings-daemon, 
  gnome-control-center, 
- gnome-menus 
+ gnome-menus,
+ gnome-screensaver
 Description: Desktop package for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
