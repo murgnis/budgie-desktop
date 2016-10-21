@@ -1,6 +1,12 @@
 budgie-desktop (10.2.8-1) unstable; urgency=medium
 
   * New upstream release
+    - GTK+3.22 fixes
+    - new places indicator
+    - new ibus indicator
+    - refreshed panel icons
+    - updated translations
+    - general fixes for the desktop
   * Packaging changes:
     - Drop all now obsolete previous patches named 000*
     - add new build dependency libibus-1.0-dev
