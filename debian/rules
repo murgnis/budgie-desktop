@@ -2,9 +2,9 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+relro,+bindnow
 
-# we use make maintainer-clean to remove all generated C files
-# and then force another autoreconf/configure to regenerate these
-# this allows a no change rebuild to fix any vala compiler changes
+# rules below are required due to budgie-desktop not running
+# correctly with a standard debhelper rules set
+# https://github.com/UbuntuBudgie/budgie-desktop/pull/2
 
 build build-arch:
 	autoreconf -i
@@ -27,6 +27,8 @@ binary binary-arch:
 	find debian -name \*.html -exec chmod 644 {} \;
 	# correct permissions on folders
 	find ./debian -type d | xargs chmod 755
+	# remove unrecognised and non ISO639 locale
+	find debian -type d -name "zh-Hant" -print0 | xargs -r0 -- rm -r
 	# install override but budgie has to take precedence over
 	# gnome-shell defaults
 	dh_installgsettings --priority=15
@@ -43,4 +45,4 @@ binary binary-arch:
 	dh_builddeb
 	
 %:
-	dh $@ --with autoreconf,gir
+	dh $@

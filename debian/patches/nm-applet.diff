@@ -5,8 +5,8 @@ Author: David Mohammed <foss.freedom@gmail.com>
 Forwarded: not-needed
 Origin: Other
 ===================================================================
---- budgie-desktop-10.2.4.orig/session/budgie-desktop-nm-applet.desktop.in
-+++ budgie-desktop-10.2.4/session/budgie-desktop-nm-applet.desktop.in
+--- budgie-desktop-10.2.9.orig/src/session/budgie-desktop-nm-applet.desktop.in
++++ budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
 @@ -2,7 +2,7 @@
  Name=Network (Budgie Desktop)
  Comment=Manage your network connections

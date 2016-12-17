@@ -1,3 +1,2 @@
 nm-applet.diff
-0001-Lower-the-ibus-requirement-to-1.5.11-for-our-Debuntu.patch
-0002-wm-ibus-Always-try-to-use-an-existing-ibus-daemon-if.patch
+stop_menu_refresh.diff

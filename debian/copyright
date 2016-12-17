@@ -4,137 +4,137 @@ Files: *
 Copyright: 2014-2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
-Files: config/*
+Files: src/config/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: config/budgie-config.h
+Files: src/config/budgie-config.h
 Copyright: 2015, Ikey Doherty
 License: LGPL-2.1+
 
-Files: gvc/*
+Files: src/gvc/*
 Copyright: 2008, 2009, Red Hat, Inc
 License: GPL-2+
 
-Files: gvc/gvc-channel-map.c
-  gvc/gvc-mixer-event-role.c
-  gvc/gvc-mixer-sink-input.c
-  gvc/gvc-mixer-sink.c
-  gvc/gvc-mixer-source-output.c
-  gvc/gvc-mixer-source.c
-  gvc/gvc-mixer-stream.c
+Files: src/gvc/gvc-channel-map.c
+  src/gvc/gvc-mixer-event-role.c
+  src/gvc/gvc-mixer-sink-input.c
+  src/gvc/gvc-mixer-sink.c
+  src/gvc/gvc-mixer-source-output.c
+  src/gvc/gvc-mixer-source.c
+  src/gvc/gvc-mixer-stream.c
 Copyright: 2008, William Jon McCann
 License: GPL-2+
 
-Files: gvc/gvc-mixer-card.c
+Files: src/gvc/gvc-mixer-card.c
 Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2009, Bastien Nocera / 2008, William Jon McCann
 License: GPL-2+
 
-Files: gvc/gvc-mixer-card.h
+Files: src/gvc/gvc-mixer-card.h
 Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2008-2009, Red Hat, Inc
 License: GPL-2+
 
-Files: gvc/gvc-mixer-control.c
+Files: src/gvc/gvc-mixer-control.c
 Copyright: 2012, Conor Curran
   2008, William Jon McCann
   2008, Sjoerd Simons <sjoerd@luon.net>
   2006-2008, Lennart Poettering
 License: GPL-2+
 
-Files: gvc/gvc-mixer-ui-device.c
+Files: src/gvc/gvc-mixer-ui-device.c
 Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2012, David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
 License: GPL-2+
 
-Files: gvc/gvc-mixer-ui-device.h
+Files: src/gvc/gvc-mixer-ui-device.h
 Copyright: Conor Curran 2011, <conor.curran@canonical.com>
 License: GPL-2+
 
-Files: imports/*
+Files: src/imports/*
 Copyright: 2003-2006, Vincent Untz
   2002, Anders Carlsson <andersca@gnu.org>
 License: LGPL-2+
 
-Files: imports/natray/fixedtip.c
+Files: src/imports/natray/fixedtip.c
 Copyright: 2003-2006, Vincent Untz
   2001, Havoc Pennington
 License: GPL-2+
 
-Files: imports/natray/fixedtip.h
+Files: src/imports/natray/fixedtip.h
 Copyright: 2003-2006, Vincent Untz
   2001, Havoc Pennington, 2002, Red Hat Inc
 License: GPL-2+
 
-Files: imports/natray/na-tray-child.c
-  imports/natray/na-tray-child.h
+Files: src/imports/natray/na-tray-child.c
+  src/imports/natray/na-tray-child.h
 Copyright: 2008, Red Hat, Inc
   2003-2006, Vincent Untz
   2002, Anders Carlsson <andersca@gnu.org>
 License: LGPL-2+
 
-Files: imports/natray/na-tray.c
+Files: src/imports/natray/na-tray.c
 Copyright: 2007, Christian Persch
   2003-2006, Vincent Untz
   2002, Red Hat, Inc
 License: GPL-2+
 
-Files: lib/*
+Files: src/lib/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: libsession/*
+Files: src/libsession/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: panel/applets/status/BluetoothIndicator.c
-  panel/applets/status/BluetoothIndicator.vala
+Files: src/panel/applets/status/BluetoothIndicator.c
+  src/panel/applets/status/BluetoothIndicator.vala
 Copyright: 2015, Alberts Muktupāvels
   2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
-Files: panel/applets/user-indicator/*
+Files: src/panel/applets/user-indicator/*
 Copyright: 2015, 2016, Solus Project
 License: GPL-2+
 
-Files: panel/popovers.c
-  panel/popovers.vala
-  panel/uuid.c
-  panel/uuid.vala
+Files: src/panel/popovers.c
+  src/panel/popovers.vala
+  src/panel/uuid.c
+  src/panel/uuid.vala
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: plugin/*
+Files: src/plugin/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: plugin/applet-info.h
-  plugin/applet.h
-  plugin/plugin.h
-  plugin/popover-manager.h
+Files: src/plugin/applet-info.h
+  src/plugin/applet.h
+  src/plugin/plugin.h
+  src/plugin/popover-manager.h
 Copyright: 2015, Ikey Doherty
 License: LGPL-2.1+
 
-Files: raven/notifications_view.c
-  raven/notifications_view.vala
+Files: src/raven/notifications_view.c
+  src/raven/notifications_view.vala
 Copyright: 2015-2016 Ikey Doherty <ikey@solus-project.com>
   2014 Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
 License: GPL-2+
 
-Files: theme/*
+Files: src/theme/*
 Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
 License: LGPL-2.1+
 
-Files: theme/theme.h
+Files: src/theme/theme.h
 Copyright: 2015, Ikey Doherty
 License: LGPL-2.1+
 
-Files: wm/keyboard.c
-  wm/keyboard.vala
+Files: src/wm/keyboard.c
+  src/wm/keyboard.vala
 Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
   2015-2016, Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
 
-Files: wm/ibus.c
-  wm/ibus.vala
+Files: src/wm/ibus.c
+  src/wm/ibus.vala
 Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
   2016 Ikey Doherty <ikey@solus-project.com>
 License: GPL-2+
