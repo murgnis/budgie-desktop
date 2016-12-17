@@ -11,6 +11,8 @@ budgie-desktop (10.2.9-1) unstable; urgency=medium
     - update debian/copyright due to source filelayout change
     - update package for debhelper 10
     - update debian/control for new VCS repo name
+    - add network-manager-gnome as a dependency for budgie-desktop since
+    - budgie-desktop will crash without this being installed
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 17 Dec 2016 09:46:49 +0000
 
