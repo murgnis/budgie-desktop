@@ -16,6 +16,7 @@ budgie-desktop (10.2.9-1) unstable; urgency=medium
     - add network-manager-gnome as a dependency for budgie-desktop since
     - budgie-desktop will crash without this being installed
     - remove unneeded lintian override
+    - updated upstream/metadata to reflect new upstream repo name
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 17 Dec 2016 09:46:49 +0000
 
