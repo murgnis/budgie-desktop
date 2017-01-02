@@ -1,3 +1,13 @@
+budgie-desktop (10.2.9-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - drop the last two remaining patches since additional
+      testing with the new versions of gnome-menus and
+      network-manager now in Stretch makes these patches unnecessary
+      (Closes: #849595)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 02 Jan 2017 10:50:32 +0000
+
 budgie-desktop (10.2.9-1) unstable; urgency=medium
 
   * New upstream release
