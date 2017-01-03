@@ -5,9 +5,10 @@ Description: allow nm-applet to be displayed
 Author: David Mohammed <fossfreedom@ubuntu.com>
 Forwarded: not-needed
 Origin: Other
+Index: budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
 ===================================================================
---- a/x/budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
-+++ b/x/budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
+--- budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
++++ budgie-desktop-10.2.9/src/session/budgie-desktop-nm-applet.desktop.in
 @@ -2,7 +2,7 @@
  Name=Network (Budgie Desktop)
  Comment=Manage your network connections
