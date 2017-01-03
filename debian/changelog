@@ -1,3 +1,10 @@
+budgie-desktop (10.2.9-2ubuntu1) zesty; urgency=medium
+
+  * Bug-fix release (LP: #1653739)
+    - ubuntu patch to ensure nm-applet displays in the X11 system tray
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 03 Jan 2017 19:48:38 +0000
+
 budgie-desktop (10.2.9-2) unstable; urgency=medium
 
   * Bug-fix release
