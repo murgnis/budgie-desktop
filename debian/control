@@ -86,7 +86,7 @@ Depends:
  ${misc:Depends},
  gnome-session-bin, 
  gnome-session-common, 
- gnome-settings-daemon, 
+ gnome-settings-daemon (>= 3.23.3), 
  gnome-control-center, 
  gnome-menus,
  gnome-screensaver,
