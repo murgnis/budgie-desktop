@@ -1,11 +1,18 @@
-budgie-desktop (10.2.9-2ubuntu2) zesty; urgency=medium
+budgie-desktop (10.2.9-3ubuntu1) zesty; urgency=medium
 
+  * Bug-fix release (LP: #)
+    - ubuntu patch to ensure gnome-screensaver does not coredump
+      due to missing draw-background key
+    - upstream patch 0001-panel-Restore-missing-animations-GTK-3.22.patch
+      GTK+3.22 specific patch to fix popover animations
+
+  [ Jeremy Bicha <jbicha@ubuntu.com> ]
   * Add adapt-to-gsd-324.patch:
     - Update gnome-session file for gnome-settings-daemon 3.24
   * debian/control:
     - Bump minimum gnome-settings-daemon to 3.23.3 for above change
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 07 Feb 2017 16:26:04 -0500
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 07 Feb 2017 16:26:04 -0500
 
 budgie-desktop (10.2.9-2ubuntu1) zesty; urgency=medium
 
