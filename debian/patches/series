@@ -1,3 +1,4 @@
 show_nm-applet_in_tray.patch
 adapt-to-gsd-324.patch
 0001-panel-Restore-missing-animations-GTK-3.22.patch
+adapt-to-mutter-324.patch
