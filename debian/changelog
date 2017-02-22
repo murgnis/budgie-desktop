@@ -1,10 +1,11 @@
 budgie-desktop (10.2.9-3ubuntu3) zesty; urgency=medium
 
+  * Bug-fix release (LP: #1667144)
   * Add 0002-check-that-schema-and-prefix-have-been-previously-cr.patch
     - fix panel crash when C based applets are removed
   * Add 0003-fix-crash-of-the-window-manager-when-the-current-loc.patch
     - fix window manager crash when the current keyboard locale is 
-      deleted
+      deleted (LP: #1661945)
   Packaging Changes:
   * update patch headers to resolve lintian issues
 
