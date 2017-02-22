@@ -4,6 +4,8 @@ Date: Sun, 19 Feb 2017 22:46:50 +0000
 Subject: [PATCH] check that schema and prefix have been previously created -
  when removing C based widgets the private objects are deleted before applet
  settings are interrogated
+Forwarded: https://github.com/budgie-desktop/budgie-desktop/pull/805
+Origin: Other
 
 ---
  src/plugin/applet.c | 2 +-

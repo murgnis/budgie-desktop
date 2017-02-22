@@ -3,6 +3,8 @@ From: fossfreedom <foss.freedom@gmail.com>
 Date: Wed, 22 Feb 2017 19:31:05 +0000
 Subject: [PATCH] fix crash of the window manager when the current locale is
  deleted
+Forwarded: https://github.com/budgie-desktop/budgie-desktop/pull/805
+Origin: Other
 
 ---
  src/wm/keyboard.vala | 2 +-

@@ -5,6 +5,8 @@ budgie-desktop (10.2.9-3ubuntu3) zesty; urgency=medium
   * Add 0003-fix-crash-of-the-window-manager-when-the-current-loc.patch
     - fix window manager crash when the current keyboard locale is 
       deleted
+  Packaging Changes:
+  * update patch headers to resolve lintian issues
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 22 Feb 2017 19:43:56 +0000
 

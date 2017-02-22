@@ -1,3 +1,10 @@
+From b80bb24966094aecd5b5d02f75b3f81f08a054e7 Wed Feb 15 00:00:00 2017
+From: David Mohammed <fossfreedom@ubuntu.com>
+Date: Wed, 15 Feb 2017 23:17:27 -0000
+Subject: [PATCH] patch to support mutter 3.24
+Forwarded: not-needed
+Origin: Other
+
 Index: budgie-desktop-10.2.9/configure.ac
 ===================================================================
 --- budgie-desktop-10.2.9.orig/configure.ac
