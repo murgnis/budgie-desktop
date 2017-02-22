@@ -1,3 +1,13 @@
+budgie-desktop (10.2.9-3ubuntu3) zesty; urgency=medium
+
+  * Add 0002-check-that-schema-and-prefix-have-been-previously-cr.patch
+    - fix panel crash when C based applets are removed
+  * Add 0003-fix-crash-of-the-window-manager-when-the-current-loc.patch
+    - fix window manager crash when the current keyboard locale is 
+      deleted
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 22 Feb 2017 19:43:56 +0000
+
 budgie-desktop (10.2.9-3ubuntu2) zesty; urgency=medium
 
   [ David Mohammed ]
