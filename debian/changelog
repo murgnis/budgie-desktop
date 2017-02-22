@@ -1,8 +1,11 @@
 budgie-desktop (10.2.9-3ubuntu2) zesty; urgency=medium
 
-  * Bug-fix release (LP: #)
+  [ David Mohammed ]
   * Add adapt-to-mutter-324.patch:
     - Update build to support mutter 3.24
+
+  [ Jeremy Bicha ]
+  * debian/control: Build-depend on libmutter-0-dev
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 15 Feb 2017 23:36:22 +0000
 
