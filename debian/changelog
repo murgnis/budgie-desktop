@@ -1,3 +1,12 @@
+budgie-desktop (10.2.9-3) unstable; urgency=medium
+
+  * Bug-fix release
+    - add patch-work developed through development and testing
+  * Packaging Changes:
+    - corrected debian/control vcs-git typo
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 16 Mar 2017 04:13:49 +0000
+
 budgie-desktop (10.2.9-2) unstable; urgency=medium
 
   * Bug-fix release
