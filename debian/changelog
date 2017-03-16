@@ -1,3 +1,11 @@
+budgie-desktop (10.2.9-3ubuntu4) zesty; urgency=medium
+
+  * Bug-fix release (LP: #)
+  * Packaging Changes:
+    - Corrected typo in debian/control vcs-git
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 16 Mar 2017 04:16:50 +0000
+
 budgie-desktop (10.2.9-3ubuntu3) zesty; urgency=medium
 
   * Bug-fix release (LP: #1667144)
