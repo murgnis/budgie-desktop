@@ -1,3 +1,16 @@
+budgie-desktop (10.2.9-3ubuntu5) zesty; urgency=medium
+
+  * Cherry-pick bug-fix release (LP: #)
+    + 0004-Add-network-manager-to-the-spamlist-for-notification.patch
+      Stop spamming notification icon on first logon
+    + 0005-panel-Fix-troublesome-popovers-once-and-for-all.patch
+      GTK+3.22 regression fix for bottom panel menu applet popup
+      GTK+3.22 regression fix to restore popover animations
+    + 0006-rundialog-Fix-stumpy-rundialog-syndrome-issue-800.patch
+      GTK+3.22 regression fix to correctly size the run-dialog
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 16 Apr 2017 22:21:53 +0100
+
 budgie-desktop (10.2.9-3ubuntu4) zesty; urgency=medium
 
   * Drop 0001-panel-Restore-missing-animations-GTK-3.22.patch

@@ -1,0 +1,31 @@
+From 1035e5fabe968d5deb9bf1329a067a8823ddef91 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Sun, 16 Apr 2017 21:05:22 +0100
+Subject: [PATCH] rundialog: Fix stumpy rundialog syndrome (issue #800)
+
+Astonishingly this "regression" is because GTK fixed something that
+made the original size request actually start working. Turns out, our
+requested size was way too small :P
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+---
+ src/rundialog/RunDialog.vala | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/rundialog/RunDialog.vala b/src/rundialog/RunDialog.vala
+index 87d6acf..e7731aa 100644
+--- a/src/rundialog/RunDialog.vala
++++ b/src/rundialog/RunDialog.vala
+@@ -149,7 +149,8 @@ public class RunDialog : Gtk.ApplicationWindow
+ 
+         this.build_app_box();
+ 
+-        set_size_request(240, -1);
++        set_size_request(420, -1);
++        set_default_size(420, -1);
+         main_layout.show_all();
+         set_border_width(0);
+         set_resizable(false);
+-- 
+2.11.0
+

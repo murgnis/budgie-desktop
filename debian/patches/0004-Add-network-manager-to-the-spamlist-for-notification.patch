@@ -1,0 +1,36 @@
+From 77ffae0c8ee8e47cb4612d1aebfb4cc3b5376706 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey@solus-project.com>
+Date: Sun, 16 Apr 2017 04:51:53 +0100
+Subject: [PATCH] Add network manager to the spamlist for notifications
+
+These notifications appear on screen, as well as having a permanent place
+in the panel by way of the nm-applet status icon. It has long been seen
+that upon start up we end up with an undesirable spam notification clone
+into Raven to tell us that we connected to the network.
+
+On a side note, this fixes the "red icon on login" issue..
+
+Signed-off-by: Ikey Doherty <ikey@solus-project.com>
+
+Note: paths adjusted from src/panel/ to data/ due to upstream 10.3 changes
+16 Apr 2017 David Mohammed <fossfreedom@ubuntu.com>
+---
+ data/com.solus-project.budgie-panel.gschema.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/com.solus-project.budgie-panel.gschema.xml b/data/com.solus-project.budgie-panel.gschema.xml
+index 60b8b97..60e59cb 100644
+--- a/data/com.solus-project.budgie-panel.gschema.xml
++++ b/data/com.solus-project.budgie-panel.gschema.xml
+@@ -72,7 +72,7 @@
+       <description>Toplevel panels</description>
+     </key>
+     <key type="as" name="spam-apps">
+-      <default>['Spotify', 'Lollypop', 'lollypop.desktop']</default>
++      <default>['Spotify', 'Lollypop', 'lollypop.desktop', 'nm-applet', 'budgie-desktop-nm-applet.desktop']</default>
+       <summary>Spam Apps</summary>
+       <description>Notifications send by these apps will not be displayed in Raven.</description>
+     </key>
+-- 
+2.11.0
+
