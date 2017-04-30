@@ -9,6 +9,9 @@ budgie-desktop (10.2.9-3ubuntu5) zesty; urgency=medium
       GTK+3.22 regression fix to restore popover animations
     + 0006-rundialog-Fix-stumpy-rundialog-syndrome-issue-800.patch
       GTK+3.22 regression fix to correctly size the run-dialog
+    + disable-popover-animations.patch
+      reverse part of patch 0005 since testing has revealed double
+      animation effects are still visible for some setups
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 16 Apr 2017 22:21:53 +0100
 

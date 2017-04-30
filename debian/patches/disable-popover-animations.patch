@@ -1,0 +1,41 @@
+From: David Mohammed <fossfreedom@ubuntu.com>
+Date: Sun, 23 Apr 2017 00:08:00 +0100
+Subject: [PATCH] Disable popover animations
+
+Testing of budgie-desktop that included patch 0005 demonstrated
+popover animations flickered in the panel.  This is a regression
+that was first observed in *ubuntu3; so we resolved this by dropping
+animations in *ubuntu4. This patch is to ensure we keep the same popover
+animation mechanism as *ubuntu4.
+---
+Index: budgie-desktop-10.2.9/src/panel/popovers.vala
+===================================================================
+--- budgie-desktop-10.2.9.orig/src/panel/popovers.vala
++++ budgie-desktop-10.2.9/src/panel/popovers.vala
+@@ -33,7 +33,7 @@ public class PopoverManagerImpl : Popove
+                 return Gdk.EVENT_PROPAGATE;
+             }
+             if (visible_popover != null) {
+-                visible_popover.popdown();
++                visible_popover.hide();
+                 make_modal(visible_popover, false);
+                 visible_popover = null;
+             }
+@@ -54,7 +54,7 @@ public class PopoverManagerImpl : Popove
+             }
+             if ((e.x < alloc.x || e.x > alloc.x+alloc.width) ||
+                 (e.y < alloc.y || e.y > alloc.y+alloc.height)) {
+-                    visible_popover.popdown();
++                    visible_popover.hide();
+                     make_modal(visible_popover, false);
+                     visible_popover = null;
+             }
+@@ -117,7 +117,7 @@ public class PopoverManagerImpl : Popove
+             }
+             Idle.add(()=>{
+                 if (!pop.get_visible()) {
+-                    pop.popup();
++                    pop.show();
+                 }
+                 return false;
+             });

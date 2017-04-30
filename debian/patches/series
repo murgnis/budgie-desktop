@@ -6,3 +6,4 @@ adapt-to-mutter-324.patch
 0004-Add-network-manager-to-the-spamlist-for-notification.patch
 0005-panel-Fix-troublesome-popovers-once-and-for-all.patch
 0006-rundialog-Fix-stumpy-rundialog-syndrome-issue-800.patch
+disable-popover-animations.patch
