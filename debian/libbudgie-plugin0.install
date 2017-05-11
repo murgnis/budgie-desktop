@@ -1,1 +1,1 @@
-usr/lib/libbudgie-plugin*.so.*
+debian/tmp/usr/lib/libbudgie-plugin*.so.* /usr/lib

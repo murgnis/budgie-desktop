@@ -1,11 +1,41 @@
-budgie-desktop (10.2.9-3) unstable; urgency=medium
+budgie-desktop (10.3.1-1) unstable; urgency=medium
 
-  * Bug-fix release
-    - add patch-work developed through development and testing
+  * New upstream release
+  * Patches
+    - fortify: to support detecting run-time issues
+    - show_nm-applet_in_tray.patch: Ubuntu specific patch to display the
+      network-manager applet
+    - 0001-imports-natray-Enforce-minimum-size-of-22px.patch
+      Resolve system tray sizing issues
+    - 0002-Fix-typo-in-meson.build.patch
+      Correct development package build
+    - 0003-Work-around-serious-regressions-in-GTK3.22.13.patch
+      Add support for GTK+3.22.13 and later
+    - disable-popover-animations.patch
+      Panel popover animations cause flashes on some setups.  Disabling
+      the panel popover animation resolves this.
   * Packaging Changes:
-    - corrected debian/control vcs-git typo
+    - meson build dependency
+    - Add ubuntu specific build rule to enable network-manager to
+      correctly display in the system tray
+    - Add man-pages for each executable
+    - Update Copyright for new source structure
+    - Update control file to support only GTK+3.18 and later together
+      meson build dependency
+    - Update install files due to meson build
+    - Fix Conf-files lintian warnings
+    - Add library symbols
+    - Update watch file:
+        repo name change
+        detection of version format x.y as well as x.y.z
+        upstream maintainer GPG signed key pgpmangle
+    - Add maintainer GPG signed key
+    - add libmutter build dependency to GTK+3.24 libmutter-0-dev as
+      an alternate for libmutter-dev based build environments
+    - changed standards version to 3.9.8
+    - Update copyright year for all Ikey Doherty statements
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 16 Mar 2017 04:13:49 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 17 Apr 2017 09:43:19 +0000
 
 budgie-desktop (10.2.9-2) unstable; urgency=medium
 

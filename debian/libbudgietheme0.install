@@ -1,1 +1,1 @@
-usr/lib/libbudgietheme*.so.*
+debian/tmp/usr/lib/libbudgietheme*.so.* /usr/lib/

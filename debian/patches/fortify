@@ -1,0 +1,17 @@
+Description: source fortify
+ Add code compilation fortification rules to catch run time issues
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Forwarded: not-needed
+Last-Update: 2017-02-15
+
+--- a/meson.build
++++ b/meson.build
+@@ -33,6 +33,8 @@
+     '-Wunreachable-code',
+     '-Wall',
+     '-W',
++    '-D_FORTIFY_SOURCE=2',
++    '-O1',
+     version_flags,
+ ]
+ 

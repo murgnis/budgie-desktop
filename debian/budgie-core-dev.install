@@ -1,5 +1,5 @@
-usr/include
-usr/lib/lib*.so
-usr/lib/pkgconfig
-usr/share/gir-1.0
-usr/share/vala
+debian/tmp/usr/include /usr
+debian/tmp/usr/lib/lib*.so /usr/lib
+debian/tmp/usr/lib/pkgconfig /usr/lib
+debian/tmp/usr/share/gir-1.0 /usr/share
+debian/tmp/usr/share/vala /usr/share

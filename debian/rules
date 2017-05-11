@@ -1,19 +1,43 @@
 #!/usr/bin/make -f
-
-export DEB_BUILD_MAINT_OPTIONS = hardening=+relro,+bindnow
+export DH_VERBOSE = 1
+export MAKE = ninja -v
 
 # rules below are required due to budgie-desktop not running
 # correctly with a standard debhelper rules set
 # https://github.com/UbuntuBudgie/budgie-desktop/pull/2
 
+clean:
+	rm -rf debian/build
+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
+
+	@if [ -e ./debian/ubuntu/applied ]; then \
+		patch -R -p1 < debian/ubuntu/show_nm-applet_in_tray.patch ; \
+		rm ./debian/ubuntu/applied ; \
+	fi
+
+endif
+	dh_clean
+
 build build-arch:
-	autoreconf -i
-	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
+	patch -p1 < debian/ubuntu/show_nm-applet_in_tray.patch
+	touch ./debian/ubuntu/applied
+endif
+	mkdir -p debian/build
+	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro" meson --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
+	cd debian/build && $(MAKE)
 
 binary binary-arch:
 	dh_testroot
+	cd debian/build && DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
 	dh_auto_install
 	dh_install
+	dh_installman debian/budgie-desktop.1
+	dh_installman debian/budgie-panel.1
+	dh_installman debian/budgie-polkit-dialog.1
+	dh_installman debian/budgie-run-dialog.1
+	dh_installman debian/budgie-wm.1
+	dh_installman debian/budgie-daemon.1
 	dh_installdocs
 	dh_installchangelogs
 	dh_lintian
@@ -38,11 +62,11 @@ binary binary-arch:
 	dh_strip -p libbudgietheme0
 	dh_strip -p libraven0
 	dh_makeshlibs
-	dh_shlibdeps
 	dh_installdeb
+	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
-	
+
 %:
 	dh $@
