@@ -1,8 +1,7 @@
 #!/usr/bin/make -f
 export DH_VERBOSE = 1
 export MAKE = ninja -v
-export LANG=en_US
-export LANGUAGE=en_US
+export LC_ALL=C.UTF-8
 
 %:
 	dh $@

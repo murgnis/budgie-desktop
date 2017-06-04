@@ -1,9 +1,9 @@
-etc/xdg/autostart/ /etc/xdg
-usr/bin/ /usr
-usr/lib/budgie-desktop /usr/lib
-usr/share/applications /usr/share
-usr/share/glib-2.0 /usr/share
-usr/share/gnome-session /usr/share
-usr/share/icons /usr/share
-usr/share/locale /usr/share
-usr/share/xsessions/budgie-desktop.desktop /usr/share/xsessions
+etc/xdg/autostart
+usr/bin
+usr/lib/budgie-desktop
+usr/share/applications
+usr/share/glib-2.0
+usr/share/gnome-session
+usr/share/icons
+usr/share/locale
+usr/share/xsessions/budgie-desktop.desktop

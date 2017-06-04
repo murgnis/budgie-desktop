@@ -29,7 +29,7 @@ Build-Depends:
  libaccountsservice-dev,
  valac,
  libibus-1.0-dev (>= 1.5.11),
- meson (>= 0.38)
+ meson (>= 0.37)
 Standards-Version: 3.9.8
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian
 Vcs-Git: https://github.com/UbuntuBugie/budgie-desktop -b debian
