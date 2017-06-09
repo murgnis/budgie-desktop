@@ -24,23 +24,13 @@ ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 endif
 	mkdir -p debian/build
 	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro" meson --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
-	cd debian/build && $(MAKE)
-
-override_dh_installman:
-	dh_installman debian/budgie-desktop.1
-	dh_installman debian/budgie-panel.1
-	dh_installman debian/budgie-polkit-dialog.1
-	dh_installman debian/budgie-run-dialog.1
-	dh_installman debian/budgie-wm.1
-	dh_installman debian/budgie-daemon.1
 
 override_dh_auto_build:
-	cd debian/build && DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
-
-override_dh_prep:
+	cd debian/build && $(MAKE)
 
 override_dh_auto_install:
 	dh_auto_install
+	cd debian/build && DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
 	# remove unrecognised and non ISO639 locale
 	find debian -type d -name "zh-Hant" -print0 | xargs -r0 -- rm -r
 

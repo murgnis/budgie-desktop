@@ -1,3 +1,20 @@
+budgie-desktop (10.3.1-2) experimental; urgency=medium
+
+  * Patches
+    - system-menu-theme: correctly style budgie applets that
+      use a GTK+ MenuBar
+    - 0004-xyz: resolve memory leak when desktop wallpaper changes
+  * Packaging Changes:
+    - simplified debian/rules
+      manpages moved to budgie-core.manpages; each executable in
+      budgie-core now includes a manpage which enables users to
+      man the exe name and additionally resolves lintian issues.
+      make target and install methods moved to a more their more
+      appropriate targets, auto_build and auto_install respectively.
+      deleted erroneous override_dh_prep
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 10 Jun 2017 00:28:53 +0100
+
 budgie-desktop (10.3.1-1) experimental; urgency=medium
 
   * New upstream release
