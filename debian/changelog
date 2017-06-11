@@ -1,9 +1,12 @@
 budgie-desktop (10.3.1-2) experimental; urgency=medium
 
+  * Bug-fix release
   * Patches
-    - system-menu-theme: correctly style budgie applets that
+    - include-menubar-theme.patch
+      correctly style budgie applets that
       use a GTK+ MenuBar
-    - 0004-xyz: resolve memory leak when desktop wallpaper changes
+    - 0004-wm-Purge-old-backgrounds-from-the-cache.patch
+      resolve memory leak when desktop wallpaper changes
   * Packaging Changes:
     - simplified debian/rules
       manpages moved to budgie-core.manpages; each executable in
