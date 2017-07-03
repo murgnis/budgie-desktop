@@ -24,7 +24,6 @@ Build-Depends:
  libupower-glib-dev,
  libwnck-3-dev,
  uuid-dev,
- libc6-dev (>= 2.23),
  libgdk-pixbuf2.0-dev,
  libaccountsservice-dev,
  valac,
