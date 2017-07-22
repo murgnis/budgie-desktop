@@ -28,8 +28,9 @@ Build-Depends:
  libaccountsservice-dev,
  valac,
  libibus-1.0-dev (>= 1.5.11),
- meson (>= 0.37)
-Standards-Version: 3.9.8
+ meson (>= 0.40.1),
+ sassc
+Standards-Version: 4.0.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian
 Vcs-Git: https://github.com/UbuntuBugie/budgie-desktop -b debian
 
@@ -57,7 +58,7 @@ Package: budgie-core-dev
 Section: libdevel
 Architecture: any
 Depends:
- gir1.2-budgie-desktop-1.0 (= ${binary:Version}),
+ gir1.2-budgie-1.0 (= ${binary:Version}),
  libbudgie-plugin0 (= ${binary:Version}),
  libbudgietheme0 (= ${binary:Version}),
  libraven0 (= ${binary:Version}),
@@ -82,7 +83,7 @@ Package: budgie-desktop
 Architecture: all
 Depends:
  budgie-core,
- gir1.2-budgie-desktop-1.0,
+ gir1.2-budgie-1.0,
  ${misc:Depends},
  gnome-session-bin, 
  gnome-session-common, 
@@ -118,7 +119,7 @@ Description: documentation files for the budgie-desktop
  .
  This package contains the API documentation in HTML format
 
-Package: gir1.2-budgie-desktop-1.0
+Package: gir1.2-budgie-1.0
 Section: introspection
 Architecture: any
 Depends:
