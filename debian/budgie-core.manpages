@@ -4,4 +4,3 @@ debian/budgie-polkit-dialog.1
 debian/budgie-run-dialog.1
 debian/budgie-wm.1
 debian/budgie-daemon.1
-debian/budgie-desktop-settings.1
