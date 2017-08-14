@@ -2,19 +2,27 @@ budgie-desktop (10.4-1) unstable; urgency=medium
 
   * New upstream release
     - Software Highlights:
-      All screen panels
+      All screen edge panels
       Panel transparency - none, always, dynamic
       Panel Dock Mode
       Night-light Applet
       Budgie-Desktop-Settings window replaces Raven Settings
-      Autostart application GUI via Budgie-Desktop-Settings
-      Fixes - bottom panel drop-down hover animation fixed
+      Autostart application GUI via Budgie Desktop Settings
+      Icon Task List Quick Lists
+      Revamped Workspaces Applet
+      Alt-Shift-Tab backward switching support
+    - Fix Highlights:
+      bottom panel drop-down hover animation
+      Translation updates
+      Budgie symbolic icon for LightDM GTK-Greeter
+      Updated icons for Session Applet
   * Packaging Changes
-    - removed all unneeded triggers
-    - update debian/control:
-      standards version 4.0.0
-      Add build dependency sassc
-      minimum meson version to build
+    - remove all unneeded triggers
+    - debian/control: standards version 4.0.0
+    - debian/control: Add build dependency sassc
+    - debian/control: add minimum meson version to build
+    - debian/control: Add alternate libmutter-1 version for GNOME 3.26
+    - debian/control: correct typo in Vcs-Git
     - drop all patches since now dealt with in new release
     - drop all unnecessary library symbols files
     - Rename binary package gir1.2-budgie-desktop-1.0 to
@@ -23,7 +31,17 @@ budgie-desktop (10.4-1) unstable; urgency=medium
     - Updated debian/copyright for all source files
     - Merge changelog for 10.2.9-3 bug-fix release
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 22 Jul 2017 14:28:43 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 14 Aug 2017 14:28:43 +0100
+ 
+budgie-desktop (10.3.1-4) unstable; urgency=medium
+
+  * New release for unstable
+    Use build 10.3.1-3 for experimental with the following changes:
+    - enforce gnome-settings-daemon minimum version >= 3.24
+    - release ensures there is a migration path for
+      budgie-core to GNOME stack 3.24 (Closes: #869953)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 28 Jul 2017 19:44:36 +0100
 
 budgie-desktop (10.3.1-3) experimental; urgency=medium
 
