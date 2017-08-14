@@ -1,29 +1,3 @@
-libbudgie-plugin.so.0 libraven0 #MINVER#
- budgie_applet_get_applet_settings@Base 10.3
- budgie_applet_get_settings_prefix@Base 10.3
- budgie_applet_get_settings_schema@Base 10.3
- budgie_applet_get_settings_ui@Base 10.3
- budgie_applet_get_supported_actions@Base 10.3
- budgie_applet_get_type@Base 10.3
- budgie_applet_info_get_type@Base 10.3
- budgie_applet_info_new@Base 10.3
- budgie_applet_invoke_action@Base 10.3
- budgie_applet_new@Base 10.3
- budgie_applet_set_settings_prefix@Base 10.3
- budgie_applet_set_settings_schema@Base 10.3
- budgie_applet_supports_settings@Base 10.3
- budgie_applet_update_popovers@Base 10.3
- budgie_panel_action_get_type@Base 10.3
- budgie_plugin_get_panel_widget@Base 10.3
- budgie_plugin_get_type@Base 10.3
- budgie_popover_manager_get_type@Base 10.3
- budgie_popover_manager_register_popover@Base 10.3
- budgie_popover_manager_show_popover@Base 10.3
- budgie_popover_manager_unregister_popover@Base 10.3
-libbudgietheme.so.0 libraven0 #MINVER#
- budgie_form_theme_path@Base 10.3
- budgie_theme_manager_get_type@Base 10.3
- budgie_theme_manager_new@Base 10.3
 libraven.so.0 libraven0 #MINVER#
  BUDGIE_CONFDIR@Base 10.3
  BUDGIE_DATADIR@Base 10.3
@@ -38,25 +12,9 @@ libraven.so.0 libraven0 #MINVER#
  budgie_animation_new@Base 10.3
  budgie_animation_start@Base 10.3
  budgie_animation_stop@Base 10.3
- budgie_appearance_settings_construct@Base 10.3
- budgie_appearance_settings_get_type@Base 10.3
- budgie_appearance_settings_load_themes@Base 10.3
- budgie_appearance_settings_new@Base 10.3
- budgie_applet_alignment_get_type@Base 10.3
- budgie_applet_pack_type_get_type@Base 10.3
- budgie_applet_picker_construct@Base 10.3
- budgie_applet_picker_get_type@Base 10.3
- budgie_applet_picker_new@Base 10.3
- budgie_applet_picker_set_plugin_list@Base 10.3
- budgie_applet_settings_construct@Base 10.3
- budgie_applet_settings_get_type@Base 10.3
- budgie_applet_settings_new@Base 10.3
- budgie_applet_settings_set_applet@Base 10.3
+ budgie_autohide_policy_get_type@Base 10.4
  budgie_back_ease_in@Base 10.3
  budgie_back_ease_out@Base 10.3
- budgie_background_settings_construct@Base 10.3
- budgie_background_settings_get_type@Base 10.3
- budgie_background_settings_new@Base 10.3
  budgie_circ_ease_in@Base 10.3
  budgie_circ_ease_out@Base 10.3
  budgie_desktop_manager_construct@Base 10.3
@@ -65,17 +23,17 @@ libraven.so.0 libraven0 #MINVER#
  budgie_desktop_manager_get_panel_plugins@Base 10.3
  budgie_desktop_manager_get_panels@Base 10.3
  budgie_desktop_manager_get_type@Base 10.3
+ budgie_desktop_manager_set_autohide@Base 10.4
+ budgie_desktop_manager_set_dock_mode@Base 10.4
  budgie_desktop_manager_set_placement@Base 10.3
  budgie_desktop_manager_set_size@Base 10.3
+ budgie_desktop_manager_set_transparency@Base 10.4
  budgie_desktop_manager_slots_available@Base 10.3
  budgie_desktop_manager_slots_used@Base 10.3
  budgie_elastic_ease_in@Base 10.3
  budgie_elastic_ease_out@Base 10.3
  budgie_expo_ease_in@Base 10.3
  budgie_expo_ease_out@Base 10.3
- budgie_font_settings_construct@Base 10.3
- budgie_font_settings_get_type@Base 10.3
- budgie_font_settings_new@Base 10.3
  budgie_header_expander_construct@Base 10.3
  budgie_header_expander_get_expanded@Base 10.3
  budgie_header_expander_get_type@Base 10.3
@@ -125,15 +83,10 @@ libraven.so.0 libraven0 #MINVER#
  budgie_notifications_view_new@Base 10.3
  budgie_notifications_view_register_object@Base 10.3
  budgie_panel_action_get_type@Base 10.3
- budgie_panel_column_get_type@Base 10.3
- budgie_panel_editor_construct@Base 10.3
- budgie_panel_editor_get_manager@Base 10.3
- budgie_panel_editor_get_type@Base 10.3
- budgie_panel_editor_new@Base 10.3
- budgie_panel_editor_on_panels_changed@Base 10.3
- budgie_panel_editor_set_manager@Base 10.3
  budgie_panel_position_get_type@Base 10.3
+ budgie_panel_transparency_get_type@Base 10.4
  budgie_param_spec_raven_iface@Base 10.3
+ budgie_popover_position_policy_get_type@Base 10.4
  budgie_position_class_name@Base 10.3
  budgie_power_strip_construct@Base 10.3
  budgie_power_strip_get_type@Base 10.3
@@ -161,9 +114,11 @@ libraven.so.0 libraven0 #MINVER#
  budgie_raven_get_manager@Base 10.3
  budgie_raven_get_nscale@Base 10.3
  budgie_raven_get_required_size@Base 10.3
+ budgie_raven_get_screen_edge@Base 10.4
  budgie_raven_get_type@Base 10.3
  budgie_raven_iface_Dismiss@Base 10.3
  budgie_raven_iface_GetExpanded@Base 10.3
+ budgie_raven_iface_GetLeftAnchored@Base 10.4
  budgie_raven_iface_GetNotificationCount@Base 10.3
  budgie_raven_iface_SetExpanded@Base 10.3
  budgie_raven_iface_Toggle@Base 10.3
@@ -184,6 +139,7 @@ libraven.so.0 libraven0 #MINVER#
  budgie_raven_set_notification_count@Base 10.3
  budgie_raven_set_nscale@Base 10.3
  budgie_raven_set_required_size@Base 10.3
+ budgie_raven_set_screen_edge@Base 10.4
  budgie_raven_setup_dbus@Base 10.3
  budgie_raven_update_geometry@Base 10.3
  budgie_safe_markup_string@Base 10.3
@@ -197,24 +153,13 @@ libraven.so.0 libraven0 #MINVER#
  budgie_session_manager_proxy_get_type@Base 10.3
  budgie_session_manager_register_object@Base 10.3
  budgie_set_struts@Base 10.3
- budgie_settings_header_construct@Base 10.3
- budgie_settings_header_get_type@Base 10.3
- budgie_settings_header_new@Base 10.3
- budgie_settings_view_construct@Base 10.3
- budgie_settings_view_get_manager@Base 10.3
- budgie_settings_view_get_type@Base 10.3
- budgie_settings_view_new@Base 10.3
- budgie_settings_view_set_clean@Base 10.3
- budgie_settings_view_set_manager@Base 10.3
  budgie_shadow_block_construct@Base 10.3
+ budgie_shadow_block_get_active@Base 10.4
  budgie_shadow_block_get_position@Base 10.3
- budgie_shadow_block_get_removal@Base 10.3
- budgie_shadow_block_get_required_size@Base 10.3
  budgie_shadow_block_get_type@Base 10.3
  budgie_shadow_block_new@Base 10.3
+ budgie_shadow_block_set_active@Base 10.4
  budgie_shadow_block_set_position@Base 10.3
- budgie_shadow_block_set_removal@Base 10.3
- budgie_shadow_block_set_required_size@Base 10.3
  budgie_sine_ease_in@Base 10.3
  budgie_sine_ease_in_out@Base 10.3
  budgie_sine_ease_out@Base 10.3
@@ -223,31 +168,34 @@ libraven.so.0 libraven0 #MINVER#
  budgie_toplevel_can_move_applet_right@Base 10.3
  budgie_toplevel_construct@Base 10.3
  budgie_toplevel_get_applets@Base 10.3
+ budgie_toplevel_get_autohide@Base 10.4
+ budgie_toplevel_get_dock_mode@Base 10.4
  budgie_toplevel_get_intended_size@Base 10.3
+ budgie_toplevel_get_intersected@Base 10.4
  budgie_toplevel_get_position@Base 10.3
  budgie_toplevel_get_shadow_depth@Base 10.3
  budgie_toplevel_get_shadow_visible@Base 10.3
- budgie_toplevel_get_shadow_width@Base 10.3
  budgie_toplevel_get_theme_regions@Base 10.3
+ budgie_toplevel_get_transparency@Base 10.4
  budgie_toplevel_get_type@Base 10.3
  budgie_toplevel_get_uuid@Base 10.3
  budgie_toplevel_move_applet_left@Base 10.3
  budgie_toplevel_move_applet_right@Base 10.3
  budgie_toplevel_remove_applet@Base 10.3
- budgie_toplevel_reset_shadow@Base 10.3
+ budgie_toplevel_set_autohide@Base 10.4
+ budgie_toplevel_set_dock_mode@Base 10.4
  budgie_toplevel_set_intended_size@Base 10.3
+ budgie_toplevel_set_intersected@Base 10.4
  budgie_toplevel_set_position@Base 10.3
  budgie_toplevel_set_shadow_depth@Base 10.3
  budgie_toplevel_set_shadow_visible@Base 10.3
- budgie_toplevel_set_shadow_width@Base 10.3
  budgie_toplevel_set_theme_regions@Base 10.3
+ budgie_toplevel_set_transparency@Base 10.4
  budgie_toplevel_set_uuid@Base 10.3
+ budgie_unset_struts@Base 10.4
  budgie_value_get_raven_iface@Base 10.3
  budgie_value_set_raven_iface@Base 10.3
  budgie_value_take_raven_iface@Base 10.3
- budgie_wm_settings_construct@Base 10.3
- budgie_wm_settings_get_type@Base 10.3
- budgie_wm_settings_new@Base 10.3
  calendar_widget_construct@Base 10.3
  calendar_widget_get_type@Base 10.3
  calendar_widget_new@Base 10.3
@@ -477,18 +425,3 @@ libraven.so.0 libraven0 #MINVER#
  sound_widget_construct@Base 10.3
  sound_widget_get_type@Base 10.3
  sound_widget_new@Base 10.3
- theme_info_add_path@Base 10.3
- theme_info_construct@Base 10.3
- theme_info_contains_path@Base 10.3
- theme_info_get_type@Base 10.3
- theme_info_new@Base 10.3
- theme_info_remove_path@Base 10.3
- theme_scanner_construct@Base 10.3
- theme_scanner_get_cursor_themes@Base 10.3
- theme_scanner_get_gtk_themes@Base 10.3
- theme_scanner_get_icon_themes@Base 10.3
- theme_scanner_get_type@Base 10.3
- theme_scanner_new@Base 10.3
- theme_scanner_scan_themes@Base 10.3
- theme_scanner_scan_themes_finish@Base 10.3
- theme_type_get_type@Base 10.3

@@ -1,0 +1,4 @@
+# The following lintian error has been reported upstream 
+# https://github.com/budgie-desktop/budgie-desktop/issues/920
+# There is no known upstream nor packaging workaround available.
+#budgie-core: binary-or-shlib-defines-rpath usr/bin/budgie-wm /usr/lib/x86_64-linux-gnu/mutter

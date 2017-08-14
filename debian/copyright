@@ -1,76 +1,36 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: budgie-desktop
+Upstream-Contact: Ikey Doherty <ikey@solus-project.com>
+Source: https://github.com/budgie-desktop/budgie-desktop
 
 Files: *
-Copyright: 2014-2017, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
-
-Files: src/applets/budgie-menu/BudgieMenu.vala
- src/applets/budgie-menu/BudgieMenuWindow.vala
- src/applets/clock/ClockApplet.vala
- src/applets/icon-tasklist/AppSystem.vala
- src/applets/icon-tasklist/Buttons.vala
- src/applets/icon-tasklist/IconTasklistApplet.vala
- src/applets/keyboard-layout/KeyboardLayoutApplet.vala
- src/applets/lock-keys/LockKeysApplet.vala
- src/applets/notifications/NotificationsApplet.vala
- src/applets/raven-trigger/RavenTriggerApplet.vala
- src/applets/separator/SeparatorApplet.vala
- src/applets/show-desktop/ShowDesktopApplet.vala
- src/applets/spacer/SpacerApplet.vala
- src/applets/status/PowerIndicator.vala
- src/applets/status/SoundIndicator.vala
- src/applets/status/StatusApplet.vala
- src/applets/tasklist/TasklistApplet.vala
- src/applets/tray/TrayApplet.vala
- src/applets/workspaces/WorkspacesApplet.vala
- src/daemon/endsession.vala
- src/daemon/main.vala
- src/daemon/manager.vala
- src/daemon/menus.vala
- src/daemon/osd.vala
- src/daemon/settings.vala
- src/panel/main.vala
- src/panel/manager.vala
- src/panel/panel.vala
- src/polkit/polkitdialog.vala
- src/raven/calendar.vala
- src/raven/headerwidget.vala
- src/raven/main_view.vala
- src/raven/mpris/MprisClient.vala
- src/raven/mpris/MprisGui.vala
- src/raven/mpris/MprisWidget.vala
- src/raven/powerstrip.vala
- src/raven/raven.vala
- src/raven/settings_view.vala
- src/raven/sound.vala
- src/raven/themes.vala
- src/rundialog/RunDialog.vala
- src/wm/background.vala
- src/wm/main.vala
- src/wm/shim.vala
- src/wm/wm.vala
-Copyright: 2014-2017, Ikey Doherty <ikey@solus-project.com>
+Copyright: 2014-2017, Budgie Desktop Developers
 License: GPL-2+
 
 Files: src/config/budgie-config.c
+ src/config/budgie-config.h
  src/lib/animation.vala
  src/lib/manager.vala
  src/lib/shadow.vala
  src/lib/toplevel.vala
  src/libsession/libsession.vala
- src/panel/popovers.vala
  src/panel/uuid.vala
  src/plugin/applet-info.c
+ src/plugin/applet-info.h
  src/plugin/applet.c
+ src/plugin/applet.h
  src/plugin/plugin.c
+ src/plugin/plugin.h
  src/plugin/popover-manager.c
+ src/plugin/popover-manager.h
+ src/plugin/popover.c
+ src/plugin/popover.h
+ src/plugin/util.h
  src/theme/theme-manager.c
  src/theme/theme-manager.h
  src/theme/theme.c
  src/theme/theme.h
- src/theme/theme.vapi
- src/config/budgie-config.vapi
-Copyright: 2015-2017, Ikey Doherty <ikey@solus-project.com>
+Copyright: 2015-2017, Budgie Desktop Developers
 License: LGPL-2.1+
 
 Files: src/gvc/gvc-channel-map-private.h
@@ -90,20 +50,6 @@ Copyright: 2008, Red Hat, Inc.
   2008-2009, Red Hat, Inc.
 License: GPL-2+
 
-Files: src/applets/places-indicator/ListItem.vala
- src/applets/places-indicator/MessageRevealer.vala
- src/applets/places-indicator/MountItem.vala
- src/applets/places-indicator/PlaceItem.vala
- src/applets/places-indicator/PlacesIndicator.vala
- src/applets/places-indicator/PlacesIndicatorWindow.vala
- src/applets/places-indicator/PlacesSection.vala
- src/applets/places-indicator/VolumeItem.vala
- src/applets/user-indicator/DBusInterfaces.vala
- src/applets/user-indicator/UserIndicator.vala
- src/applets/user-indicator/UserIndicatorWindow.vala
-Copyright: 2015-2017, Solus Project
-License: GPL-2+
-
 Files: src/gvc/gvc-channel-map.c
  src/gvc/gvc-mixer-event-role.c
  src/gvc/gvc-mixer-sink-input.c
@@ -114,14 +60,6 @@ Files: src/gvc/gvc-channel-map.c
 Copyright: 2008, William Jon McCann
 License: GPL-2+
 
-Files: src/config/budgie-config.h
- src/plugin/applet-info.h
- src/plugin/applet.h
- src/plugin/plugin.h
- src/plugin/popover-manager.h
-Copyright: 2015-2017, Ikey Doherty
-License: LGPL-2.1+
-
 Files: src/imports/natray/na-tray-manager.c
  src/imports/natray/na-tray-manager.h
  src/imports/natray/na-tray.h
@@ -131,8 +69,8 @@ License: LGPL-2+
 
 Files: src/wm/ibus.vala
  src/wm/keyboard.vala
-Copyright: 2015-2017, Ikey Doherty <ikey@solus-project.com>
-  2016-2017, Ikey Doherty <ikey@solus-project.com>
+Copyright: 2015-2017, Budgie Desktop Developers
+  2016-2017, Budgie Desktop Developers
   GNOME Shell Developers (Heavy inspiration, logic theft)
 License: GPL-2+
 
@@ -141,33 +79,20 @@ Files: src/imports/natray/na-tray-child.c
 Copyright: 2002, Anders Carlsson <andersca@gnu.org>
   2003-2006, Vincent Untz
   2008, Red Hat, Inc.
-License: LGPL-2+
+License: LGPL-2.1+
 
 Files: data/icons/*
-Copyright: 2016, Sam Hewitt
-License: CC-BY-SA-3.0
- This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 International (CC BY-SA 3.0) License. 
- To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/legalcode or send a letter 
- to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-
-Files: data/icons/actions/notification-alert-symbolic.svg
-Copyright: 2016 1001freedownloads
-License: CC0-1.0
- The person who associated a work with this deed has dedicated the work
- to the public domain by waiving all of his or her rights to the work
- worldwide under copyright law, including all related and neighboring
- rights, to the extent allowed by law.
- You can copy, modify, distribute and perform the work, even for 
- commercial purposes, all without asking permission.
-
-Files: data/icons/actions/pane-show-symbolic.svg
-  data/icons/actions/pane-hide-symbolic.svg
-Copyright: 2016 horst3180
+Copyright: 2016-2017, Sam Hewitt
 License: GPL-2+
 
 Files: src/applets/status/BluetoothIndicator.vala
 Copyright: 2015, Alberts MuktupÄvels
-  2015-2017, Ikey Doherty <ikey@solus-project.com>
+  2015-2017, Budgie Desktop Developers
+License: GPL-2+
+
+Files: src/raven/notifications_view.vala
+Copyright: 2014, Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
+  2015-2017, Budgie Desktop Developers
 License: GPL-2+
 
 Files: src/imports/natray/na-tray.c
@@ -191,11 +116,6 @@ Copyright: 2001, Havoc Pennington, 2002 Red Hat Inc.
   2003-2006, Vincent Untz
 License: GPL-2+
 
-Files: src/raven/notifications_view.vala
-Copyright: 2014, Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
-  2015-2017, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
-
 Files: src/daemon/tabswitcher.vala
 Copyright: 2017, taaem <taaem@mailbox.org>
 License: GPL-2+
@@ -217,14 +137,14 @@ Copyright: 2006-2008, Lennart Poettering
   2012, Conor Curran
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-card.h
-Copyright: 2008-2009, Red Hat, Inc.
-  Conor Curran 2011 <conor.curran@canonical.com>
-License: GPL-2+
-
 Files: debian/*
 Copyright: 2016-2017, David Mohammed <fossfreedom@ubuntu.com>
  2016-2017, David Mohammed <foss.freedom@gmail.com>
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-card.h
+Copyright: 2008-2009, Red Hat, Inc.
+  Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
 
 License: GPL-2+
