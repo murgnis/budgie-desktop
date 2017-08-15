@@ -38,3 +38,6 @@ override_dh_installgsettings:
 	# install override but budgie has to take precedence over
 	# gnome-shell defaults
 	dh_installgsettings --priority=15
+
+override_dh_installchangelogs:
+	dh_installchangelogs debian/changelog-announcement.txt

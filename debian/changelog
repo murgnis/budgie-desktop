@@ -1,35 +1,29 @@
 budgie-desktop (10.4-1) unstable; urgency=medium
 
   * New upstream release
-    - Software Highlights:
-      All screen edge panels
-      Panel transparency - none, always, dynamic
-      Panel Dock Mode
-      Night-light Applet
-      Budgie-Desktop-Settings window replaces Raven Settings
-      Autostart application GUI via Budgie Desktop Settings
-      Icon Task List Quick Lists
-      Revamped Workspaces Applet
-      Alt-Shift-Tab backward switching support
-    - Fix Highlights:
-      bottom panel drop-down hover animation
-      Translation updates
-      Budgie symbolic icon for LightDM GTK-Greeter
-      Updated icons for Session Applet
   * Packaging Changes
     - remove all unneeded triggers
-    - debian/control: standards version 4.0.0
+    - debian/control: standards version 4.0.1
     - debian/control: Add build dependency sassc
     - debian/control: add minimum meson version to build
-    - debian/control: Add alternate libmutter-1 version for GNOME 3.26
+    - debian/control: Add Build-Depends alternate libmutter-1-dev
+      for GNOME 3.26 builds
     - debian/control: correct typo in Vcs-Git
     - drop all patches since now dealt with in new release
-    - drop all unnecessary library symbols files
+    - update library symbols files with 10.4 changes
     - Rename binary package gir1.2-budgie-desktop-1.0 to
       match the typelib gir1.2-budgie-1.0
     - Add man-page for new binary budgie-desktop-settings
     - Updated debian/copyright for all source files
-    - Merge changelog for 10.2.9-3 bug-fix release
+    - Merge changelog for 10.2.9-3 Stretch bug-fix release;
+      v10.2.9-3 is a hotfix for Stretch released after the v10.3.x
+      series was uploaded to testing
+    - debian/rules: add override_dh_installchangelogs with
+      debian/changelog-announcement.txt to describe
+      where to find the upstream announcement and description of changes
+    - add budgie-core.lintian-override with comment to describe
+      the rpath lintian error; the error has not been overridden
+      in this file since it is valid but without any workaround
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 14 Aug 2017 14:28:43 +0100
  
