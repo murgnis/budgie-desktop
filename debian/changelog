@@ -18,9 +18,9 @@ budgie-desktop (10.4-1) unstable; urgency=medium
       new package
     - Add man-page for new binary budgie-desktop-settings
     - Updated debian/copyright for all source files
-    - Merge changelog for 10.2.9-3 Stretch bug-fix release;
-      v10.2.9-3 is a hotfix for Stretch released after the v10.3.x
-      series was uploaded to testing
+    - Merge changelog for 10.2.9-3 unstable bug-fix release;
+      10.2.9-3 is a hotfix for unstable released after the 10.3.x
+      series was uploaded to experimental
     - debian/rules: add override_dh_installchangelogs with
       debian/changelog-announcement.txt to describe
       where to find the upstream announcement and description of changes
@@ -28,7 +28,7 @@ budgie-desktop (10.4-1) unstable; urgency=medium
       the rpath lintian error; the error has not been overridden
       in this file since it is valid but without any workaround
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 15 Aug 2017 14:28:43 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 15 Aug 2017 22:48:21 +0100
  
 budgie-desktop (10.3.1-4) unstable; urgency=medium
 
