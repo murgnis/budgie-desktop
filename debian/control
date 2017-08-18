@@ -29,6 +29,7 @@ Build-Depends:
  valac,
  libibus-1.0-dev (>= 1.5.11),
  meson (>= 0.40.1),
+ gnome-settings-daemon-dev,
  sassc
 Standards-Version: 4.0.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian

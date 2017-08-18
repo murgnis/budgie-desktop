@@ -1,0 +1,33 @@
+Description: fix mismatch gsd and libmutter
+ Upstream expects both gnome-settings-daemon and libmutter to be version
+ synchronised.  This patch resolves the specific situation where the
+ gnome-settings-daemon version does not match the libmutter version.
+ Where the versions differ, the build-code-path would create an invalid
+ gnome-session file that prevents a user from being able to login to
+ budgie desktop
+ .
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Bug-Debian: https://bugs.debian.org/869953
+Origin: other
+Forwarded: not-needed
+Last-Update: 2017-08-18
+
+Index: budgie-desktop-10.4/src/session/meson.build
+===================================================================
+--- budgie-desktop-10.4.orig/src/session/meson.build
++++ budgie-desktop-10.4/src/session/meson.build
+@@ -45,10 +45,11 @@ if with_polkit == true
+     budgie_components += 'budgie-polkit'
+ endif
+ 
+-# Merge the list depending on the GNOME version. We pick mutter arbitrarily.
+-if dep_mutter.version().version_compare('>=3.25.4')
++dep_gsd = dependency('gnome-settings-daemon', version: gnome_minimum_version)
++# Merge the list depending on the GNOME version.
++if dep_gsd.version().version_compare('>=3.25.4')
+     session_components = budgie_components + gnome_session_324_components
+-elif dep_mutter.version().version_compare('>=3.23.3')
++elif dep_gsd.version().version_compare('>=3.23.3')
+     session_components = budgie_components + gnome_session_324_components + gsd_324_max
+ else
+     session_components = gnome_session_components + budgie_components
