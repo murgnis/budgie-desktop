@@ -33,12 +33,12 @@ budgie-desktop (10.4-1) unstable; urgency=medium
 budgie-desktop (10.3.1-5) unstable; urgency=high
 
   * Bug fix release
-    - add patch gsd.patch
+    - add patch gsd.patch (Closes: #869953)
       Where gnome-settings-daemon version is greater than
       libmutter, the build of budgie-desktop results in an
       invalid gnome-session file.  The patch ensures a valid file
       is created by checking the version of gnome-settings-daemon
-      instead of mutter.
+      instead of mutter during the build.
    * Packaging Changes:
      - debian/control: Add build dependency for gnome-settings-daemon-dev
        to ensure the patch can determine the version correctly
