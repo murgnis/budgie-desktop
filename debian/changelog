@@ -4,7 +4,8 @@ budgie-desktop (10.4-1) unstable; urgency=medium
   * Packaging Changes
     - remove all unneeded triggers
     - refresh debian/patches/gsd.patch to merge in upstream changes
-    - drop all patches (except for gsd.patch) since now dealt with in new release
+    - drop all patches (except for gsd.patch) since now dealt with in new
+      release
     - debian/control: standards version 4.0.1
     - debian/control: Add build dependency sassc
     - debian/control: add minimum meson version to build
@@ -25,8 +26,7 @@ budgie-desktop (10.4-1) unstable; urgency=medium
       debian/changelog-announcement.txt to describe
       where to find the upstream announcement and description of changes
     - add budgie-core.lintian-override with comment to describe
-      the rpath lintian error; the error has not been overridden
-      in this file since it is valid but without any workaround
+      the rpath lintian error
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 18 Aug 2017 17:48:21 +0100
  
