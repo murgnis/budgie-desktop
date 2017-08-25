@@ -1,3 +1,13 @@
+budgie-desktop (10.4-2) UNRELEASE; urgency=medium
+
+  * Bug-fix release
+    - Do not override budgie menu settings. This should be distro
+      specific
+    - Add "Budgie" desktop override to ensure this package does
+      not trample over other desktops using the xsettings key
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 25 Aug 2017 20:44:43 +0100
+
 budgie-desktop (10.4-1) unstable; urgency=medium
 
   * New upstream release
