@@ -1,164 +1,150 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: budgie-desktop
+Upstream-Contact: Ikey Doherty <ikey@solus-project.com>
+Source: https://github.com/budgie-desktop/budgie-desktop
 
 Files: *
-Copyright: 2014-2016, Ikey Doherty <ikey@solus-project.com>
+Copyright: 2014-2017, Budgie Desktop Developers
 License: GPL-2+
 
-Files: src/config/*
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+Files: src/config/budgie-config.c
+ src/config/budgie-config.h
+ src/lib/animation.vala
+ src/lib/manager.vala
+ src/lib/shadow.vala
+ src/lib/toplevel.vala
+ src/libsession/libsession.vala
+ src/panel/uuid.vala
+ src/plugin/applet-info.c
+ src/plugin/applet-info.h
+ src/plugin/applet.c
+ src/plugin/applet.h
+ src/plugin/plugin.c
+ src/plugin/plugin.h
+ src/plugin/popover-manager.c
+ src/plugin/popover-manager.h
+ src/plugin/popover.c
+ src/plugin/popover.h
+ src/plugin/util.h
+ src/theme/theme-manager.c
+ src/theme/theme-manager.h
+ src/theme/theme.c
+ src/theme/theme.h
+Copyright: 2015-2017, Budgie Desktop Developers
 License: LGPL-2.1+
 
-Files: src/config/budgie-config.h
-Copyright: 2015, Ikey Doherty
-License: LGPL-2.1+
-
-Files: src/gvc/*
-Copyright: 2008, 2009, Red Hat, Inc
+Files: src/gvc/gvc-channel-map-private.h
+ src/gvc/gvc-channel-map.h
+ src/gvc/gvc-mixer-card-private.h
+ src/gvc/gvc-mixer-control-private.h
+ src/gvc/gvc-mixer-control.h
+ src/gvc/gvc-mixer-event-role.h
+ src/gvc/gvc-mixer-sink-input.h
+ src/gvc/gvc-mixer-sink.h
+ src/gvc/gvc-mixer-source-output.h
+ src/gvc/gvc-mixer-source.h
+ src/gvc/gvc-mixer-stream-private.h
+ src/gvc/gvc-mixer-stream.h
+ src/gvc/gvc-pulseaudio-fake.h
+Copyright: 2008, Red Hat, Inc.
+  2008-2009, Red Hat, Inc.
 License: GPL-2+
 
 Files: src/gvc/gvc-channel-map.c
-  src/gvc/gvc-mixer-event-role.c
-  src/gvc/gvc-mixer-sink-input.c
-  src/gvc/gvc-mixer-sink.c
-  src/gvc/gvc-mixer-source-output.c
-  src/gvc/gvc-mixer-source.c
-  src/gvc/gvc-mixer-stream.c
+ src/gvc/gvc-mixer-event-role.c
+ src/gvc/gvc-mixer-sink-input.c
+ src/gvc/gvc-mixer-sink.c
+ src/gvc/gvc-mixer-source-output.c
+ src/gvc/gvc-mixer-source.c
+ src/gvc/gvc-mixer-stream.c
 Copyright: 2008, William Jon McCann
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-card.c
-Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2009, Bastien Nocera / 2008, William Jon McCann
-License: GPL-2+
-
-Files: src/gvc/gvc-mixer-card.h
-Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2008-2009, Red Hat, Inc
-License: GPL-2+
-
-Files: src/gvc/gvc-mixer-control.c
-Copyright: 2012, Conor Curran
-  2008, William Jon McCann
-  2008, Sjoerd Simons <sjoerd@luon.net>
-  2006-2008, Lennart Poettering
-License: GPL-2+
-
-Files: src/gvc/gvc-mixer-ui-device.c
-Copyright: Conor Curran 2011, <conor.curran@canonical.com> / 2012, David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
-License: GPL-2+
-
-Files: src/gvc/gvc-mixer-ui-device.h
-Copyright: Conor Curran 2011, <conor.curran@canonical.com>
-License: GPL-2+
-
-Files: src/imports/*
-Copyright: 2003-2006, Vincent Untz
-  2002, Anders Carlsson <andersca@gnu.org>
+Files: src/imports/natray/na-tray-manager.c
+ src/imports/natray/na-tray-manager.h
+ src/imports/natray/na-tray.h
+Copyright: 2002, Anders Carlsson <andersca@gnu.org>
+  2003-2006, Vincent Untz
 License: LGPL-2+
 
-Files: src/imports/natray/fixedtip.c
-Copyright: 2003-2006, Vincent Untz
-  2001, Havoc Pennington
-License: GPL-2+
-
-Files: src/imports/natray/fixedtip.h
-Copyright: 2003-2006, Vincent Untz
-  2001, Havoc Pennington, 2002, Red Hat Inc
+Files: src/wm/ibus.vala
+ src/wm/keyboard.vala
+Copyright: 2015-2017, Budgie Desktop Developers
+  2016-2017, Budgie Desktop Developers
+  GNOME Shell Developers (Heavy inspiration, logic theft)
 License: GPL-2+
 
 Files: src/imports/natray/na-tray-child.c
-  src/imports/natray/na-tray-child.h
-Copyright: 2008, Red Hat, Inc
+ src/imports/natray/na-tray-child.h
+Copyright: 2002, Anders Carlsson <andersca@gnu.org>
   2003-2006, Vincent Untz
-  2002, Anders Carlsson <andersca@gnu.org>
-License: LGPL-2+
-
-Files: src/imports/natray/na-tray.c
-Copyright: 2007, Christian Persch
-  2003-2006, Vincent Untz
-  2002, Red Hat, Inc
-License: GPL-2+
-
-Files: src/lib/*
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
+  2008, Red Hat, Inc.
 License: LGPL-2.1+
-
-Files: src/libsession/*
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
-License: LGPL-2.1+
-
-Files: src/panel/applets/status/BluetoothIndicator.c
-  src/panel/applets/status/BluetoothIndicator.vala
-Copyright: 2015, Alberts Muktupāvels
-  2015, 2016, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
-
-Files: src/panel/applets/user-indicator/*
-Copyright: 2015, 2016, Solus Project
-License: GPL-2+
-
-Files: src/panel/popovers.c
-  src/panel/popovers.vala
-  src/panel/uuid.c
-  src/panel/uuid.vala
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
-License: LGPL-2.1+
-
-Files: src/plugin/*
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
-License: LGPL-2.1+
-
-Files: src/plugin/applet-info.h
-  src/plugin/applet.h
-  src/plugin/plugin.h
-  src/plugin/popover-manager.h
-Copyright: 2015, Ikey Doherty
-License: LGPL-2.1+
-
-Files: src/raven/notifications_view.c
-  src/raven/notifications_view.vala
-Copyright: 2015-2016 Ikey Doherty <ikey@solus-project.com>
-  2014 Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
-License: GPL-2+
-
-Files: src/theme/*
-Copyright: 2015, 2016, Ikey Doherty <ikey@solus-project.com>
-License: LGPL-2.1+
-
-Files: src/theme/theme.h
-Copyright: 2015, Ikey Doherty
-License: LGPL-2.1+
-
-Files: src/wm/keyboard.c
-  src/wm/keyboard.vala
-Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
-  2015-2016, Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
-
-Files: src/wm/ibus.c
-  src/wm/ibus.vala
-Copyright: GNOME Shell Developers (Heavy inspiration, logic theft)
-  2016 Ikey Doherty <ikey@solus-project.com>
-License: GPL-2+
 
 Files: data/icons/*
-Copyright: 2016 Sam Hewitt
-License: CC-BY-SA-3.0
- This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 International (CC BY-SA 3.0) License. 
- To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/legalcode or send a letter 
- to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+Copyright: 2016-2017, Sam Hewitt
+License: GPL-2+
 
-Files: data/icons/actions/notification-alert-symbolic.svg
-Copyright: 2016 1001freedownloads
-License: CC0-1.0
- The person who associated a work with this deed has dedicated the work
- to the public domain by waiving all of his or her rights to the work
- worldwide under copyright law, including all related and neighboring
- rights, to the extent allowed by law.
- You can copy, modify, distribute and perform the work, even for 
- commercial purposes, all without asking permission.
+Files: src/applets/status/BluetoothIndicator.vala
+Copyright: 2015, Alberts MuktupÄvels
+  2015-2017, Budgie Desktop Developers
+License: GPL-2+
 
-Files: data/icons/actions/pane-show-symbolic.svg
-  data/icons/actions/pane-hide-symbolic.svg
-Copyright: 2016 horst3180
+Files: src/raven/notifications_view.vala
+Copyright: 2014, Josh Klar <j@iv597.com> (original Budgie work, prior to Budgie 10)
+  2015-2017, Budgie Desktop Developers
+License: GPL-2+
+
+Files: src/imports/natray/na-tray.c
+Copyright: 2002, Red Hat, Inc.
+  2003-2006, Vincent Untz
+  2007, Christian Persch
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-ui-device.c
+Copyright: 2012, David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
+  Conor Curran 2011 <conor.curran@canonical.com>
+License: GPL-2+
+
+Files: src/imports/natray/fixedtip.c
+Copyright: 2001, Havoc Pennington
+  2003-2006, Vincent Untz
+License: GPL-2+
+
+Files: src/imports/natray/fixedtip.h
+Copyright: 2001, Havoc Pennington, 2002 Red Hat Inc.
+  2003-2006, Vincent Untz
+License: GPL-2+
+
+Files: src/daemon/tabswitcher.vala
+Copyright: 2017, taaem <taaem@mailbox.org>
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-ui-device.h
+Copyright: Conor Curran 2011 <conor.curran@canonical.com>
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-card.c
+Copyright: 2008, William Jon McCann
+  2009, Bastien Nocera
+  Conor Curran 2011 <conor.curran@canonical.com>
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-control.c
+Copyright: 2006-2008, Lennart Poettering
+  2008, Sjoerd Simons <sjoerd@luon.net>
+  2008, William Jon McCann
+  2012, Conor Curran
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2016-2017, David Mohammed <fossfreedom@ubuntu.com>
+ 2016-2017, David Mohammed <foss.freedom@gmail.com>
+License: GPL-2+
+
+Files: src/gvc/gvc-mixer-card.h
+Copyright: 2008-2009, Red Hat, Inc.
+  Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
 
 License: GPL-2+

@@ -15,7 +15,7 @@ Build-Depends:
  libgnome-desktop-3-dev,
  libgnome-menu-3-dev,
  libgtk-3-dev,
- libmutter-0-dev (>= 3.16),
+ libmutter-1-dev (>= 3.25.90),
  libpeas-dev,
  libpolkit-agent-1-dev,
  libpolkit-gobject-1-dev,
@@ -24,14 +24,16 @@ Build-Depends:
  libupower-glib-dev,
  libwnck-3-dev,
  uuid-dev,
- libc6-dev (>= 2.23),
  libgdk-pixbuf2.0-dev,
  libaccountsservice-dev,
  valac,
- libibus-1.0-dev (>= 1.5.11)
-Standards-Version: 3.9.8
+ libibus-1.0-dev (>= 1.5.11),
+ meson (>= 0.40.1),
+ gnome-settings-daemon-dev,
+ sassc
+Standards-Version: 4.1.1
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian
-Vcs-Git: https://github.com/UbuntuBugie/budgie-desktop -b debian
+Vcs-Git: https://github.com/UbuntuBudgie/budgie-desktop -b debian
 
 Package: budgie-core
 Architecture: any
@@ -57,7 +59,7 @@ Package: budgie-core-dev
 Section: libdevel
 Architecture: any
 Depends:
- gir1.2-budgie-desktop-1.0 (= ${binary:Version}),
+ gir1.2-budgie-1.0 (= ${binary:Version}),
  libbudgie-plugin0 (= ${binary:Version}),
  libbudgietheme0 (= ${binary:Version}),
  libraven0 (= ${binary:Version}),
@@ -82,11 +84,11 @@ Package: budgie-desktop
 Architecture: all
 Depends:
  budgie-core,
- gir1.2-budgie-desktop-1.0,
+ gir1.2-budgie-1.0 (>= 10.4),
  ${misc:Depends},
  gnome-session-bin, 
  gnome-session-common, 
- gnome-settings-daemon (>= 3.23.3), 
+ gnome-settings-daemon (>=3.24), 
  gnome-control-center, 
  gnome-menus,
  gnome-screensaver,
@@ -118,9 +120,11 @@ Description: documentation files for the budgie-desktop
  .
  This package contains the API documentation in HTML format
 
-Package: gir1.2-budgie-desktop-1.0
+Package: gir1.2-budgie-1.0
 Section: introspection
 Architecture: any
+Replaces: gir1.2-budgie-desktop-1.0 (<< 10.3.2)
+Breaks: gir1.2-budgie-desktop-1.0 (<< 10.3.2)
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},

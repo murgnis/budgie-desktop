@@ -1,48 +1,50 @@
 #!/usr/bin/make -f
+export DH_VERBOSE = 1
+export LC_ALL=C.UTF-8
+export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
 
-export DEB_BUILD_MAINT_OPTIONS = hardening=+relro,+bindnow
+%:
+	dh $@
 
-# rules below are required due to budgie-desktop not running
-# correctly with a standard debhelper rules set
-# https://github.com/UbuntuBudgie/budgie-desktop/pull/2
+override_dh_clean:
+	dh_clean
+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 
-build build-arch:
-	autoreconf -i
-	./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc
+	@if [ -e ./debian/ubuntu/applied ]; then \
+		patch -R -p1 < debian/ubuntu/show_nm-applet_in_tray.patch ; \
+		rm ./debian/ubuntu/applied ; \
+	fi
+endif
+	rm -f ./debian/budgie-desktop.gsettings-override
 
-binary binary-arch:
-	dh_testroot
+override_dh_auto_configure:
+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
+	patch -p1 < debian/ubuntu/show_nm-applet_in_tray.patch
+	touch ./debian/ubuntu/applied
+endif
+	dh_auto_configure -- --libdir=/usr/lib
+
+override_dh_auto_install:
 	dh_auto_install
-	dh_install
-	dh_installdocs
-	dh_installchangelogs
-	dh_lintian
-	dh_compress
-	# remove unneeded build files
-	find debian -name \*.la -exec rm {} \;
-	find debian -name \*.a -exec rm {} \;
-	# correct permissions on build shared object libraries
-	find debian -name \*.so* -exec chmod 644 {} \;
-	# correct permissions on gtk-doc generated files
-	find debian -name \*.html -exec chmod 644 {} \;
-	# correct permissions on folders
-	find ./debian -type d | xargs chmod 755
 	# remove unrecognised and non ISO639 locale
 	find debian -type d -name "zh-Hant" -print0 | xargs -r0 -- rm -r
+	mkdir -p "$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/girepository-1.0"
+	mv "$(CURDIR)/debian/tmp/usr/lib/girepository-1.0/Budgie-1.0.typelib" "$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/girepository-1.0"
+	rm -rf "$(CURDIR)/debian/tmp/usr/lib/girepository-1.0"
+	
+override_dh_shlibdeps:
+	# budgie desktop uses mutters private mutter-clutter-1.0.so etc.
+	dh_shlibdeps -l"usr/lib/$(DEB_HOST_MULTIARCH)/mutter"
+
+override_dh_installgsettings:
+ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
+	cp ./debian/budgie-desktop.gsettings-override.ubuntu ./debian/budgie-desktop.gsettings-override
+else
+	cp ./debian/budgie-desktop.gsettings-override.debian ./debian/budgie-desktop.gsettings-override
+endif
 	# install override but budgie has to take precedence over
 	# gnome-shell defaults
 	dh_installgsettings --priority=15
-	dh_fixperms
-	dh_strip -p budgie-core
-	dh_strip -p libbudgie-plugin0
-	dh_strip -p libbudgietheme0
-	dh_strip -p libraven0
-	dh_makeshlibs
-	dh_shlibdeps
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-	
-%:
-	dh $@
+
+override_dh_installchangelogs:
+	dh_installchangelogs debian/changelog-announcement.txt

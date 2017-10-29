@@ -1,74 +1,191 @@
-budgie-desktop (10.2.9-3ubuntu5) zesty; urgency=medium
+budgie-desktop (10.4-1ubuntu5) artful; urgency=medium
 
-  * Cherry-pick bug-fix release (LP: #1685447)
-    + 0004-Add-network-manager-to-the-spamlist-for-notification.patch
-      Stop spamming notification icon on first logon
-    + 0005-panel-Fix-troublesome-popovers-once-and-for-all.patch
-      GTK+3.22 regression fix for bottom panel menu applet popup
-      (LP: #1661159)
-      GTK+3.22 regression fix to restore popover animations
-    + 0006-rundialog-Fix-stumpy-rundialog-syndrome-issue-800.patch
-      GTK+3.22 regression fix to correctly size the run-dialog
-    + disable-popover-animations.patch
-      reverse part of patch 0005 since testing has revealed double
-      animation effects are still visible for some setups
+  * Packaging Changes
+    - debian/rules: use debhelper meson support to build
+    - debian/rules: support separate ubuntu and debian gsettings
+      overrides
+    - debian/rules: add a dh_shlibdeps override to ensure the linker
+      finds the shared mutter library
+    - debian/control: Update standards version - no changes required
+  * add remove_rpath.patch: remove the need for the build to need
+    a rpath to be defined
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 16 Apr 2017 22:21:53 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 29 Oct 2017 17:46:07 +0000
 
-budgie-desktop (10.2.9-3ubuntu4) zesty; urgency=medium
+budgie-desktop (10.4-1ubuntu4) artful; urgency=medium
 
-  * Drop 0001-panel-Restore-missing-animations-GTK-3.22.patch
-    - this patch causes double popup animations for some installs
-      (LP: #1667934)
+  * Bug-fix release (LP: #1716757)
+    - amend 0001-set-settings-window-title-to-match-the-.desktop-name.patch
+      include StartupWMClass to force the .desktop wmclass to match
+      the settings window class; this ensures plank always caters for
+      opening/closing the window and is no longer dependent on how
+      plank is launched
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 25 Mar 2017 09:18:47 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 14 Sep 2017 19:53:04 +0100
 
-budgie-desktop (10.2.9-3ubuntu3) zesty; urgency=medium
+budgie-desktop (10.4-1ubuntu3) artful; urgency=medium
 
-  * Bug-fix release (LP: #1667144)
-  * Add 0002-check-that-schema-and-prefix-have-been-previously-cr.patch
-    - fix panel crash when C based applets are removed
-  * Add 0003-fix-crash-of-the-window-manager-when-the-current-loc.patch
-    - fix window manager crash when the current keyboard locale is 
-      deleted (LP: #1661945)
-  Packaging Changes:
-  * update patch headers to resolve lintian issues
+  * Bug-fix release (LP: #1716757)
+    - patch 0001-set-settings-window-title-to-match-the-.desktop-name.patch
+      ensure budgie desktop settings is correctly recognised by docks such
+      as plank so that the dock can remove the icon when the window closes
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 22 Feb 2017 19:43:56 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 12 Sep 2017 20:55:50 +0100
 
-budgie-desktop (10.2.9-3ubuntu2) zesty; urgency=medium
+budgie-desktop (10.4-1ubuntu2) artful; urgency=medium
 
-  [ David Mohammed ]
-  * Add adapt-to-mutter-324.patch:
-    - Update build to support mutter 3.24
+  * Build against libmutter-1-dev
 
-  [ Jeremy Bicha ]
-  * debian/control: Build-depend on libmutter-0-dev
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 30 Aug 2017 12:27:57 -0400
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 15 Feb 2017 23:36:22 +0000
+budgie-desktop (10.4-1ubuntu1) artful; urgency=medium
 
-budgie-desktop (10.2.9-3ubuntu1) zesty; urgency=medium
+  [ jbicha, fossfreedom ]
+  * debian/budgie-desktop.gsettings-override:
+    - Readd part of the previous ubuntu3 delta, not yet integrated in Debian
 
-  * Bug-fix release (LP: #1662713)
-    - ubuntu patch to ensure gnome-screensaver does not coredump
-      due to missing draw-background key
-    - upstream patch 0001-panel-Restore-missing-animations-GTK-3.22.patch
-      GTK+3.22 specific patch to fix popover animations
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 29 Aug 2017 23:16:12 +0200
 
-  [ Jeremy Bicha ]
-  * Add adapt-to-gsd-324.patch:
-    - Update gnome-session file for gnome-settings-daemon 3.24
-  * debian/control:
-    - Bump minimum gnome-settings-daemon to 3.23.3 for above change
+budgie-desktop (10.4-1) unstable; urgency=medium
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 07 Feb 2017 16:26:04 -0500
+  * New upstream release
+  * Packaging Changes
+    - remove all unneeded triggers
+    - refresh debian/patches/gsd.patch to merge in upstream changes
+    - drop all patches (except for gsd.patch) since now dealt with in new
+      release
+    - debian/control: standards version 4.0.1
+    - debian/control: Add build dependency sassc
+    - debian/control: add minimum meson version to build
+    - debian/control: Add Build-Depends alternate libmutter-1-dev
+      for GNOME 3.26 builds
+    - update library symbols files with 10.4 changes
+    - Rename binary package gir1.2-budgie-desktop-1.0 to
+      match the typelib gir1.2-budgie-1.0; To ensure a smooth upgrade,
+      debian/control updated with Replaces/Breaks for the new package
+      and budgie-desktop with a restriction for 10.4 and later for the
+      new package
+    - Add man-page for new binary budgie-desktop-settings
+    - Updated debian/copyright for all source files
+    - Merge changelog for 10.2.9-3 unstable bug-fix release;
+      10.2.9-3 is a hotfix for unstable released after the 10.3.x
+      series was uploaded to experimental
+    - debian/rules: add override_dh_installchangelogs with
+      debian/changelog-announcement.txt to describe
+      where to find the upstream announcement and description of changes
+    - add budgie-core.lintian-override with comment to describe
+      the rpath lintian error
 
-budgie-desktop (10.2.9-2ubuntu1) zesty; urgency=medium
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 18 Aug 2017 17:48:21 +0100
+ 
+budgie-desktop (10.3.1-5) unstable; urgency=high
 
-  * Bug-fix release (LP: #1653739)
-    - ubuntu patch to ensure nm-applet displays in the X11 system tray
+  * Bug fix release
+    - add patch gsd.patch (Closes: #869953)
+      Where gnome-settings-daemon version is greater than
+      libmutter, the build of budgie-desktop results in an
+      invalid gnome-session file.  The patch ensures a valid file
+      is created by checking the version of gnome-settings-daemon
+      instead of mutter during the build.
+   * Packaging Changes:
+     - debian/control: Add build dependency for gnome-settings-daemon-dev
+       to ensure the patch can determine the version correctly
+     - debian/control: Fix the Vcs-Git location typo bugie --> budgie 
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 03 Jan 2017 19:48:38 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 18 Aug 2017 00:37:52 +0100
+ 
+budgie-desktop (10.3.1-4) unstable; urgency=medium
+
+  * New release for unstable
+    Use build 10.3.1-3 for experimental with the following changes:
+    - enforce gnome-settings-daemon minimum version >= 3.24
+    - release ensures there is a migration path for
+      budgie-core to GNOME stack 3.24 (Closes: #869953)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 28 Jul 2017 19:44:36 +0100
+
+budgie-desktop (10.3.1-3) experimental; urgency=medium
+
+  * Bug-fix release
+  * Patches
+    - 0005-raven-Only-deal-with-a-device-card-when-it-actually-.patch
+      0006-raven-Mirror-the-last-fix-and-ensure-removed-Things-.patch
+      Both patches resolve crashes when audio devices such as
+      headphones are added.
+  * Packaging Changes:
+    - remove build-dependency on libc6-dev since this is
+      automatically pulled in by build-essential
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 03 Jul 2017 23:39:14 +0100
+
+budgie-desktop (10.3.1-2) experimental; urgency=medium
+
+  * Bug-fix release
+  * Patches
+    - include-menubar-theme.patch
+      correctly style budgie applets that
+      use a GTK+ MenuBar
+    - 0004-wm-Purge-old-backgrounds-from-the-cache.patch
+      resolve memory leak when desktop wallpaper changes
+  * Packaging Changes:
+    - simplified debian/rules
+      manpages moved to budgie-core.manpages; each executable in
+      budgie-core now includes a manpage which enables users to
+      man the exe name and additionally resolves lintian issues.
+      make target and install methods moved to a more their more
+      appropriate targets, auto_build and auto_install respectively.
+      deleted erroneous override_dh_prep
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 10 Jun 2017 00:28:53 +0100
+
+budgie-desktop (10.3.1-1) experimental; urgency=medium
+
+  * New upstream release
+  * Patches
+    - fortify: to support detecting run-time issues
+    - show_nm-applet_in_tray.patch: Ubuntu specific patch to display the
+      network-manager applet
+    - 0001-imports-natray-Enforce-minimum-size-of-22px.patch
+      Resolve system tray sizing issues
+    - 0002-Fix-typo-in-meson.build.patch
+      Correct development package build
+    - 0003-Work-around-serious-regressions-in-GTK3.22.13.patch
+      Add support for GTK+3.22.13 and later
+    - disable-popover-animations.patch
+      Panel popover animations cause flashes on some setups.  Disabling
+      the panel popover animation resolves this.
+  * Packaging Changes:
+    - meson build dependency
+    - Add ubuntu specific build rule to enable network-manager to
+      correctly display in the system tray
+    - Add man-pages for each executable
+    - Update Copyright for new source structure
+    - Update control file to support only GTK+3.18 and later together
+      meson build dependency
+    - Update install files due to meson build
+    - Fix Conf-files lintian warnings
+    - Add library symbols
+    - Update watch file:
+        repo name change
+        detection of version format x.y as well as x.y.z
+        upstream maintainer GPG signed key pgpmangle
+    - Add maintainer GPG signed key
+    - add libmutter build dependency to GTK+3.24 libmutter-0-dev as
+      an alternate for libmutter-dev based build environments
+    - changed standards version to 3.9.8
+    - Update copyright year for all Ikey Doherty statements
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 17 Apr 2017 09:43:19 +0000
+ 
+budgie-desktop (10.2.9-3) unstable; urgency=medium
+
+  * Bug-fix release
+    - drop libc6-dev from build-depends since this is pulled in from
+      build-essential (Closes: #866730)
+  * Packaging changes:
+    - update VCS branch details for stable Debian package location
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 01 Jul 2017 00:16:09 +0100
 
 budgie-desktop (10.2.9-2) unstable; urgency=medium
 

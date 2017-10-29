@@ -1,0 +1,25 @@
+Description: remove_rpath.patch
+ budgie desktop links against mutters private api.  This causes
+ rpath linitian issue and prevents upload to the archive.
+ Debian/rules has a dh_shlibdeps override to ensure linking
+ to the shared mutter library occurs. Thus this patch ensures
+ a build rpath is not required.
+ .
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Origin: other
+Forwarded: not-needed
+Last-Update: 2017-10-29
+
+Index: budgie-desktop-10.4/src/wm/meson.build
+===================================================================
+--- budgie-desktop-10.4.orig/src/wm/meson.build
++++ budgie-desktop-10.4/src/wm/meson.build
+@@ -57,6 +57,8 @@ if dep_mutter.version().version_compare(
+     budgie_wm_vala_args += ['--girdir', rpath]
+ endif
+ 
++rpath = ''
++
+ executable(
+     'budgie-wm', budgie_wm_sources,
+     dependencies: budgie_wm_deps,

@@ -1,0 +1,35 @@
+Description: [PATCH] set settings window title to match the .desktop name #1146
+ patch consists of two commits, first that has been committed, second has
+ been forwarded
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Bug: https://github.com/budgie-desktop/budgie-desktop/issues/1146
+Applied-Upstream: commit: 69fd617eed1da896d5a1bc5e82de901cd2a1a33d
+Forwarded: https://github.com/budgie-desktop/budgie-desktop/pull/1159
+Last-Update:  2017-09-14
+
+---
+ src/panel/settings/settings_main.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: budgie-desktop-10.4/src/panel/settings/settings_main.vala
+===================================================================
+--- budgie-desktop-10.4.orig/src/panel/settings/settings_main.vala
++++ budgie-desktop-10.4/src/panel/settings/settings_main.vala
+@@ -48,7 +48,7 @@ public class SettingsWindow : Gtk.Window
+         add(layout);
+ 
+         /* Have to override wmclass for pinning support */
+-        set_title(_("Budgie Settings"));
++        set_title(_("Budgie Desktop Settings"));
+         set_wmclass("budgie-desktop-settings", "budgie-desktop-settings");
+         set_icon_name("preferences-desktop");
+ 
+Index: budgie-desktop-10.4/src/panel/budgie-desktop-settings.desktop.in
+===================================================================
+--- budgie-desktop-10.4.orig/src/panel/budgie-desktop-settings.desktop.in
++++ budgie-desktop-10.4/src/panel/budgie-desktop-settings.desktop.in
+@@ -8,3 +8,4 @@ Terminal=false
+ Type=Application
+ Categories=GNOME;GTK;System;
+ OnlyShowIn=Budgie;
++StartupWMClass=budgie-desktop-settings
