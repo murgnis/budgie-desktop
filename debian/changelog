@@ -1,12 +1,29 @@
-budgie-desktop (10.4-2) UNRELEASE; urgency=medium
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1) unstable; urgency=medium
 
   * Bug-fix release
-    - Do not override budgie menu settings. This should be distro
-      specific
-    - Add "Budgie" desktop override to ensure this package does
-      not trample over other desktops using the xsettings key
+    - fix FTBFS due to meson v0.43; budgie desktop (upstream) have
+      released a signed tarball to resolve since it is not possible
+      to cherry-pick the appropriate git commit
+      https://github.com/budgie-desktop/budgie-desktop/issues/1228
+  * Packaging Changes
+    - debian/rules: support separate ubuntu and debian gsettings
+      overrides
+    - debian/rules: add bindnow hardening
+    - debian/rules: install Budgie gi-typelib to a multiarch location
+    - debian/control: Update standards version - add an autopkgtest
+    - debian/copyright: gvc file-location changed from src to subprojects
+    - debian/copyright: add Jeremy Bicha to packaging copyright
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 25 Aug 2017 20:44:43 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 31 Oct 2017 17:46:07 +0000
+
+budgie-desktop (10.4-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/control:
+    - Build-Depend on libmutter-1-dev for GNOME 3.26 transition
+    - Bump required gnome-settings-daemon to >= 3.25.4
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 13 Oct 2017 17:52:23 -0400
 
 budgie-desktop (10.4-1) unstable; urgency=medium
 

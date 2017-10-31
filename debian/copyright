@@ -33,30 +33,30 @@ Files: src/config/budgie-config.c
 Copyright: 2015-2017, Budgie Desktop Developers
 License: LGPL-2.1+
 
-Files: src/gvc/gvc-channel-map-private.h
- src/gvc/gvc-channel-map.h
- src/gvc/gvc-mixer-card-private.h
- src/gvc/gvc-mixer-control-private.h
- src/gvc/gvc-mixer-control.h
- src/gvc/gvc-mixer-event-role.h
- src/gvc/gvc-mixer-sink-input.h
- src/gvc/gvc-mixer-sink.h
- src/gvc/gvc-mixer-source-output.h
- src/gvc/gvc-mixer-source.h
- src/gvc/gvc-mixer-stream-private.h
- src/gvc/gvc-mixer-stream.h
- src/gvc/gvc-pulseaudio-fake.h
+Files: subprojects/gvc/gvc-channel-map-private.h
+ subprojects/gvc/gvc-channel-map.h
+ subprojects/gvc/gvc-mixer-card-private.h
+ subprojects/gvc/gvc-mixer-control-private.h
+ subprojects/gvc/gvc-mixer-control.h
+ subprojects/gvc/gvc-mixer-event-role.h
+ subprojects/gvc/gvc-mixer-sink-input.h
+ subprojects/gvc/gvc-mixer-sink.h
+ subprojects/gvc/gvc-mixer-source-output.h
+ subprojects/gvc/gvc-mixer-source.h
+ subprojects/gvc/gvc-mixer-stream-private.h
+ subprojects/gvc/gvc-mixer-stream.h
+ subprojects/gvc/gvc-pulseaudio-fake.h
 Copyright: 2008, Red Hat, Inc.
   2008-2009, Red Hat, Inc.
 License: GPL-2+
 
-Files: src/gvc/gvc-channel-map.c
- src/gvc/gvc-mixer-event-role.c
- src/gvc/gvc-mixer-sink-input.c
- src/gvc/gvc-mixer-sink.c
- src/gvc/gvc-mixer-source-output.c
- src/gvc/gvc-mixer-source.c
- src/gvc/gvc-mixer-stream.c
+Files: subprojects/gvc/gvc-channel-map.c
+ subprojects/gvc/gvc-mixer-event-role.c
+ subprojects/gvc/gvc-mixer-sink-input.c
+ subprojects/gvc/gvc-mixer-sink.c
+ subprojects/gvc/gvc-mixer-source-output.c
+ subprojects/gvc/gvc-mixer-source.c
+ subprojects/gvc/gvc-mixer-stream.c
 Copyright: 2008, William Jon McCann
 License: GPL-2+
 
@@ -101,7 +101,7 @@ Copyright: 2002, Red Hat, Inc.
   2007, Christian Persch
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-ui-device.c
+Files: subprojects/gvc/gvc-mixer-ui-device.c
 Copyright: 2012, David Henningsson, Canonical Ltd. <david.henningsson@canonical.com>
   Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
@@ -120,17 +120,17 @@ Files: src/daemon/tabswitcher.vala
 Copyright: 2017, taaem <taaem@mailbox.org>
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-ui-device.h
+Files: subprojects/gvc/gvc-mixer-ui-device.h
 Copyright: Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-card.c
+Files: subprojects/gvc/gvc-mixer-card.c
 Copyright: 2008, William Jon McCann
   2009, Bastien Nocera
   Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-control.c
+Files: subprojects/gvc/gvc-mixer-control.c
 Copyright: 2006-2008, Lennart Poettering
   2008, Sjoerd Simons <sjoerd@luon.net>
   2008, William Jon McCann
@@ -140,9 +140,10 @@ License: GPL-2+
 Files: debian/*
 Copyright: 2016-2017, David Mohammed <fossfreedom@ubuntu.com>
  2016-2017, David Mohammed <foss.freedom@gmail.com>
+ 2017, Jeremy Bicha <jbicha@debian.org>
 License: GPL-2+
 
-Files: src/gvc/gvc-mixer-card.h
+Files: subprojects/gvc/gvc-mixer-card.h
 Copyright: 2008-2009, Red Hat, Inc.
   Conor Curran 2011 <conor.curran@canonical.com>
 License: GPL-2+
