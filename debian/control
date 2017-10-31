@@ -44,7 +44,7 @@ Description: Core package for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This is the base package for budgie-desktop.  This package provides:
@@ -72,24 +72,24 @@ Description: Development package for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This package provides the development files allowing compilation
  through the budgie-desktop API.  This package provides:
   C Header files
   Vala .vapi files
- 
+
 Package: budgie-desktop
 Architecture: all
 Depends:
  budgie-core,
  gir1.2-budgie-1.0 (>= 10.4),
  ${misc:Depends},
- gnome-session-bin, 
- gnome-session-common, 
- gnome-settings-daemon (>=3.24), 
- gnome-control-center, 
+ gnome-session-bin,
+ gnome-session-common,
+ gnome-settings-daemon (>=3.24),
+ gnome-control-center,
  gnome-menus,
  gnome-screensaver,
  network-manager-gnome
@@ -97,12 +97,12 @@ Description: Desktop package for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This package installs the minimal GNOME based package-set together with
  the key budgie-desktop packages to produce a working desktop
- environment. 
+ environment.
 
 Package: budgie-desktop-doc
 Section: doc
@@ -115,7 +115,7 @@ Description: documentation files for the budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This package contains the API documentation in HTML format
@@ -133,10 +133,10 @@ Description: GNOME introspection library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
- This is the introspection library and allows creating plugins in 
+ This is the introspection library and allows creating plugins in
  python3, C and Vala
 
 Package: libbudgie-plugin0
@@ -149,11 +149,11 @@ Description: Plugin library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This adds the plugin library to budgie-desktop
- 
+
 Package: libbudgietheme0
 Section: libs
 Architecture: any
@@ -164,11 +164,11 @@ Description: Theme library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This adds the theme controls for budgie-desktop
- 
+
 Package: libraven0
 Section: libs
 Architecture: any
@@ -179,8 +179,8 @@ Description: Raven library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
  based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based 
+ Budgie-Desktop is written from scratch utilising many GNOME based
  sub-systems such as GNOME-Session and Mutter.
  .
  This provides the budgie-desktop user-defined settings called raven.
- 
+
