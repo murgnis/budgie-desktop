@@ -1,3 +1,1 @@
-Test-Command: python3 debian/tests/check_import.py
-Depends: @
-Restrictions: allow-stderr
+Tests: desktopname
