@@ -1,3 +1,14 @@
+budgie-desktop (10.4+git20171031.10.g9f71bb8-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - fix autopkgtest build failure
+  * Packaging Changes
+    - fix path to autopkgtest script
+    - add Depends and Restrictions to autopkgtest script; allow std-errors
+      to be outputted due to non-needed desktop modules not loading
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 07 Nov 2017 18:33:47 +0000
+
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1) unstable; urgency=medium
 
   * Bug-fix release
@@ -11,8 +22,6 @@ budgie-desktop (10.4+git20171031.10.g9f71bb8-1) unstable; urgency=medium
     - debian/rules: add bindnow hardening
     - debian/rules: install Budgie gi-typelib to a multiarch location
     - debian/control: Update standards version - add an autopkgtest
-    - debian/control: strip trailing spaces to resolve lintian
-        pedantic issues
     - debian/copyright: gvc file-location changed from src to subprojects
     - debian/copyright: add Jeremy Bicha to packaging copyright
 
@@ -58,7 +67,7 @@ budgie-desktop (10.4-1) unstable; urgency=medium
       the rpath lintian error
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 18 Aug 2017 17:48:21 +0100
-
+ 
 budgie-desktop (10.3.1-5) unstable; urgency=high
 
   * Bug fix release
@@ -71,10 +80,10 @@ budgie-desktop (10.3.1-5) unstable; urgency=high
    * Packaging Changes:
      - debian/control: Add build dependency for gnome-settings-daemon-dev
        to ensure the patch can determine the version correctly
-     - debian/control: Fix the Vcs-Git location typo bugie --> budgie
+     - debian/control: Fix the Vcs-Git location typo bugie --> budgie 
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Fri, 18 Aug 2017 00:37:52 +0100
-
+ 
 budgie-desktop (10.3.1-4) unstable; urgency=medium
 
   * New release for unstable
@@ -157,7 +166,7 @@ budgie-desktop (10.3.1-1) experimental; urgency=medium
     - Update copyright year for all Ikey Doherty statements
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 17 Apr 2017 09:43:19 +0000
-
+ 
 budgie-desktop (10.2.9-3) unstable; urgency=medium
 
   * Bug-fix release
