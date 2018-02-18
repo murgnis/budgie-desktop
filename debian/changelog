@@ -1,4 +1,27 @@
-budgie-desktop (10.4+git20171031.10.g9f71bb8-2) unstable; urgency=medium
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu4) bionic; urgency=medium
+
+  * 
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 18 Feb 2018 19:41:00 +0000
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu3) bionic; urgency=medium
+
+  * No-change rebuild against latest gnome-desktop3
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 16 Feb 2018 08:10:38 -0500
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu2) bionic; urgency=medium
+
+  * Bug-fix release
+    - add patch 0001-Obtain-gsettings-transparency-key-value-before-showi.patch
+      This patch allows panel transparency gsettings to be overridden
+  * Packaging Changes
+    - debian/control: Bump debhelper version to v11
+    - debian/control: Bump Standards-Version (no changes required)
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 06 Feb 2018 20:15:30 +0000
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu1) bionic; urgency=medium
 
   * Bug-fix release
     - fix autopkgtest build failure; simplify to check that the exe
