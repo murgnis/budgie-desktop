@@ -1,8 +1,63 @@
+budgie-desktop (10.4+git20180806.02.933f78fc03d-0ubuntu1) cosmic; urgency=medium
+
+  [Adam Conrad]
+  * caffeine-cup-conflicts.patch: Avoid caffeine icon conflicts (LP: #1786107)
+
+  [David Mohammed]
+  * Upstream Git release
+  * Add patch to support GNOME 3.29.4 mutter
+  * Packaging Changes:
+    - Drop existing patches except
+      0001-Obtain-gsettings-transparency-key-value-before-showi.patch,
+    - refresh patch 0001*.patch
+    - debian/control - Bump Standards-Version (4.1.4): no changes required
+    - Add new patch 0003-Port-to-mutter-3-from-GNOME-3.30.patch
+    - Create unsigned tarball (dh_make) from upstream Git tree
+    - debian/control - build-depends on libmutter-3 and libglib2.0 2.57
+    - debian/control - add new libbudgie-private0 private ABI package
+    - debian/control - add replaces/breaks for caffeine
+      Ensure caffeine package which installs the same icons
+      does not break the installation of budgie desktop
+    - create lintian-overrides for budgie-core-dev
+    - update lintian-overrides for budgie-core
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 08 Aug 2018 23:33:56 +0100
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1) bionic; urgency=medium
+
+  * Bug fix release
+    - add patch to fix system tray black backgrounds
+      fix_black_tray_backgrounds.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 01 Apr 2018 20:28:30 +0100
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * Build-Depend on gnome-settings-daemon >= 3.28
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 17 Mar 2018 11:41:00 -0400
+
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Upload Ubuntu changes to unstable for mutter transition.
+  * Depend on gnome-settings-daemon >= 3.26
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 10 Mar 2018 19:44:52 -0500
+
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu4) bionic; urgency=medium
 
-  * 
+  * Mutter 3.28 transition (LP: #1751070)
+    - Add patch to support GSD 3.27.90 and later
+    - Add patch to support libmutter-2
+  * Packaging Changes
+    - Drop patch gsd.patch
+    - Add patch 0002-Switch-to-checking-GSD-version-for-the-build-1319.patch
+    - Add patch libmutter-2.patch
+    - debian/control - libmutter so-name bump build-depends >= 3.27.91
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 18 Feb 2018 19:41:00 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 03 Mar 2018 23:32:29 +0000
 
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1ubuntu3) bionic; urgency=medium
 
