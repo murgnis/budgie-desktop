@@ -12,6 +12,8 @@ libraven.so.0 libraven0 #MINVER#
  budgie_app_sound_control_new@Base 10.4
  budgie_app_sound_control_on_slider_change@Base 10.4
  budgie_app_sound_control_refresh@Base 10.4
+ budgie_app_sound_control_set_mute_ui@Base 10.4
+ budgie_app_sound_control_toggle_mute_state@Base 10.4
  budgie_header_expander_construct@Base 10.3
  budgie_header_expander_get_expanded@Base 10.3
  budgie_header_expander_get_type@Base 10.3

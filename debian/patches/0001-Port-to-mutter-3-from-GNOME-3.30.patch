@@ -1,10 +1,10 @@
-From 58a281d6bfead9c2911675caf929f15db9fa8fed Mon Sep 17 00:00:00 2001
-From: Iain Lane <iain@orangesquash.org.uk>
-Date: Mon, 6 Aug 2018 17:37:08 +0100
-Subject: [PATCH] Port to mutter-3 from GNOME 3.30
+Description: [PATCH] Port to mutter-3 from GNOME 3.30
+ This drops support for the old mutter versions. It's too much work to
+ support them all.
+Author: Iain Lane <iain@orangesquash.org.uk>
+Last Update: 2018-08-06
+Commit: https://github.com/UbuntuBudgie/budgie-desktop/commit/0938c69f062cd58f7ca1ad0f492bc6b594e884be
 
-This drops support for the old mutter versions. It's too much work to
-support them all.
 ---
  src/daemon/settings.vala                      |    1 -
  src/panel/settings/settings_wm.vala           |    6 +-
@@ -37,7 +37,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/daemon/settings.vala
          this.xoverrides.set_value("overrides", xset);
 -        this.wm_settings.set_string("button-layout", wm_set);
      }
- 
+
      /**
 Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/panel/settings/settings_wm.vala
 ===================================================================
@@ -46,14 +46,14 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/panel/settings/setting
 @@ -16,6 +16,7 @@ namespace Budgie {
   */
  public class WindowsPage : Budgie.SettingsPage {
- 
+
 +    private GLib.Settings gnome_wm_settings;
      private GLib.Settings budgie_wm_settings;
      private Gtk.ComboBox combo_layouts;
      private Gtk.Switch switch_dialogs;
 @@ -78,10 +79,11 @@ public class WindowsPage : Budgie.Settin
                "Use this if you are having graphical or performance issues with dedicated GPUs")));
- 
+
          /* Hook up settings */
 +        gnome_wm_settings = new GLib.Settings("org.gnome.mutter");
          budgie_wm_settings = new GLib.Settings("com.solus-project.budgie-wm");
@@ -81,43 +81,43 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/background.vala
 @@ -23,7 +23,7 @@ public const string GNOME_COLOR_HACK
  public class BudgieBackground : Meta.BackgroundGroup
  {
- 
+
 -    public unowned Meta.Screen? screen { construct set ; public get; }
 +    public unowned Meta.Display? display { construct set ; public get; }
      public int index { construct set ; public get; }
- 
+
      private Settings? settings = null;
 @@ -52,9 +52,9 @@ public class BudgieBackground : Meta.Bac
          return false;
      }
- 
+
 -    public BudgieBackground(Meta.Screen? screen, int index)
 +    public BudgieBackground(Meta.Display? display, int index)
      {
 -        Object(screen: screen, index: index);
 +        Object(display: display, index: index);
          Meta.Rectangle rect;
- 
+
          cache = Meta.BackgroundImageCache.get_default();
 @@ -62,7 +62,7 @@ public class BudgieBackground : Meta.Bac
          settings = new Settings("org.gnome.desktop.background");
          gnome_bg = new Gnome.BG();
- 
+
 -        rect = screen.get_monitor_geometry(this.index);
 +        rect = display.get_monitor_geometry(this.index);
          this.set_position(rect.x, rect.y);
          this.set_size(rect.width, rect.height);
- 
+
 @@ -161,11 +161,11 @@ public class BudgieBackground : Meta.Bac
          Clutter.Color? primary_color = Clutter.Color();
          Clutter.Color? secondary_color = Clutter.Color();
- 
+
 -        var actor = new Meta.BackgroundActor(screen, index);
 -        var background = new Meta.Background(screen);
 +        var actor = new Meta.BackgroundActor(display, index);
 +        var background = new Meta.Background(display);
          actor.set_background(background);
- 
+
 -        rect = screen.get_monitor_geometry(index);
 +        rect = display.get_monitor_geometry(index);
          actor.set_size(rect.width, rect.height);
@@ -129,7 +129,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/com.solus-project.b
 +++ budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/com.solus-project.budgie.wm.gschema.xml
 @@ -7,18 +7,6 @@
    </enum>
- 
+
    <schema path="/com/solus-project/budgie-wm/" id="com.solus-project.budgie-wm">
 -    <key type="b" name="edge-tiling">
 -      <default>true</default>
@@ -149,7 +149,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/com.solus-project.b
 @@ -49,21 +37,6 @@
        <description>The binding to use to toggle Raven notifications</description>
      </key>
- 
+
 -    <key name="button-layout" type="s">
 -      <default>'appmenu:minimize,maximize,close'</default>
 -      <summary>Arrangement of buttons on the titlebar</summary>
@@ -175,10 +175,10 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/keyboard.vala
 @@ -103,9 +103,9 @@ public class KeyboardManager : GLib.Obje
          on_settings_changed("sources");
      }
- 
+
 -	public delegate void KeyHandlerFunc (Meta.Display display, Meta.Screen screen, Meta.Window? window, Clutter.KeyEvent? event, Meta.KeyBinding binding);
 +	public delegate void KeyHandlerFunc (Meta.Display display, Meta.Window? window, Clutter.KeyEvent? event, Meta.KeyBinding binding);
- 
+
 -    void switch_input_source(Meta.Display display, Meta.Screen screen,
 +    void switch_input_source(Meta.Display display,
                               Meta.Window? window, Clutter.KeyEvent? event,
@@ -187,20 +187,20 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/keyboard.vala
 @@ -115,7 +115,7 @@ public class KeyboardManager : GLib.Obje
          this.apply_ibus();
      }
- 
+
 -    void switch_input_source_backward(Meta.Display display, Meta.Screen screen,
 +    void switch_input_source_backward(Meta.Display display,
                                        Meta.Window? window, Clutter.KeyEvent? event,
                                        Meta.KeyBinding binding)
      {
 @@ -127,8 +127,7 @@ public class KeyboardManager : GLib.Obje
- 
+
      public void hook_extra()
      {
 -        var screen = wm.get_screen();
 -        var display = screen.get_display();
 +        var display = wm.get_display();
- 
+
          /* Hook into GNOME defaults */
          var schema = new Settings("org.gnome.desktop.wm.keybindings");
 @@ -303,7 +302,7 @@ public class KeyboardManager : GLib.Obje
@@ -211,7 +211,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/keyboard.vala
 +        wm.get_display().ungrab_keyboard(wm.get_display().get_current_time());
          is_keyboard_held = false;
      }
- 
+
 @@ -315,7 +314,7 @@ public class KeyboardManager : GLib.Obje
          if (is_keyboard_held) {
              return;
@@ -228,7 +228,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/meson.build
 @@ -15,34 +15,8 @@ budgie_wm_sources = [
      'wm.vala',
  ]
- 
+
 -vapi_mutter = 'libmutter'
 -dep_mutter = dependency('libmutter', version: gnome_minimum_version, required: false)
 -
@@ -259,11 +259,11 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/meson.build
 -endif
 +vapi_mutter = 'libmutter-3'
 +dep_mutter = dependency('libmutter-3', version: gnome_minimum_version)
- 
+
  budgie_wm_deps = [
      link_libconfig,
 @@ -84,6 +58,7 @@ executable(
- 
+
  # gschemas
  install_data(
 -    'com.solus-project.budgie.wm.gschema.xml',
@@ -278,11 +278,11 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/shim.vala
 @@ -150,7 +150,7 @@ public class ShellShim : GLib.Object
          grabs = new HashTable<uint,string>(direct_hash, direct_equal);
          watches = new HashTable<string,uint>(str_hash, str_equal);
- 
+
 -        display = wm.get_screen().get_display();
 +        display = wm.get_display();
          display.accelerator_activated.connect(on_accelerator_activated);
- 
+
          handler = new SessionHandler();
 Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 ===================================================================
@@ -290,16 +290,16 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 +++ budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 @@ -155,7 +155,7 @@ public class BudgieWM : Meta.Plugin
      private bool force_unredirect = false;
- 
+
      HashTable<Meta.WindowActor?,AnimationState?> state_map;
 -    Clutter.Actor? screen_group;
 +    Clutter.Actor? display_group;
      ulong current_window_resize;
- 
+
      construct
 @@ -288,7 +288,7 @@ public class BudgieWM : Meta.Plugin
      }
- 
+
      /* Binding for clear-notifications activated */
 -    void on_raven_notification_clear(Meta.Display display, Meta.Screen screen,
 +    void on_raven_notification_clear(Meta.Display display,
@@ -308,7 +308,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
      {
 @@ -304,7 +304,7 @@ public class BudgieWM : Meta.Plugin
      }
- 
+
      /* Binding for toggle-raven activated */
 -    void on_raven_main_toggle(Meta.Display display, Meta.Screen screen,
 +    void on_raven_main_toggle(Meta.Display display,
@@ -317,7 +317,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
      {
 @@ -320,7 +320,7 @@ public class BudgieWM : Meta.Plugin
      }
- 
+
      /* Binding for toggle-notifications activated */
 -    void on_raven_notification_toggle(Meta.Display display, Meta.Screen screen,
 +    void on_raven_notification_toggle(Meta.Display display,
@@ -326,8 +326,8 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
      {
 @@ -369,14 +369,14 @@ public class BudgieWM : Meta.Plugin
      }
- 
- 
+
+
 -    void launch_menu(Meta.Display display, Meta.Screen screen,
 +    void launch_menu(Meta.Display display,
                       Meta.Window? window, Clutter.KeyEvent? event,
@@ -335,14 +335,14 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
      {
          on_overlay_key();
      }
- 
+
 -    void launch_rundialog(Meta.Display display, Meta.Screen screen,
 +    void launch_rundialog(Meta.Display display,
                              Meta.Window? window, Clutter.KeyEvent? event,
                              Meta.KeyBinding binding)
      {
 @@ -430,18 +430,12 @@ public class BudgieWM : Meta.Plugin
- 
+
      public override void start()
      {
 -        var screen = this.get_screen();
@@ -353,40 +353,40 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 +        var display = this.get_display();
 +        display_group = Meta.Compositor.get_window_group_for_display(display);
 +        var stage = Meta.Compositor.get_stage_for_display(display);
- 
+
          state_map = new HashTable<Meta.WindowActor?,AnimationState?>(GLib.direct_hash, GLib.direct_equal);
- 
+
 -        Meta.Prefs.override_preference_schema(MUTTER_EDGE_TILING, WM_SCHEMA);
 -        Meta.Prefs.override_preference_schema(MUTTER_MODAL_ATTACH, WM_SCHEMA);
 -        Meta.Prefs.override_preference_schema(MUTTER_BUTTON_LAYOUT, WM_SCHEMA);
 -
          iface_settings = new Settings("org.gnome.desktop.interface");
          iface_settings.bind("enable-animations", this, "use-animations", SettingsBindFlags.DEFAULT);
- 
+
 @@ -491,14 +485,15 @@ public class BudgieWM : Meta.Plugin
- 
+
          background_group = new Meta.BackgroundGroup();
          background_group.set_reactive(true);
 -        screen_group.insert_child_below(background_group, null);
 +        display_group.insert_child_below(background_group, null);
          background_group.button_release_event.connect(on_background_click);
- 
+
 -        screen.monitors_changed.connect(on_monitors_changed);
 -        on_monitors_changed(screen);
 +	var monitor_manager = Meta.MonitorManager.get();
 +        monitor_manager.monitors_changed.connect(on_monitors_changed);
 +        on_monitors_changed();
- 
+
          background_group.show();
 -        screen_group.show();
 +        display_group.show();
          stage.show();
- 
+
          keyboard = new KeyboardManager(this);
 @@ -538,11 +533,11 @@ public class BudgieWM : Meta.Plugin
              return;
          }
- 
+
 -        var screen = this.get_screen();
 +        var display = this.get_display();
          if (enab) {
@@ -401,13 +401,13 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 @@ -576,12 +571,13 @@ public class BudgieWM : Meta.Plugin
          }
      }
- 
+
 -    void on_monitors_changed(Meta.Screen? screen)
 +    void on_monitors_changed()
      {
 +	var display = get_display();
          background_group.destroy_all_children();
- 
+
 -        for (int i = 0; i < screen.get_n_monitors(); i++) {
 -            var actor = new BudgieBackground(screen, i);
 +        for (int i = 0; i < display.get_n_monitors(); i++) {
@@ -432,14 +432,14 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 +        focused_window.focus(get_display().get_current_time());
          focused_window = null;
      }
- 
+
 @@ -814,7 +810,7 @@ public class BudgieWM : Meta.Plugin
          Meta.Rectangle target_rect = actor.get_meta_window().get_frame_rect();
          Meta.Rectangle source_rect = info.old_rect;
- 
+
 -        screen_group.add(actor_clone);
 +        display_group.add(actor_clone);
- 
+
          actor.set_size(target_rect.width, target_rect.height);
          actor_clone.set_size(source_rect.width, source_rect.height);
 @@ -1045,14 +1041,14 @@ public class BudgieWM : Meta.Plugin
@@ -448,91 +448,91 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
      {
 -        var screen = this.get_screen();
 +        var display = this.get_display();
- 
+
          if (this.tile_preview == null) {
              this.tile_preview = new ScreenTilePreview();
              this.tile_preview.transitions_completed.connect(tile_preview_transition_complete);
- 
+
 -            var screen_group = Meta.Compositor.get_window_group_for_screen(screen);
 -            screen_group.add_child(this.tile_preview);
 +            var display_group = Meta.Compositor.get_window_group_for_display(display);
 +            display_group.add_child(this.tile_preview);
- 
+
              default_tile_opacity = this.tile_preview.get_opacity();
          }
 @@ -1160,13 +1156,13 @@ public class BudgieWM : Meta.Plugin
- 
+
      public const uint32 MAX_TAB_ELAPSE = 2000;
- 
+
 -    public void switch_windows_backward(Meta.Display display, Meta.Screen screen,
 +    public void switch_windows_backward(Meta.Display display,
                       Meta.Window? window, Clutter.KeyEvent? event,
                       Meta.KeyBinding binding)
      {
          uint32 cur_time = display.get_current_time();
- 
+
 -        var workspace = screen.get_active_workspace();
 +        var workspace = display.get_workspace_manager().get_active_workspace();
- 
+
          string? data = null;
          if ((data = workspace.get_data("__flagged")) == null) {
 @@ -1193,13 +1189,13 @@ public class BudgieWM : Meta.Plugin
          switch_switcher(true); /* true as in "yes, backward" */
      }
- 
+
 -    public void switch_windows(Meta.Display display, Meta.Screen screen,
 +    public void switch_windows(Meta.Display display,
                       Meta.Window? window, Clutter.KeyEvent? event,
                       Meta.KeyBinding binding)
      {
          uint32 cur_time = display.get_current_time();
- 
+
 -        var workspace = screen.get_active_workspace();
 +        var workspace = display.get_workspace_manager().get_active_workspace();
- 
+
          string? data = null;
          if ((data = workspace.get_data("__flagged")) == null) {
 @@ -1272,9 +1268,9 @@ public class BudgieWM : Meta.Plugin
- 
+
      void switch_workspace_done()
      {
 -        var screen = this.get_screen();
 +        var display = this.get_display();
- 
+
 -        foreach (var actor in Meta.Compositor.get_window_actors(screen)) {
 +        foreach (var actor in Meta.Compositor.get_window_actors(display)) {
              actor.show();
- 
+
              Clutter.Actor? orig_parent = actor.get_data("orig-parent");
 @@ -1320,21 +1316,21 @@ public class BudgieWM : Meta.Plugin
          out_group = new Clutter.Actor();
          in_group = new Clutter.Actor();
- 
+
 -        var screen = this.get_screen();
 -        var stage = Meta.Compositor.get_stage_for_screen(screen);
 +        var display = this.get_display();
 +        var stage = Meta.Compositor.get_stage_for_display(display);
- 
+
          stage.add_child(in_group);
          stage.add_child(out_group);
          stage.set_child_above_sibling(in_group, null);
- 
+
 -        screen.get_size(out screen_width, out screen_height);
 +        display.get_size(out screen_width, out screen_height);
- 
+
          /* TODO: Windows should slide "under" the panel/dock
           * Move "in-between" workspaces, e.g. 1->3 shows 2 */
- 
- 
+
+
 -        foreach (var actor in Meta.Compositor.get_window_actors(screen)) {
 -            var window = actor.get_meta_window();
 +        foreach (var actor in Meta.Compositor.get_window_actors(display)) {
 +            var window = (actor as Meta.WindowActor).get_meta_window();
- 
+
              if (!window.showing_on_its_workspace() || window.is_on_all_workspaces()) {
                  continue;
 @@ -1444,18 +1440,18 @@ public class BudgieWMDBUS : GLib.Object
- 
+
      public void RemoveWorkspaceByIndex(int index, uint32 time)
      {
 -        unowned Meta.Screen screen = this.wm.get_screen();
@@ -545,7 +545,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 -        screen.remove_workspace(workspace, time);
 +        wsm.remove_workspace(workspace, time);
      }
- 
+
      public int AppendNewWorkspace(uint32 time)
      {
 -        unowned Meta.Screen screen = this.wm.get_screen();
@@ -554,7 +554,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/src/wm/wm.vala
 +        unowned Meta.Workspace? space = wsm.append_new_workspace(false, time);
          return space.index();
      }
- 
+
 Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/vapi/Meta-3.metadata
 ===================================================================
 --- /dev/null
@@ -632,7 +632,7 @@ Index: budgie-desktop-10.4+git20180806.01.933f78fc03d/vapi/README.md
 +++ budgie-desktop-10.4+git20180806.01.933f78fc03d/vapi/README.md
 @@ -7,3 +7,7 @@ To refresh the Polkit vapi files:
      vapigen --library polkit-agent-1 /usr/share/gir-1.0/PolkitAgent-1.0.gir --pkg gio-unix-2.0 --pkg polkit-gobject-1 --girdir=. --vapidir=.
- 
+
  Then have fun un-mangling it to support vala async syntax
 +
 +For mutter, something like:

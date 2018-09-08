@@ -1,3 +1,9 @@
-0003-Port-to-mutter-3-from-GNOME-3.30.patch
-0001-Obtain-gsettings-transparency-key-value-before-showi.patch
-caffeine-cup-conflicts.patch
+0001-Port-to-mutter-3-from-GNOME-3.30.patch
+0002-Correct-GNOME-button-layout-schema-path.patch
+0003-Make-sure-vapi-workspace-def-use-real-c-header-filen.patch
+0004-Vala-0.41.92-does-not-allow-custom-getter-default-va.patch
+0005-Point-vapi-cheaders-to-their-upstream-equiv.patch
+0006-Install-missing-notification-icon-1545.patch
+0007-Check-if-schema-is-defined-for-volume-slider-changes.patch
+0008-Add-copyright-for-notification-disabled-symbolic.svg.patch
+1000-Obtain-gsettings-transparency-key-value-before-showi.patch

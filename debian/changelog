@@ -1,3 +1,62 @@
+budgie-desktop (10.4+git20180830.01.f2dbc215fdb-2) unstable; urgency=medium
+
+  * Release to unstable (Closes: #907939)
+    - copy experimental package + packaging changes as described
+  * Packaging Changes
+    - Copyright updates
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 05 Sep 2018 14:59:49 +0100
+
+budgie-desktop (10.4+git20180830.01.f2dbc215fdb-1) experimental; urgency=medium
+
+  * Release to experimental (Closes: #907616)
+    - base on ubuntu cosmic package; this includes a git release of
+      budgie-desktop that will form the forthcoming v10.5 release.
+      Includes additional patches to compile for mutter 3.30 plus
+      current work-in-progress stability patches
+  * Packaging Changes
+    - budgie-core.lintian-overrides - revise explanation of the lintian
+      false positive results with the objdump test to confirm the observations
+    - bump control Standards-Version; no additional changes required
+    - libraven0.symbols add two additional symbols for git release
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 30 Aug 2018 21:38:21 +0100
+
+budgie-desktop (10.4+git20180830.01.f2dbc215fdb-0ubuntu1) cosmic; urgency=medium
+
+  * Upstream Git release
+  * drop caffeine patch since now incorporated into git master
+  * 0003-Make-sure-vapi-workspace-def-use-real-c-header-filen.patch
+    Fix to resolve alt+tab crashes (LP: #1788721)
+  * 0004-Vala-0.41.92-does-not-allow-custom-getter-default-va.patch
+    Add fix for vala compilation issues
+  * 0005-Point-vapi-cheaders-to-their-upstream-equiv.patch
+    Ensure vapi matches the correct C header file names
+  * 0006-Install-missing-notification-icon-1545.patch
+    Add fallback icon for 'disable all notifications' capability
+  * 0007-Check-if-schema-is-defined-for-volume-slider-changes.patch
+    Do not check for gnome sound schema for microphone slider
+  * 0008-Add-copyright-for-notification-disabled-symbolic.svg.patch
+    Ensure notification icon has a copyright statement in the source
+  Packaging Changes:
+    - rename numeric order for patches to be sequential
+    - debian/copyright Add copyright for the additional git release icons
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 30 Aug 2018 10:21:26 +0100
+
+budgie-desktop (10.4+git20180820.01.cb35f5b4f1c-0ubuntu1) cosmic; urgency=medium
+
+  * Upstream Git release
+  * Revise mutter3.30 patch to fix focus issues
+  * Revise caffeine patch to use both fallback and actual theme icons if
+    available
+  * 0004-Correct-GNOME-button-layout-schema-path.patch
+    Fix path to point to a valid schema
+  * Packaging Changes:
+    - debian/rules - remove the rename of the caffeine icons
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 20 Aug 2018 21:56:13 +0100
+
 budgie-desktop (10.4+git20180806.02.933f78fc03d-0ubuntu1) cosmic; urgency=medium
 
   [Adam Conrad]
@@ -15,9 +74,6 @@ budgie-desktop (10.4+git20180806.02.933f78fc03d-0ubuntu1) cosmic; urgency=medium
     - Create unsigned tarball (dh_make) from upstream Git tree
     - debian/control - build-depends on libmutter-3 and libglib2.0 2.57
     - debian/control - add new libbudgie-private0 private ABI package
-    - debian/control - add replaces/breaks for caffeine
-      Ensure caffeine package which installs the same icons
-      does not break the installation of budgie desktop
     - create lintian-overrides for budgie-core-dev
     - update lintian-overrides for budgie-core
 
