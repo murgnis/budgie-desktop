@@ -20,12 +20,14 @@ endif
 	rm -f ./debian/budgie-desktop.gsettings-override
 
 override_dh_auto_configure:
+	mkdir -p debian/build
 ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 	patch -p1 < debian/ubuntu/show_nm-applet_in_tray.patch
 	touch ./debian/ubuntu/applied
-endif
-	mkdir -p debian/build
 	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro" meson --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
+else
+	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro" meson -Dwith-desktop-icons=none --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
+endif
 
 override_dh_auto_build:
 	cd debian/build && $(MAKE)
