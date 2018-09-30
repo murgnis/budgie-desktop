@@ -17,7 +17,6 @@ ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 		rm ./debian/ubuntu/applied ; \
 	fi
 endif
-	rm -f ./debian/budgie-desktop.gsettings-override
 
 override_dh_auto_configure:
 	mkdir -p debian/build
@@ -42,11 +41,6 @@ override_dh_auto_install:
 	rm -rf "$(CURDIR)/debian/tmp/usr/lib/girepository-1.0"
 
 override_dh_installgsettings:
-ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
-	cp ./debian/budgie-desktop.gsettings-override.ubuntu ./debian/budgie-desktop.gsettings-override
-else
-	cp ./debian/budgie-desktop.gsettings-override.debian ./debian/budgie-desktop.gsettings-override
-endif
 	# install override but budgie has to take precedence over
 	# gnome-shell defaults
 	dh_installgsettings --priority=15

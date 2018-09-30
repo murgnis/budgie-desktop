@@ -1,3 +1,21 @@
+budgie-desktop (10.4+git20180830.02.f2dbc215fdb-1) unstable; urgency=medium
+
+  * Bug-fix release
+    - Add temporary gsettings override to disable animations to ensure
+      windows do not leave visual artifacts
+    - Patch 0009-Add-null-guards.patch
+      Fix occasional workspace switch crashes
+    - 0010-Ensure-focus-and-button-layout-keys-are-updated.patch
+      Fix right/left decoration placement and mouse over focus
+      issues
+  * Packaging Changes
+    - debian/rules - remove unneeded separate ubuntu/debian overrides
+    - regenerate tarball with git submodule GVC pointing to new
+      gitlab location
+      https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 26 Sep 2018 20:24:39 +0100
+
 budgie-desktop (10.4+git20180830.01.f2dbc215fdb-3) unstable; urgency=medium
 
   * Build desktop icon support with debian/rules update
