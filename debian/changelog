@@ -1,3 +1,11 @@
+budgie-desktop (10.4+git20180830.02.f2dbc215fdb-2) unstable; urgency=medium
+
+  * Bug-fix release
+    - Patch 0011-Override-new-mutter-vertical-workspace-layout.patch
+      Restore horizontal scrolling when switching workspaces
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 07 Oct 2018 21:39:11 +0100
+
 budgie-desktop (10.4+git20180830.02.f2dbc215fdb-1) unstable; urgency=medium
 
   * Bug-fix release

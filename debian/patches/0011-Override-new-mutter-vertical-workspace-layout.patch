@@ -1,0 +1,26 @@
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Last-Update: 2018-10-07
+Description: Override new mutter vertical workspace layout
+Forwarded: No
+Origin: https://github.com/UbuntuBudgie/budgie-desktop/commit/897d8e47af24ed6677a7e81753329f9a8e1bbf64
+
+---
+ src/wm/wm.vala | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/wm/wm.vala b/src/wm/wm.vala
+index d0f3084c..9fe980ef 100644
+--- a/src/wm/wm.vala
++++ b/src/wm/wm.vala
+@@ -498,6 +498,8 @@ public class BudgieWM : Meta.Plugin
+
+         keyboard = new KeyboardManager(this);
+         keyboard.hook_extra();
++
++        display.get_workspace_manager().override_workspace_layout(Meta.DisplayCorner.TOPLEFT, false, 1, -1);
+     }
+
+     /**
+--
+2.17.1
+
