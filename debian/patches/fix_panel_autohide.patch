@@ -1,0 +1,15 @@
+Upstream: created from commit e3f941105e7684e599415a22752b6d00ec524450
+
+Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/panel/manager.vala
+===================================================================
+--- budgie-desktop-10.4+git20171031.10.g9f71bb8.orig/src/panel/manager.vala
++++ budgie-desktop-10.4+git20171031.10.g9f71bb8/src/panel/manager.vala
+@@ -314,7 +314,7 @@ public class PanelManager : DesktopManag
+         Gdk.Rectangle win = Gdk.Rectangle();
+         Gdk.Rectangle pan = Gdk.Rectangle();
+ 
+-        if (window == null) {
++        if (window == null && this.window_list.length() == 0) {
+             return false;
+         }
+ 

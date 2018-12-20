@@ -1,0 +1,92 @@
+Upstream: create in part from upstream 3f693c254117b1a64ea65ffa22e881d0b7a03828
+
+Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/applets/budgie-menu/BudgieMenuWindow.vala
+===================================================================
+--- budgie-desktop-10.4+git20171031.10.g9f71bb8.orig/src/applets/budgie-menu/BudgieMenuWindow.vala
++++ budgie-desktop-10.4+git20171031.10.g9f71bb8/src/applets/budgie-menu/BudgieMenuWindow.vala
+@@ -1,8 +1,8 @@
+ /*
+  * This file is part of budgie-desktop
+- * 
++ *
+  * Copyright © 2015-2017 Budgie Desktop Developers
+- * 
++ *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation; either version 2 of the License, or
+@@ -170,7 +170,7 @@ public class BudgieMenuWindow : Budgie.P
+     /* Mapped id -> button */
+     protected HashTable<string,MenuButton?> menu_buttons = null;
+ 
+-    // The current group 
++    // The current group
+     protected GMenu.TreeDirectory? group = null;
+     protected bool compact_mode;
+     protected bool headers_visible;
+@@ -208,7 +208,7 @@ public class BudgieMenuWindow : Budgie.P
+         }
+         SignalHandler.disconnect_by_func(tree, (void*)refresh_tree, this);
+         this.tree = null;
+-        Idle.add(()=> { 
++        Idle.add(()=> {
+             load_menus(null);
+             content.invalidate_headers();
+             content.invalidate_filter();
+@@ -242,13 +242,13 @@ public class BudgieMenuWindow : Budgie.P
+ 
+     /**
+      * Load "menus" (.desktop's) recursively (ripped from our RunDialog)
+-     * 
++     *
+      * @param tree_root Initialised GMenu.TreeDirectory, or null
+      */
+     private void load_menus(GMenu.TreeDirectory? tree_root = null)
+     {
+         GMenu.TreeDirectory root;
+-    
++
+         // Load the tree for the first time
+         if (tree == null) {
+             tree = new GMenu.Tree(APPS_ID, GMenu.TreeFlags.SORT_DISPLAY_NAME);
+@@ -418,6 +418,7 @@ public class BudgieMenuWindow : Budgie.P
+                 categories_scroll.set_visible(vis);
+                 compact_mode = vis;
+                 content.invalidate_headers();
++                content.invalidate_filter();
+                 content.invalidate_sort();
+                 break;
+             case "menu-headers":
+@@ -429,6 +430,7 @@ public class BudgieMenuWindow : Budgie.P
+                     content.set_header_func(null);
+                 }
+                 content.invalidate_headers();
++                content.invalidate_filter();
+                 content.invalidate_sort();
+                 break;
+             case "menu-categories-hover":
+@@ -505,7 +507,7 @@ public class BudgieMenuWindow : Budgie.P
+             child = after.get_child() as MenuButton;
+             next = child.parent_menu.get_name();
+         }
+-        
++
+         // Only add one if we need one!
+         if (before == null || after == null || prev != next) {
+             var label = new Gtk.Label(Markup.printf_escaped("<big>%s</big>", prev));
+@@ -594,11 +596,11 @@ public class BudgieMenuWindow : Budgie.P
+ 
+         // No more filtering, show all
+         if (group == null) {
+-            // Don't dupe when in "super compact" mode
+-            if (super_compact && this.is_item_dupe(child)) {
+-                return false;
++            if (this.headers_visible) { // If we are going to be showing headers
++                return true;
++            } else { // Not showing headers
++                return !this.is_item_dupe(child);
+             }
+-            return true;
+         }
+ 
+         // If the GMenu.TreeDirectory isn't the same as the current filter, hide it

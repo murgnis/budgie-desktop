@@ -1,0 +1,98 @@
+From d4373f3be4aebb4c79443e075da7544ff00ad584 Mon Sep 17 00:00:00 2001
+From: Yurizal Susanto <rizalsagi@gmail.com>
+Date: Mon, 3 Dec 2018 10:49:20 +0700
+Subject: [PATCH] Fix show desktop applet (#1609)
+
+* Fix show desktop applet
+
+Change the old implementation from using Wnck API, to manually
+minimizing windows and keeping the reference.
+
+* Change the implementation
+
+Keep the reference to windows' xid and use Wnck.Window.@get static
+method to get minimized windows.
+
+* Fix new window not deactivating the applet
+
+Also change closure to proper method for easier reading
+---
+ .../show-desktop/ShowDesktopApplet.vala       | 46 +++++++++++++++++--
+ 1 file changed, 41 insertions(+), 5 deletions(-)
+
+diff --git a/src/applets/show-desktop/ShowDesktopApplet.vala b/src/applets/show-desktop/ShowDesktopApplet.vala
+index cb48e322..1f008135 100644
+--- a/src/applets/show-desktop/ShowDesktopApplet.vala
++++ b/src/applets/show-desktop/ShowDesktopApplet.vala
+@@ -22,6 +22,7 @@ public class ShowDesktopApplet : Budgie.Applet
+     protected Gtk.ToggleButton widget;
+     protected Gtk.Image img;
+     private Wnck.Screen wscreen;
++    private List<ulong> window_list;
+ 
+     public ShowDesktopApplet()
+     {
+@@ -32,20 +33,55 @@ public class ShowDesktopApplet : Budgie.Applet
+         widget.add(img);
+         widget.set_tooltip_text(_("Toggle the desktop"));
+ 
++        window_list = new List<ulong>();
+         wscreen = Wnck.Screen.get_default();
+ 
+-        wscreen.showing_desktop_changed.connect(()=> {
+-            bool showing = wscreen.get_showing_desktop();
+-            widget.set_active(showing);
++        wscreen.window_opened.connect(() => {
++            window_list = new List<ulong>();
++            widget.set_active(false);
+         });
+ 
+-        widget.clicked.connect(()=> {
+-            wscreen.toggle_showing_desktop(widget.get_active());
++        widget.toggled.connect(() => {
++            if (widget.get_active()) {
++                wscreen.get_windows_stacked().foreach(record_windows_state);
++            } else {
++                window_list.foreach(unminimize_windows);
++            }
+         });
+ 
+         add(widget);
+         show_all();
+     }
++
++    private void record_windows_state(Wnck.Window window)
++    {
++        if (window.is_skip_pager() || window.is_skip_tasklist()) {
++            return;
++        }
++
++        window.state_changed.connect(() => {
++            if (!window.is_minimized()) {
++                window_list = new List<ulong>();
++                widget.set_active(false);
++            }
++        });
++
++        if (!window.is_minimized()) {
++            window_list.append(window.get_xid());
++            window.minimize();
++        }
++    }
++
++    private void unminimize_windows(ulong xid)
++    {
++        var window = Wnck.Window.@get(xid);
++
++        if (window != null && window.is_minimized()) {
++            var utc_now = new DateTime.now_utc();
++            var now = (uint32) utc_now.to_unix();
++            window.unminimize(now);
++        }
++    }
+ }
+ 
+ 
+-- 
+2.17.1
+
