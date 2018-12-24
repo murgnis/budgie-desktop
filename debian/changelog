@@ -1,3 +1,11 @@
+budgie-desktop (10.4+git20180830.02.f2dbc215fdb-3) unstable; urgency=medium
+
+  * Packaging Change
+    - simplify rules to ensure Debian and Ubuntu build without
+      desktop-icon support
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 24 Dec 2018 12:06:53 +0000
+
 budgie-desktop (10.4+git20180830.02.f2dbc215fdb-2) unstable; urgency=medium
 
   * Bug-fix release
