@@ -2,6 +2,13 @@ budgie-desktop (10.5-1) UNRELEASED; urgency=medium
 
   * UNRELEASED
   * New upstream release
+    - Resolve wishlist to open addition terminal windows (Closes: #897570)
+  * Bug fixes
+    - Resolve typo in panel translation (Closes: #880719)
+    - Add package lightdm suggestion to advise netinst installation
+      (Closes: #897601)
+    - Ensure budgie-core installs gnome-settings-daemon so that minimal
+      installs do not crash due to missing GNOME schemas (LP: #1688607)
   * Packaging Changes
     - control add new BD libasound2-dev
     - copyright update copyright for new release together with year change
