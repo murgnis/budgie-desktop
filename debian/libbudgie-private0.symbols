@@ -1,4 +1,5 @@
 libbudgie-private.so.0 libbudgie-private0 #MINVER#
+* Build-Depends-Package: budgie-core-dev
  budgie_animation_construct@Base 10.4
  budgie_animation_get_type@Base 10.4
  budgie_animation_new@Base 10.4

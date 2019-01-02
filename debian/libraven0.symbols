@@ -1,6 +1,8 @@
 libraven.so.0 libraven0 #MINVER#
+* Build-Depends-Package: budgie-core-dev
  BUDGIE_CONFDIR@Base 10.3
  BUDGIE_DATADIR@Base 10.3
+ BUDGIE_ESCAPE_STRINGS@Base 10.5
  BUDGIE_GETTEXT_PACKAGE@Base 10.3
  BUDGIE_LOCALEDIR@Base 10.3
  BUDGIE_MODULE_DATA_DIRECTORY@Base 10.3
@@ -132,6 +134,7 @@ libraven.so.0 libraven0 #MINVER#
  budgie_session_manager_register_object@Base 10.3
  budgie_sound_widget_construct@Base 10.4
  budgie_sound_widget_get_type@Base 10.4
+ budgie_sound_widget_has_devices@Base 10.5
  budgie_sound_widget_new@Base 10.4
  budgie_start_listening_check_music_support@Base 10.4
  budgie_start_listening_construct@Base 10.4
@@ -238,3 +241,7 @@ libraven.so.0 libraven0 #MINVER#
  player_iface_set_volume@Base 10.3
  player_iface_stop@Base 10.3
  player_iface_stop_finish@Base 10.3
+ raven_widget_construct@Base 10.5
+ raven_widget_get_type@Base 10.5
+ raven_widget_new@Base 10.5
+ raven_widget_set_show@Base 10.5

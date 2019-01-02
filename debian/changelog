@@ -1,3 +1,14 @@
+budgie-desktop (10.5-1) UNRELEASED; urgency=medium
+
+  * UNRELEASED
+  * New upstream release
+  * Packaging Changes
+    - control add new BD libasound2-dev
+    - copyright update copyright for new release together with year change
+    - control Bump StandardsVersion - fixed symbols Build-Depends-Package
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 02 Jan 2019 15:45:51 +0000
+
 budgie-desktop (10.4+git20180830.02.f2dbc215fdb-3) unstable; urgency=medium
 
   * Packaging Change

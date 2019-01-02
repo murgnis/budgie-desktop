@@ -1,4 +1,5 @@
 libbudgie-plugin.so.0 libbudgie-plugin0 #MINVER#
+* Build-Depends-Package: budgie-core-dev
  budgie_applet_get_applet_settings@Base 10.4
  budgie_applet_get_settings_prefix@Base 10.4
  budgie_applet_get_settings_schema@Base 10.4
