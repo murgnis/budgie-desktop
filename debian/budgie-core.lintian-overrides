@@ -12,3 +12,4 @@ budgie-core: library-not-linked-against-libc usr/lib/budgie-desktop/plugins/org.
 budgie-core: library-not-linked-against-libc usr/lib/budgie-desktop/plugins/org.budgie-desktop.applet.show-desktop/libshowdesktopapplet.so
 budgie-core: library-not-linked-against-libc usr/lib/budgie-desktop/plugins/org.budgie-desktop.applet.spacer/libspacerapplet.so
 budgie-core: library-not-linked-against-libc usr/lib/budgie-desktop/plugins/org.budgie-desktop.applet.tasklist/libtasklistapplet.so
+budgie-core: library-not-linked-against-libc usr/lib/budgie-desktop/plugins/org.budgie-desktop.applet.caffeine/libcaffeineapplet.so

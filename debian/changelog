@@ -1,7 +1,7 @@
-budgie-desktop (10.5-1) UNRELEASED; urgency=medium
+budgie-desktop (10.4+git20190110.01.1f8eceaa58e-1) unstable; urgency=medium
 
-  * UNRELEASED
-  * New upstream release
+  * New upstream git release
+    - Release combines the git master release + gnome-3.30 patch work
     - Resolve wishlist to open addition terminal windows (Closes: #897570)
   * Bug fixes
     - Resolve typo in panel translation (Closes: #880719)
@@ -13,8 +13,16 @@ budgie-desktop (10.5-1) UNRELEASED; urgency=medium
     - control add new BD libasound2-dev
     - copyright update copyright for new release together with year change
     - control Bump StandardsVersion - fixed symbols Build-Depends-Package
+    - Drop the following patches since they have been merged upstream
+      0006-Install-missing-notification-icon-1545.patch
+      0008-Add-copyright-for-notification-disabled-symbolic.svg.patch
+    - Drop 0007-Check-if-schema-is-defined-for-volume-slider-changes.patch
+      since this as not been accepted by upstream
+    - Merge remaining patches into one gnome-3.30-compatibility.patch
+      except for the following that has been kept local
+      1000-Obtain-gsettings-transparency-key-value-before-showi.patch
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 02 Jan 2019 15:45:51 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 10 Jan 2019 15:45:51 +0000
 
 budgie-desktop (10.4+git20180830.02.f2dbc215fdb-3) unstable; urgency=medium
 
