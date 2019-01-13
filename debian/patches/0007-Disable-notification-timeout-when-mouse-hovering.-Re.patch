@@ -1,0 +1,37 @@
+Description: [PATCH] Disable notification timeout when mouse hovering. Resolves
+ #1438.
+Origin: Commit c55bc8d52650cfe4dc7ce5b3b43decbf22ea8218
+Author: Joshua Strobl <joshua@stroblindustries.com>
+Last-Update: 2018-05-29
+
+---
+ src/raven/notifications_view.vala | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/raven/notifications_view.vala b/src/raven/notifications_view.vala
+index 7f271503..34dbdd11 100644
+--- a/src/raven/notifications_view.vala
++++ b/src/raven/notifications_view.vala
+@@ -157,6 +157,19 @@ public class NotificationWindow : Gtk.Window
+             owner.ActionInvoked(this.id, "default");
+             return Gdk.EVENT_STOP;
+         });
++
++        /**
++         * Handlers for mouse in / out
++         */
++        enter_notify_event.connect(() => {
++            stop_decay(); // Stop decay of notification
++            return Gdk.EVENT_STOP;
++        });
++
++        leave_notify_event.connect(() => {
++            begin_decay(); // Begin decay of notification
++            return Gdk.EVENT_STOP;
++        });
+     }
+
+     void action_handler(Gtk.Button? button)
+--
+2.17.1
+

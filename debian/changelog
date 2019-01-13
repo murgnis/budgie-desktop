@@ -1,9 +1,24 @@
-budgie-desktop (10.4+git20171031.10.g9f71bb8-1.3) UNRELEASED; urgency=medium
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.1) bionic; urgency=medium
 
-  * Bug fix release
-    - deduplicate-menus.patch: deduplicate All category Menus
+  * cherrypick upstream commits
+    - 0003-Fix-show-desktop-applet-1609.patch:
+      Ensure show-desktop applet toggles correctly after showing a tooltip
+    - 0004-polkit-Ensure-the-cancellable-is-truly-unowned.patch:
+      Allow cancel from polkit windows
+    - 0005-Set-ellipsize-property-on-notifications.patch
+      0006-Ensure-notification-title-is-properly-ellipsized.-Re.patch
+      Make notifications consistent size; stop overlarge notification
+      windows
+    - 0007-Disable-notification-timeout-when-mouse-hovering.-Re.patch
+      Ensure notifications remain visible if mouse is hovering over theme
+    - 0008-Fix-reading-themes-from-users-.themes-folder.patch
+      Support user based themes in legacy ~/.themes folder
+    - fix_panel_autohide.patch
+      Enable autohiding when using multiple budgie panels
+    - deduplicate-menuall.patch
+      deduplicate All category Menu
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 20 Dec 2018 23:02:27 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 13 Jan 2019 19:02:27 +0000
 
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1) bionic; urgency=medium
 

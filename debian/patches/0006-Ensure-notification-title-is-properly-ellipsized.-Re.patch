@@ -1,0 +1,35 @@
+Description: [PATCH] Ensure notification title is properly ellipsized. Resolves
+ #1154.
+Origin: Commit 22a819fafef51339437a5d9e293e05db5f91a922
+Author:Joshua Strobl <joshua@stroblindustries.com>
+Last-Update: 2018-08-01
+
+---
+ src/raven/notifications_view.vala | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/raven/notifications_view.vala b/src/raven/notifications_view.vala
+index 3691a87c..13842901 100644
+--- a/src/raven/notifications_view.vala
++++ b/src/raven/notifications_view.vala
+@@ -120,6 +120,8 @@ public class NotificationClone : Gtk.Grid
+         }
+
+         label_title.set_markup(safe_markup_string(target.title));
++        label_title.ellipsize = Pango.EllipsizeMode.END;
++
+         label_body.set_markup(safe_markup_string(target.body));
+
+         var date = new DateTime.from_unix_local(target.timestamp);
+@@ -421,6 +423,8 @@ public class NotificationWindow : Gtk.Window
+             label_title.set_markup(safe_markup_string(summary));
+             this.title = summary;
+         }
++
++        label_title.ellipsize = Pango.EllipsizeMode.END;
+
+         label_body.set_markup(safe_markup_string(body));
+         this.body = body;
+--
+2.17.1
+

@@ -20,7 +20,7 @@ index 99a8fb23..f5c4326f 100644
 +++ b/src/session/meson.build
 @@ -9,7 +9,6 @@ gnome_session_components = [
  ]
- 
+
  gnome_session_324_components = [
 -    'org.gnome.SettingsDaemon.A11yKeyboard',
      'org.gnome.SettingsDaemon.A11ySettings',
@@ -29,7 +29,7 @@ index 99a8fb23..f5c4326f 100644
 @@ -29,6 +28,10 @@ gnome_session_324_components = [
      'org.gnome.SettingsDaemon.XSettings',
  ]
- 
+
 +gsd_324_key = [
 +    'org.gnome.SettingsDaemon.A11yKeyboard'
 +]
@@ -40,7 +40,7 @@ index 99a8fb23..f5c4326f 100644
 @@ -45,11 +48,14 @@ if with_polkit == true
      budgie_components += 'budgie-polkit'
  endif
- 
+
 -# Merge the list depending on the GNOME version. We pick mutter arbitrarily.
 -if dep_mutter.version().version_compare('>=3.25.4')
 +dep_gsd = dependency('gnome-settings-daemon', version: gnome_minimum_version)
@@ -56,6 +56,6 @@ index 99a8fb23..f5c4326f 100644
  else
      session_components = gnome_session_components + budgie_components
  endif
--- 
+--
 2.14.1
 

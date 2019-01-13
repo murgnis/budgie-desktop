@@ -2,8 +2,11 @@
 0002-Switch-to-checking-GSD-version-for-the-build-1319.patch
 libmutter-2.patch
 fix_black_tray_backgrounds.patch
-deduplicate-menus.patch
 0003-Fix-show-desktop-applet-1609.patch
 fix_panel_autohide.patch
 0004-polkit-Ensure-the-cancellable-is-truly-unowned.patch
-
+deduplicate-menuall.patch
+0005-Set-ellipsize-property-on-notifications.patch
+0006-Ensure-notification-title-is-properly-ellipsized.-Re.patch
+0007-Disable-notification-timeout-when-mouse-hovering.-Re.patch
+0008-Fix-reading-themes-from-users-.themes-folder.patch
