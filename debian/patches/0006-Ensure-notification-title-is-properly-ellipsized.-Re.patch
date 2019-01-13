@@ -8,28 +8,25 @@ Last-Update: 2018-08-01
  src/raven/notifications_view.vala | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/src/raven/notifications_view.vala b/src/raven/notifications_view.vala
-index 3691a87c..13842901 100644
---- a/src/raven/notifications_view.vala
-+++ b/src/raven/notifications_view.vala
-@@ -120,6 +120,8 @@ public class NotificationClone : Gtk.Grid
+Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/raven/notifications_view.vala
+===================================================================
+--- budgie-desktop-10.4+git20171031.10.g9f71bb8.orig/src/raven/notifications_view.vala
++++ budgie-desktop-10.4+git20171031.10.g9f71bb8/src/raven/notifications_view.vala
+@@ -115,6 +115,8 @@ public class NotificationClone : Gtk.Gri
          }
-
+ 
          label_title.set_markup(safe_markup_string(target.title));
 +        label_title.ellipsize = Pango.EllipsizeMode.END;
 +
          label_body.set_markup(safe_markup_string(target.body));
-
+ 
          var date = new DateTime.from_unix_local(target.timestamp);
-@@ -421,6 +423,8 @@ public class NotificationWindow : Gtk.Window
-             label_title.set_markup(safe_markup_string(summary));
-             this.title = summary;
+@@ -416,6 +418,8 @@ public class NotificationWindow : Gtk.Wi
+             return;
          }
-+
+ 
 +        label_title.ellipsize = Pango.EllipsizeMode.END;
-
-         label_body.set_markup(safe_markup_string(body));
-         this.body = body;
---
-2.17.1
-
++
+         if (actions.length == this.actions.length) {
+             bool same = true;
+             for (int i = 0; i < actions.length; i++) {
