@@ -1,6 +1,6 @@
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.1) bionic; urgency=medium
 
-  * cherrypick upstream commits
+  * cherrypick upstream commits (LP: #1811620)
     - 0003-Fix-show-desktop-applet-1609.patch:
       Ensure show-desktop applet toggles correctly after showing a tooltip
     - 0004-polkit-Ensure-the-cancellable-is-truly-unowned.patch:

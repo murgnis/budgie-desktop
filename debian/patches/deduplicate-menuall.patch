@@ -1,15 +1,8 @@
-Description: Switch to checking GSD version for the build #1319 GNOME 3.24
- Split the monolithic gnome-settings-daemon into individual components. With
- each subsequent release the component list is being reduced; capability is
- being pushed into GNOME Shell itself. Budgie Desktop v10.4.x needs to adapt
- to this forced change by checking the GSD version and compiling those
- components that correspond to the upcoming stable release. This commit
- introduces support for the upcoming GNOME 3.28 release of GSD (beta 3.27.90
- of GSD)
-Author: David Mohammed <fossfreedom@ubuntu.com>
-Origin: Other
-Forwarded: https://github.com/budgie-desktop/budgie-desktop/pull/1336
-Last-Update: 2018-02-18
+Description: Deduplicate Menu All patch
+ This commit has been rebased on the 10.4 bionic code base.
+Author: Budgie Desktop Developers
+Origin: Commit 3f693c254117b1a64ea65ffa22e881d0b7a03828
+Last-Update: 2018-12-20
 ---
  src/session/meson.build | 16 +++++++++++-----
  1 file changed, 11 insertions(+), 5 deletions(-)
@@ -35,7 +28,7 @@ Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/applets/budgie-menu/Budgi
                  break;
              case "menu-categories-hover":
 @@ -594,11 +596,11 @@ public class BudgieMenuWindow : Budgie.P
- 
+
          // No more filtering, show all
          if (group == null) {
 -            // Don't dupe when in "super compact" mode
@@ -48,5 +41,5 @@ Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/applets/budgie-menu/Budgi
              }
 -            return true;
          }
- 
+
          // If the GMenu.TreeDirectory isn't the same as the current filter, hide it
