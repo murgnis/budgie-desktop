@@ -15,6 +15,10 @@ Files: data/icons/actions/notification-disabled-symbolic.svg
 Copyright: 2008, Brian Tarricone <bjt23@cornell.edu>
 License: GPL-2+
 
+Files: translations/*
+Copyright: 2014-2019, Budgie Desktop Developers
+License: GPL-2
+
 Files: data/icons/actions/pane-show-symbolic.svg
  data/icons/actions/pane-hide-symbolic.svg
 Copyright: 2018, horst3180
