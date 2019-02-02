@@ -1,15 +1,3 @@
-budgie-desktop (10.5.0-1) UNRELEASED; urgency=medium
-
-  * New upstream release
-    - point to upstream changelog
-  * Packaging Changes
-    - Copyright: Revised copyright for translations
-    - Control: Update to build-depends to include libnotify-dev
-    - Rules: Remove obsolete translation install removal
-      add optimization build LD_FLAG
-
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 16 Jan 2019 16:02:02 +0000
-
 budgie-desktop (10.4+git20190110.01.1f8eceaa58e-1) unstable; urgency=medium
 
   * New upstream git release
