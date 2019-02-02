@@ -1,3 +1,18 @@
+budgie-desktop (10.5~git20190202-1) unstable; urgency=medium
+
+  * New upstream git release
+    - Version bump to reflect upstream budgie-desktop version change
+      pending upstream git version tag
+    - archive built from commit 73df80757c8b1781dc23
+  * Packaging Changes
+    - update libraven0 symbols for this release
+    - Copyright: Revised copyright for translations
+    - Control: Update to build-depends to include libnotify-dev
+    - Rules: Remove obsolete translation install removal
+      add optimization build LD_FLAG
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 02 Feb 2019 21:28:58 +0000
+
 budgie-desktop (10.4+git20190110.01.1f8eceaa58e-1) unstable; urgency=medium
 
   * New upstream git release

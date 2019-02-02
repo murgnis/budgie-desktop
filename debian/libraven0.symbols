@@ -49,6 +49,7 @@ libraven.so.0 libraven0 #MINVER#
  budgie_notification_placeholder_construct@Base 10.3
  budgie_notification_placeholder_get_type@Base 10.3
  budgie_notification_placeholder_new@Base 10.3
+ budgie_notification_position_get_type@Base 10.5~git20190202
  budgie_notification_window_begin_decay@Base 10.3
  budgie_notification_window_construct@Base 10.3
  budgie_notification_window_get_owner@Base 10.3

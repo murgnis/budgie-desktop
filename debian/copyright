@@ -15,6 +15,10 @@ Files: data/icons/actions/notification-disabled-symbolic.svg
 Copyright: 2008, Brian Tarricone <bjt23@cornell.edu>
 License: GPL-2+
 
+Files: subprojects/translations/*
+Copyright: 2014-2019, Budgie Desktop Developers
+License: GPL-2
+
 Files: data/icons/actions/pane-show-symbolic.svg
  data/icons/actions/pane-hide-symbolic.svg
 Copyright: 2018, horst3180
@@ -112,7 +116,7 @@ Files: src/wm/keyboard.vala
 Copyright: GNOME Shell Developers (Heavy inspiration, logic theft) / 2015-2019, Budgie Desktop Developers
 License: GPL-2+
 
-Files: subprojects/*
+Files: subprojects/gvc/*
 Copyright: 2008, 2009, Red Hat, Inc.
 License: GPL-2+
 
