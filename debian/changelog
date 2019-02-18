@@ -1,12 +1,15 @@
 budgie-desktop (10.5~git20190218-1) UNRELEASED; urgency=medium
 
+  [ David Mohammed ]
   * Bug-fix git release
     - archive built from commit f62524110961cbbaf6e9
     - Ensure polkit dialog cancel correctly dismisses rather
       than hanging, with patch
       0001-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
+    - refresh gnome-3.30-compatability.patch to build
+      against upstream tarball
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 18 Feb 2019 12:23:18 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 18 Feb 2019 12:58:45 +0000
 
 budgie-desktop (10.5~git20190202-1) unstable; urgency=medium
 

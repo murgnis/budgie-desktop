@@ -3,10 +3,10 @@ Description: [PATCH] Port to mutter-3 from GNOME 3.30
  support them all.
 Author: Iain Lane <iain@orangesquash.org.uk>, David Mohammed <fossfreedom@ubuntu.com>
 Forwarded: https://github.com/solus-project/budgie-desktop/pull/1591
-Last-Update: 2019-01-10
+Last-Update: 2019-02-18
 
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/icon-tasklist/DesktopHelper.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/icon-tasklist/DesktopHelper.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/icon-tasklist/DesktopHelper.vala
++++ budgie-desktop-10.5~git20190218/src/applets/icon-tasklist/DesktopHelper.vala
 @@ -79,7 +79,11 @@ public class DesktopHelper : GLib.Object
          GLib.List<unowned Wnck.Window> list = new GLib.List<unowned Wnck.Window>();
          screen.get_windows_stacked().foreach((window) => {
@@ -20,8 +20,8 @@ Last-Update: 2019-01-10
                      list.append(window);
                  }
              }
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/icon-tasklist/Icon.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/icon-tasklist/Icon.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/icon-tasklist/Icon.vala
++++ budgie-desktop-10.5~git20190218/src/applets/icon-tasklist/Icon.vala
 @@ -20,8 +20,8 @@ public class Icon : Gtk.Image
      private int wait_cycle_counter = 0;
      private int attention_cycle_counter = 0;
@@ -59,9 +59,9 @@ Last-Update: 2019-01-10
 +        //default = 1.0;
      }
  
-     public Icon() {}
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/icon-tasklist/IconTasklistApplet.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/icon-tasklist/IconTasklistApplet.vala
+     public Icon() {
+--- budgie-desktop-10.5~git20190218.orig/src/applets/icon-tasklist/IconTasklistApplet.vala
++++ budgie-desktop-10.5~git20190218/src/applets/icon-tasklist/IconTasklistApplet.vala
 @@ -228,7 +228,11 @@ public class IconTasklistApplet : Budgie
              bool visible = true;
  
@@ -75,8 +75,8 @@ Last-Update: 2019-01-10
              }
  
              if (this.only_show_pinned) {
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/status/PowerIndicator.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/status/PowerIndicator.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/status/PowerIndicator.vala
++++ budgie-desktop-10.5~git20190218/src/applets/status/PowerIndicator.vala
 @@ -30,7 +30,7 @@ public class BatteryIcon : Gtk.Box
          public get {
              return this.percent_label.visible;
@@ -86,8 +86,8 @@ Last-Update: 2019-01-10
      }
  
      public BatteryIcon(Up.Device battery) {
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/workspaces/WindowIcon.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/workspaces/WindowIcon.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/workspaces/WindowIcon.vala
++++ budgie-desktop-10.5~git20190218/src/applets/workspaces/WindowIcon.vala
 @@ -52,7 +52,8 @@ public class WindowIcon : Gtk.Button
          if (event.button != 1) {
              return false;
@@ -98,8 +98,8 @@ Last-Update: 2019-01-10
              window.activate(event.time);
              return false;
          }
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/workspaces/WorkspaceItem.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/workspaces/WorkspaceItem.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/workspaces/WorkspaceItem.vala
++++ budgie-desktop-10.5~git20190218/src/applets/workspaces/WorkspaceItem.vala
 @@ -283,7 +283,8 @@ public class WorkspaceItem : Gtk.EventBo
      public override bool button_release_event(Gdk.EventButton event)
      {
@@ -110,8 +110,8 @@ Last-Update: 2019-01-10
                  return Gdk.EVENT_STOP;
              }
              workspace.activate(event.time);
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/applets/workspaces/WorkspacesApplet.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/applets/workspaces/WorkspacesApplet.vala
+--- budgie-desktop-10.5~git20190218.orig/src/applets/workspaces/WorkspacesApplet.vala
++++ budgie-desktop-10.5~git20190218/src/applets/workspaces/WorkspacesApplet.vala
 @@ -270,7 +270,8 @@ public class WorkspacesApplet : Budgie.A
      private void workspace_added(Wnck.Workspace space)
      {
@@ -132,8 +132,8 @@ Last-Update: 2019-01-10
              var previous = wnck_screen.get_workspace((index == 0) ? index : index - 1);
              previous.activate(time);
          }
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/daemon/settings.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/daemon/settings.vala
+--- budgie-desktop-10.5~git20190218.orig/src/daemon/settings.vala
++++ budgie-desktop-10.5~git20190218/src/daemon/settings.vala
 @@ -1,8 +1,8 @@
  /*
   * This file is part of budgie-desktop
@@ -145,7 +145,7 @@ Last-Update: 2019-01-10
   * This program is free software; you can redistribute it and/or modify
   * it under the terms of the GNU General Public License as published by
   * the Free Software Foundation; either version 2 of the License, or
-@@ -235,8 +235,7 @@ public class SettingsManager {
+@@ -285,8 +285,7 @@ public class SettingsManager {
          }
  
          this.xoverrides.set_value("overrides", xset);
@@ -155,8 +155,8 @@ Last-Update: 2019-01-10
      }
  
      /**
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/panel/panel.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/panel/panel.vala
+--- budgie-desktop-10.5~git20190218.orig/src/panel/panel.vala
++++ budgie-desktop-10.5~git20190218/src/panel/panel.vala
 @@ -120,7 +120,7 @@ public class Panel : Budgie.Toplevel
          public get {
              return render_scale;
@@ -166,8 +166,8 @@ Last-Update: 2019-01-10
      }
  
      public bool activate_action(int remote_action)
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/panel/settings/settings_wm.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/panel/settings/settings_wm.vala
+--- budgie-desktop-10.5~git20190218.orig/src/panel/settings/settings_wm.vala
++++ budgie-desktop-10.5~git20190218/src/panel/settings/settings_wm.vala
 @@ -1,8 +1,8 @@
  /*
   * This file is part of budgie-desktop
@@ -208,8 +208,8 @@ Last-Update: 2019-01-10
  } /* End class */
  
  } /* End namespace */
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/raven/headerwidget.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/raven/headerwidget.vala
+--- budgie-desktop-10.5~git20190218.orig/src/raven/headerwidget.vala
++++ budgie-desktop-10.5~git20190218/src/raven/headerwidget.vala
 @@ -34,7 +34,7 @@ public class HeaderExpander : Gtk.Button
          public get {
              return this._expanded;
@@ -219,8 +219,8 @@ Last-Update: 2019-01-10
      }
  
      public HeaderExpander(HeaderWidget? owner)
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/raven/raven.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/raven/raven.vala
+--- budgie-desktop-10.5~git20190218.orig/src/raven/raven.vala
++++ budgie-desktop-10.5~git20190218/src/raven/raven.vala
 @@ -170,7 +170,7 @@ public class Raven : Gtk.Window
          public get {
              return this._screen_edge;
@@ -231,7 +231,7 @@ Last-Update: 2019-01-10
  
      int our_width = 0;
 --- /dev/null
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/20_solus-project.budgie.wm.gschema.override
++++ budgie-desktop-10.5~git20190218/src/wm/20_solus-project.budgie.wm.gschema.override
 @@ -0,0 +1,7 @@
 +[org.gnome.mutter:Budgie]
 +edge-tiling = true
@@ -240,8 +240,8 @@ Last-Update: 2019-01-10
 +[org.gnome.desktop.wm.preferences:Budgie]
 +button-layout = 'appmenu:minimize,maximize,close'
 +
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/background.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/background.vala
+--- budgie-desktop-10.5~git20190218.orig/src/wm/background.vala
++++ budgie-desktop-10.5~git20190218/src/wm/background.vala
 @@ -24,7 +24,7 @@ public const string ACCOUNTS_SCHEMA
  public class BudgieBackground : Meta.BackgroundGroup
  {
@@ -287,8 +287,8 @@ Last-Update: 2019-01-10
          actor.set_size(rect.width, rect.height);
          actor.set("opacity", 0);
          actor.show();
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/com.solus-project.budgie.wm.gschema.xml
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/com.solus-project.budgie.wm.gschema.xml
+--- budgie-desktop-10.5~git20190218.orig/src/wm/com.solus-project.budgie.wm.gschema.xml
++++ budgie-desktop-10.5~git20190218/src/wm/com.solus-project.budgie.wm.gschema.xml
 @@ -7,17 +7,6 @@
    </enum>
  
@@ -329,8 +329,8 @@ Last-Update: 2019-01-10
      <key enum="com.solus-project.budgie-wm.ButtonPosition" name="button-style">
        <default>'traditional'</default>
        <summary>Button layout style</summary>
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/keyboard.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/keyboard.vala
+--- budgie-desktop-10.5~git20190218.orig/src/wm/keyboard.vala
++++ budgie-desktop-10.5~git20190218/src/wm/keyboard.vala
 @@ -103,9 +103,9 @@ public class KeyboardManager : GLib.Obje
          on_settings_changed("sources");
      }
@@ -380,8 +380,8 @@ Last-Update: 2019-01-10
          is_keyboard_held = true;
      }
  }
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/meson.build
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/meson.build
+--- budgie-desktop-10.5~git20190218.orig/src/wm/meson.build
++++ budgie-desktop-10.5~git20190218/src/wm/meson.build
 @@ -15,8 +15,8 @@ budgie_wm_sources = [
      'wm.vala',
  ]
@@ -402,8 +402,8 @@ Last-Update: 2019-01-10
 +          '20_solus-project.budgie.wm.gschema.override'),
      install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
  )
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/shim.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/shim.vala
+--- budgie-desktop-10.5~git20190218.orig/src/wm/shim.vala
++++ budgie-desktop-10.5~git20190218/src/wm/shim.vala
 @@ -150,7 +150,7 @@ public class ShellShim : GLib.Object
          grabs = new HashTable<uint,string>(direct_hash, direct_equal);
          watches = new HashTable<string,uint>(str_hash, str_equal);
@@ -413,8 +413,8 @@ Last-Update: 2019-01-10
          display.accelerator_activated.connect(on_accelerator_activated);
  
          handler = new SessionHandler();
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/src/wm/wm.vala
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/src/wm/wm.vala
+--- budgie-desktop-10.5~git20190218.orig/src/wm/wm.vala
++++ budgie-desktop-10.5~git20190218/src/wm/wm.vala
 @@ -158,7 +158,7 @@ public class BudgieWM : Meta.Plugin
      private bool force_unredirect = false;
  
@@ -718,7 +718,7 @@ Last-Update: 2019-01-10
      }
  
 --- /dev/null
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/vapi/Meta-3.metadata
++++ budgie-desktop-10.5~git20190218/vapi/Meta-3.metadata
 @@ -0,0 +1,66 @@
 +Backend cheader_filename="meta/meta-backend.h"
 +Background cheader_filename="meta/meta-background.h"
@@ -786,8 +786,8 @@ Last-Update: 2019-01-10
 +run skip=false
 +show_dialog skip=false
 +get_backend cheader_filename="meta/meta-backend.h"
---- budgie-desktop-10.4+git20190110.01.1f8eceaa58e.orig/vapi/README.md
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/vapi/README.md
+--- budgie-desktop-10.5~git20190218.orig/vapi/README.md
++++ budgie-desktop-10.5~git20190218/vapi/README.md
 @@ -7,3 +7,7 @@ To refresh the Polkit vapi files:
      vapigen --library polkit-agent-1 /usr/share/gir-1.0/PolkitAgent-1.0.gir --pkg gio-unix-2.0 --pkg polkit-gobject-1 --girdir=. --vapidir=.
  
@@ -797,7 +797,7 @@ Last-Update: 2019-01-10
 +
 +vapigen --library libmutter-3 /usr/lib/x86_64-linux-gnu/mutter/Meta-3.gir --girdir /usr/lib/x86_64-linux-gnu/mutter/ -d . --pkg cairo --pkg gdk-3.0 --pkg gdk-pixbuf-2.0 --pkg gtk+-3.0 --pkg x11 --pkg json-glib-1.0 --girdir . --vapidir . --metadatadir . --girdir /usr/lib/x86_64-linux-gnu/mutter/
 --- /dev/null
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/vapi/libmutter-3-custom.vala
++++ budgie-desktop-10.5~git20190218/vapi/libmutter-3-custom.vala
 @@ -0,0 +1,6 @@
 +namespace Meta {
 +	public abstract class MonitorManager : Meta.DBusDisplayConfigSkeleton, GLib.DBusInterface {
@@ -806,7 +806,7 @@ Last-Update: 2019-01-10
 +	}
 +}
 --- /dev/null
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/vapi/libmutter-3.deps
++++ budgie-desktop-10.5~git20190218/vapi/libmutter-3.deps
 @@ -0,0 +1,9 @@
 +cairo
 +gsettings-desktop-schemas
@@ -818,7 +818,7 @@ Last-Update: 2019-01-10
 +clutter-1.0
 +cogl-1.0
 --- /dev/null
-+++ budgie-desktop-10.4+git20190110.01.1f8eceaa58e/vapi/libmutter-3.vapi
++++ budgie-desktop-10.5~git20190218/vapi/libmutter-3.vapi
 @@ -0,0 +1,1380 @@
 +/* libmutter-3.vapi generated by vapigen, do not modify. */
 +
