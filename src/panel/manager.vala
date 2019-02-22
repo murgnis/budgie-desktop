@@ -264,8 +264,7 @@ public class PanelManager : DesktopManager
      */
     private void window_opened(Wnck.Window window)
     {
-        unowned List<Wnck.Window>? element = window_list.find(window);
-        if (element != null) {
+        if (window_list.find(window) != null) {
             return;
         }
 
@@ -293,8 +292,7 @@ public class PanelManager : DesktopManager
      */
     private void window_closed(Wnck.Window window)
     {
-        unowned List<Wnck.Window>? element = window_list.find(window);
-        if (element == null) {
+        if (window_list.find(window) == null) {
             return;
         }
 
