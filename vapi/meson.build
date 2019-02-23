@@ -56,7 +56,14 @@ mutter_clutter_vapi = gnome.generate_vapi('mutter-clutter-' + mutter_api,
     gir_dirs: mutter_gir_dir,
 )
 
-libmutter_vapi = gnome.generate_vapi('libmutter-' + mutter_api,
+# We need to create an empty file matching the expected vapi name
+libmutter_fake_vapi = custom_target('libmutter-fake-vapi',
+    command: ['echo'],
+    output: 'libmutter-' + mutter_api + '.vapi',
+    capture: true,
+)
+
+libmutter_vapi = gnome.generate_vapi('mutter-' + mutter_api,
     install: false,
     sources: [
         join_paths(mutter_gir_dir, 'Meta-'+mutter_api+'.gir')

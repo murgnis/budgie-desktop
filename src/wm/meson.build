@@ -13,10 +13,12 @@ budgie_wm_sources = [
     'main.vala',
     'shim.vala',
     'wm.vala',
+    libmutter_fake_vapi,
 ]
 
 budgie_wm_deps = [
     link_libconfig,
+    dep_mutter,
     dep_gnomedesktop,
     dep_gsettings,
     dep_ibus,
@@ -55,14 +57,6 @@ executable(
     vala_args: budgie_wm_vala_args,
     c_args: [
         '-DGNOME_DESKTOP_USE_UNSTABLE_API',
-        # Because of usage of custom vapi as dependencies we can't use dependency
-        # otherwise we'd get the vapi loaded twice
-        run_command('pkg-config', '--cflags', mutter_dep_name).stdout().strip().split(' '),
-    ],
-    link_args: [
-        # Because of usage of custom vapi as dependencies we can't use dependency
-        # otherwise we'd get the vapi loaded twice
-        run_command('pkg-config', '--libs', mutter_dep_name).stdout().strip().split(' '),
     ],
     install_rpath: rpath,
 )
