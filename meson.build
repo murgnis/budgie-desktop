@@ -140,6 +140,7 @@ gvc = subproject('gvc',
 translations = subproject('translations')
 
 # Now build Budgie proper
+subdir('vapi')
 subdir('src')
 
 # Documentation...

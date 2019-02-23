@@ -22,25 +22,30 @@ polkit_sources = [
 
 # Don't need APIs from anything older than this
 pkversion = '>= 0.105'
+pk_pkgs = ['polkit-gobject-1', 'polkit-agent-1']
+
+foreach pkg: pk_pkgs
+    dependency(pkg, version: pkversion)
+endforeach
 
 polkit_deps = [
     dep_gtk3,
     link_libconfig,
     link_libtheme,
     link_libsession,
-    dependency('polkit-gobject-1', version: pkversion),
-    dependency('polkit-agent-1', version: pkversion),
+    polkit_gobject_vapi,
+    polkit_agent_vapi,
 ]
 
 # polkit vapi files are in top vapi dir
-pkvapi = join_paths(meson.source_root(), 'vapi')
+pkvapi = join_paths(meson.build_root(), 'vapi')
 
 # Need absolute path to gresource
 gresource = join_paths(meson.current_source_dir(), 'budgie-polkit.gresource.xml')
 
 executable(
     'budgie-polkit-dialog', polkit_sources,
-    dependencies: polkit_deps,
+    dependencies: [polkit_deps],
     vala_args: [
         '--vapidir', dir_libtheme,
         '--vapidir', dir_libconfig,
@@ -49,8 +54,6 @@ executable(
         '--pkg', 'gio-unix-2.0',
         '--pkg', 'budgie-config',
         '--pkg', 'gtk+-3.0',
-        '--pkg', 'polkit-gobject-1',
-        '--pkg', 'polkit-agent-1',
         '--pkg', 'posix',
         '--pkg', 'theme',
         # Make gresource work
@@ -59,6 +62,14 @@ executable(
     ],
     c_args: [
         '-DPOLKIT_AGENT_I_KNOW_API_IS_SUBJECT_TO_CHANGE',
+        # Because of usage of custom vapi as dependencies we can't use dependency
+        # otherwise we'd get the vapi loaded twice
+        run_command('pkg-config', '--cflags', pk_pkgs).stdout().strip().split(' '),
+    ],
+    link_args: [
+        # Because of usage of custom vapi as dependencies we can't use dependency
+        # otherwise we'd get the vapi loaded twice
+        run_command('pkg-config', '--libs', pk_pkgs).stdout().strip().split(' '),
     ],
     install: true,
 )
