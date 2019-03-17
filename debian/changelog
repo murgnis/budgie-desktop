@@ -1,7 +1,6 @@
-budgie-desktop (10.5~git20190218-1) UNRELEASED; urgency=medium
+budgie-desktop (10.5~git20190218-1) unstable; urgency=medium
 
-  [ David Mohammed ]
-  * Bug-fix git release
+  * Bug-fix git and Translation release
     - archive built from commit f62524110961cbbaf6e9
     - Ensure polkit dialog cancel correctly dismisses rather
       than hanging, with patch
