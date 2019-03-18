@@ -24,7 +24,7 @@ ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 	patch -p1 < debian/ubuntu/show_nm-applet_in_tray.patch
 	touch ./debian/ubuntu/applied
 endif
-	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro -O2" meson -Dwith-desktop-icons=none --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
+	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro -O1" meson -Dwith-desktop-icons=none --buildtype plain --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc ../..
 
 override_dh_auto_build:
 	cd debian/build && $(MAKE)

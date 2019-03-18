@@ -9,21 +9,18 @@ Last-Update: 2018-08-07
  src/panel/manager.vala | 10 +++++++---
  1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/src/panel/manager.vala b/src/panel/manager.vala
-index de580923..11d501cb 100644
---- a/src/panel/manager.vala
-+++ b/src/panel/manager.vala
-@@ -1301,6 +1301,10 @@ public class PanelManager : DesktopManager
+Index: budgie-desktop-10.5~git20190308/src/panel/manager.vala
+===================================================================
+--- budgie-desktop-10.5~git20190308.orig/src/panel/manager.vala
++++ budgie-desktop-10.5~git20190308/src/panel/manager.vala
+@@ -1304,6 +1304,10 @@ public class PanelManager : DesktopManag
          load_panel(uuid, false);
-
+ 
          set_panels();
 +
 +        string path = this.create_panel_path(uuid);
 +        var settings = new GLib.Settings.with_path(Budgie.TOPLEVEL_SCHEMA, path);
 +        transparency = (PanelTransparency)settings.get_enum(Budgie.PANEL_KEY_TRANSPARENCY);
          show_panel(uuid, position, transparency);
-
+ 
          if (new_defaults == null || name == null) {
---
-2.14.1
-

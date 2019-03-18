@@ -1,3 +1,23 @@
+budgie-desktop (10.5-1) UNRELEASED; urgency=medium
+
+  * Official release
+    - upstream release announcement in install changelogs
+  * Diff from git release
+    - Include major Translation updates
+    - upstream bug fix commit to allow setting GNOME Screensaver
+      to never
+    - Fix for keyboard shortcuts occasionally stop working
+      (LP: #1818978) cleanup-keygrab.patch
+    - Fix FTBFS due to incorrect Wnck WindowTypes
+    - 1000-Obtain-gsettings-transparency-key-value-before-showi.patch
+      Refresh to remove patch fuzz
+  * Packaging Changes
+    - Signed release tarball; signing key updated for new upstream
+      maintainer
+    - rules: Minimize polkit crashes due to -O2 build optimization
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 18 Mar 2019 10:06:57 +0000
+
 budgie-desktop (10.5~git20190218-1) unstable; urgency=medium
 
   * Bug-fix git and Translation release

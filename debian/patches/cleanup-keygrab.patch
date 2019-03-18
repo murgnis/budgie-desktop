@@ -1,0 +1,19 @@
+Description: Correctly cleanup grabbing accelerators
+ Resolve occasional shortcuts stopping working.
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Forwarded: https://github.com/solus-project/budgie-desktop/issues/1763
+Last-Update: 2019-03-09
+
+Index: budgie-desktop-10.5~git20190308/src/wm/shim.vala
+===================================================================
+--- budgie-desktop-10.5~git20190308.orig/src/wm/shim.vala
++++ budgie-desktop-10.5~git20190308/src/wm/shim.vala
+@@ -222,7 +222,7 @@ public class ShellShim : GLib.Object
+                 continue;
+             }
+             display.ungrab_accelerator(key);
+-            grabs.remove(key);
++            iter.remove();
+         }
+     }
+
