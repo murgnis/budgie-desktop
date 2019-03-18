@@ -1,9 +1,9 @@
-budgie-desktop (10.5-1) UNRELEASED; urgency=medium
+budgie-desktop (10.5-1) unstable; urgency=medium
 
-  * Official release
+  * Official upstream release
     - upstream release announcement in install changelogs
   * Diff from git release
-    - Include major Translation updates
+    - Includes release translation updates
     - upstream bug fix commit to allow setting GNOME Screensaver
       to never
     - Fix for keyboard shortcuts occasionally stop working
@@ -16,7 +16,7 @@ budgie-desktop (10.5-1) UNRELEASED; urgency=medium
       maintainer
     - rules: Minimize polkit crashes due to -O2 build optimization
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 18 Mar 2019 10:06:57 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 18 Mar 2019 19:59:35 +0000
 
 budgie-desktop (10.5~git20190218-1) unstable; urgency=medium
 
