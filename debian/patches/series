@@ -10,3 +10,7 @@ deduplicate-menuall.patch
 0006-Ensure-notification-title-is-properly-ellipsized.-Re.patch
 0007-Disable-notification-timeout-when-mouse-hovering.-Re.patch
 0008-Fix-reading-themes-from-users-.themes-folder.patch
+cleanup-keygrab.patch
+0009-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
+close-raven-on-workspace-switch.patch
+

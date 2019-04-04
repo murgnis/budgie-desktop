@@ -1,3 +1,18 @@
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.2) UNRELEASED; urgency=medium
+
+  * cherrypick upstream commits (LP: #)
+     - 0009-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
+       Hopefully many fix polkit crashes on errors.ubuntu.com due
+       to Polkit dialogs still having an open process when dismissed
+     - cleanup-keygrab.patch
+       Correcly manage custom keys and hence resolve custom keys not
+       occasionally working on logon
+     - close-raven-on-workspace-switch.patch
+       Usability patch to correctly dismiss raven if opened when a workspace
+       is switched
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 04 Apr 2019 15:32:22 +0100
+
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.1) bionic; urgency=medium
 
   * cherrypick upstream commits (LP: #1811620)

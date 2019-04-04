@@ -1,0 +1,26 @@
+Description: close raven when workspace switched
+ .
+ Part of the upstream commit
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Origin: upstream, https://github.com/solus-project/budgie-desktop/commit/875a115c62f1e38a239bbdb471c8bd9c913725b9
+Bug: https://github.com/solus-project/budgie-desktop/issues/937
+Last-Update: 2019-04-04
+
+--- budgie-desktop-10.4+git20171031.10.g9f71bb8.orig/src/wm/wm.vala
++++ budgie-desktop-10.4+git20171031.10.g9f71bb8/src/wm/wm.vala
+@@ -1288,6 +1288,15 @@ public class BudgieWM : Meta.Plugin
+     public static const int SWITCH_TIMEOUT = 250;
+     public override void switch_workspace(int from, int to, Meta.MotionDirection direction)
+     {
++        if (raven_proxy != null) { // Raven proxy is defined
++            try {
++                raven_proxy.Dismiss.begin(); // Dismiss
++                Timeout.add(200, () => {return false;}); // Delay until animation is complete. Looks janky otherwise
++            } catch (Error e) {
++                warning("Failed to dismiss Raven: %s", e.message);
++            }
++        }
++
+         // Stop the Switcher if it was showing
+         this.stop_switch_windows();
+ 

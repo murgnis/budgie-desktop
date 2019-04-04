@@ -1,0 +1,21 @@
+Description: Correctly cleanup grabbing accelerators
+ Test patch to examine if can resolve occasional shortcuts
+ stopping working. Will be forwarded upstream after
+ further community testing
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Forwarded: No
+Last-Update: 2019-03-09
+
+Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/wm/shim.vala
+===================================================================
+--- budgie-desktop-10.4+git20171031.10.g9f71bb8.orig/src/wm/shim.vala	2019-04-04 14:47:38.976818000 +0100
++++ budgie-desktop-10.4+git20171031.10.g9f71bb8/src/wm/shim.vala	2019-04-04 14:47:38.972815999 +0100
+@@ -221,7 +221,7 @@
+                 continue;
+             }
+             display.ungrab_accelerator(key);
+-            grabs.remove(key);
++            iter.remove();
+         }
+     }
+ 
