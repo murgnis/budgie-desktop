@@ -12,6 +12,12 @@ budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.2) bionic; urgency=mediu
        is switched
      - Ensure animations remain working with newer versions of mutter
        (LP: #1824102)
+  * Packaging Changes
+    - control: Bump StandardsVersion; no changes required
+    - copy budgie-core-dev.lintian-overrides from disco package to resolve
+      lintian warnings
+    - copy budgie-core.lintian-overrides from disco package to resolve
+      lintian errors
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 10 Apr 2019 20:39:16 +0100
 
