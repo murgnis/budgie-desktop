@@ -13,4 +13,4 @@ deduplicate-menuall.patch
 cleanup-keygrab.patch
 0009-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
 close-raven-on-workspace-switch.patch
-
+animations.patch

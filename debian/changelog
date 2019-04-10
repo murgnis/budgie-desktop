@@ -1,8 +1,8 @@
-budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.2) UNRELEASED; urgency=medium
+budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.2) bionic; urgency=medium
 
-  * cherrypick upstream commits (LP: #)
+  * cherrypick upstream commits (LP: #1824229)
      - 0009-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
-       Hopefully many fix polkit crashes on errors.ubuntu.com due
+       Hopefully resolve fix polkit crashes reported on errors.ubuntu.com due
        to Polkit dialogs still having an open process when dismissed
      - cleanup-keygrab.patch
        Correcly manage custom keys and hence resolve custom keys not
@@ -10,8 +10,10 @@ budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.2) UNRELEASED; urgency=m
      - close-raven-on-workspace-switch.patch
        Usability patch to correctly dismiss raven if opened when a workspace
        is switched
+     - Ensure animations remain working with newer versions of mutter
+       (LP: #1824102)
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 04 Apr 2019 15:32:22 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 10 Apr 2019 20:39:16 +0100
 
 budgie-desktop (10.4+git20171031.10.g9f71bb8-1.2ubuntu1.1) bionic; urgency=medium
 

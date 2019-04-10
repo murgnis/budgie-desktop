@@ -1,9 +1,7 @@
 Description: Correctly cleanup grabbing accelerators
- Test patch to examine if can resolve occasional shortcuts
- stopping working. Will be forwarded upstream after
- further community testing
+ Resolve occasional shortcuts stopping working.
 Author: David Mohammed <fossfreedom@ubuntu.com>
-Forwarded: No
+Forwarded: https://github.com/solus-project/budgie-desktop/issues/1763
 Last-Update: 2019-03-09
 
 Index: budgie-desktop-10.4+git20171031.10.g9f71bb8/src/wm/shim.vala
