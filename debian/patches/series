@@ -2,3 +2,5 @@
 gnome-3.30-compatability.patch
 1000-Obtain-gsettings-transparency-key-value-before-showi.patch
 cleanup-keygrab.patch
+animations.patch
+

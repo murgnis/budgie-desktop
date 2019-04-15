@@ -1,0 +1,23 @@
+Description: Ensure animations work with newer versions of mutter
+ v3.28.3+git20190124-0ubuntu18.04.1 and later versions of mutter
+ introduce clutter optimisations that break budgie animations.
+ This patch forces clutter.actor redrawing to ensure screen painting
+ is fully redrawn so that screen artifacts are not left behind due
+ to paint areas not correctly being marked as damaged.
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1824102
+Forwarded: https://github.com/solus-project/budgie-desktop/issues/1627
+Last-Update: 2019-04-10
+
+Index: budgie-desktop-10.4+git20180830.02.f2dbc215fdb/src/wm/wm.vala
+===================================================================
+--- budgie-desktop-10.4+git20180830.02.f2dbc215fdb.orig/src/wm/wm.vala
++++ budgie-desktop-10.4+git20180830.02.f2dbc215fdb/src/wm/wm.vala
+@@ -599,6 +599,7 @@ public class BudgieWM : Meta.Plugin
+             return;
+         }
+ 
++        actor.queue_relayout();
+         actor.remove_all_transitions();
+ 
+         unowned AnimationState? state = state_map.lookup(actor);
