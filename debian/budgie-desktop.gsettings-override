@@ -1,5 +1,2 @@
 [org.gnome.settings-daemon.plugins.xsettings:Budgie]
 overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize,maximize,close'>}
-
-[org.gnome.desktop.interface:Budgie]
-enable-animations=false
