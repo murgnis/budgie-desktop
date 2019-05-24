@@ -147,7 +147,7 @@ public class Panel : Budgie.Toplevel
     /**
      * Force update the geometry
      */
-    public void update_geometry(Gdk.Rectangle screen, PanelPosition position, int size = 0)
+    public void update_geometry(Gdk.Rectangle screen, PanelPosition position, int monitor, int size = 0)
     {
         this.orig_scr = screen;
         string old_class = Budgie.position_class_name(this.position);
@@ -165,11 +165,14 @@ public class Panel : Budgie.Toplevel
         this.get_style_context().add_class(Budgie.position_class_name(position));
 
         // Check if the position has been altered and notify our applets
-        if (position != this.position) {
+        if (position != this.position ) {
             this.position = position;
             this.settings.set_enum(Budgie.PANEL_KEY_POSITION, position);
             this.update_positions();
         }
+
+        this.monitor = monitor;
+        this.settings.set_int(Budgie.PANEL_KEY_MONITOR, this.monitor);
 
         this.shadow.position = position;
         this.layout.queue_resize();
@@ -1028,7 +1031,7 @@ public class Panel : Budgie.Toplevel
         if (this.autohide != AutohidePolicy.NONE) {
             Budgie.unset_struts(this);
         } else {
-            Budgie.set_struts(this, position, (intended_size - 5) * this.scale);
+            Budgie.set_struts(this, position, this.monitor, (intended_size - 5) * this.scale);
         }
     }
 

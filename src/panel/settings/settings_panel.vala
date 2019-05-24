@@ -40,6 +40,8 @@ public class PanelPage : Budgie.SettingsPage {
     Gtk.StackSwitcher switcher;
     Gtk.ComboBox combobox_position;
     ulong position_id;
+    Gtk.ComboBox combobox_monitor;
+    ulong monitor_id;
     Gtk.ComboBox combobox_autohide;
     ulong autohide_id;
     Gtk.ComboBox combobox_transparency;
@@ -114,27 +116,30 @@ public class PanelPage : Budgie.SettingsPage {
      */
     static string get_panel_name(Budgie.Toplevel? panel)
     {
+        var display = Gdk.Display.get_default();
+        string monitor_name = " (" + display.get_monitor(panel.monitor).get_model() + ")";
+
         if (panel.dock_mode) {
             switch (panel.position) {
                 case PanelPosition.TOP:
-                    return _("Top Dock");
+                    return _("Top Dock" + monitor_name);
                 case PanelPosition.RIGHT:
-                    return _("Right Dock");
+                    return _("Right Dock" + monitor_name);
                 case PanelPosition.LEFT:
-                    return _("Left Dock");
+                    return _("Left Dock" + monitor_name);
                 default:
-                    return _("Bottom Dock");
+                    return _("Bottom Dock" + monitor_name);
             }
         } else {
             switch (panel.position) {
                 case PanelPosition.TOP:
-                    return _("Top Panel");
+                    return _("Top Panel" + monitor_name);
                 case PanelPosition.RIGHT:
-                    return _("Right Panel");
+                    return _("Right Panel" + monitor_name);
                 case PanelPosition.LEFT:
-                    return _("Left Panel");
+                    return _("Left Panel" + monitor_name);
                 default:
-                    return _("Bottom Panel");
+                    return _("Bottom Panel" + monitor_name);
             }
         }
     }
@@ -230,6 +235,13 @@ public class PanelPage : Budgie.SettingsPage {
             _("Position"),
             _("Set the edge of the screen that this panel will stay on")));
 
+        combobox_monitor = new Gtk.ComboBox();
+        monitor_id = combobox_monitor.changed.connect(this.set_monitor);
+        group.add_widget(combobox_monitor);
+        ret.add_row(new SettingsRow(combobox_monitor,
+            _("Monitor"),
+            _("Set the monitor this panel will stay on")));
+
         /* Size of the panel */
         spinbutton_size = new Gtk.SpinButton.with_range(16, 200, 1);
         spinbutton_size.set_numeric(true);
@@ -299,6 +311,19 @@ public class PanelPage : Budgie.SettingsPage {
         combobox_position.add_attribute(render, "text", 1);
         combobox_position.set_id_column(0);
 
+        var display = Gdk.Display.get_default();
+        model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(int));
+        for (int i = 0; i < display.get_n_monitors(); i++) {
+            model.append(out iter);
+            // model.set(iter, 0, i, 1, display.get_monitor(i).get_model(), -1);
+            model.set(iter, 0, i.to_string(), 1, display.get_monitor(i).get_model(), 2, i, -1);
+        }
+
+        combobox_monitor.set_model(model);
+        combobox_monitor.pack_start(render, true);
+        combobox_monitor.add_attribute(render, "text", 1);
+        combobox_monitor.set_id_column(0);
+
         /* Transparency types */
         model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(Budgie.PanelTransparency));
         const Budgie.PanelTransparency transps[] = {
@@ -334,6 +359,7 @@ public class PanelPage : Budgie.SettingsPage {
         /* Properties we needed to know about */
         const string[] needed_props = {
             "position",
+            "monitor",
             "intended-size",
             "transparency",
             "autohide",
@@ -374,6 +400,12 @@ public class PanelPage : Budgie.SettingsPage {
                 this.combobox_position.active_id = this.toplevel.position.to_string();
                 this.title = PanelPage.get_panel_name(toplevel);
                 SignalHandler.unblock(this.combobox_position, this.position_id);
+                break;
+            case "monitor":
+                SignalHandler.block(this.combobox_monitor, this.monitor_id);
+                this.combobox_monitor.active_id = this.toplevel.monitor.to_string();
+                this.title = PanelPage.get_panel_name(toplevel);
+                SignalHandler.unblock(this.combobox_monitor, this.monitor_id);
                 break;
             case "intended-size":
                 SignalHandler.block(this.spinbutton_size, this.size_id);
@@ -448,7 +480,20 @@ public class PanelPage : Budgie.SettingsPage {
         }
 
         combobox_position.model.get(iter, 2, out position, -1);
-        this.manager.set_placement(toplevel.uuid, position);
+        this.manager.set_placement(toplevel.uuid, position, this.toplevel.monitor);
+    }
+
+    private void set_monitor()
+    {
+        Gtk.TreeIter iter;
+        int monitor = -1;
+
+        if (!combobox_monitor.get_active_iter(out iter)) {
+            return;
+        }
+
+        combobox_monitor.model.get(iter, 2, out monitor, -1);
+        this.manager.set_placement(toplevel.uuid, this.toplevel.position, monitor);
     }
 
     /**

@@ -24,6 +24,9 @@ public abstract class Toplevel : Gtk.Window
      * Our required size (height or width dependening on orientation
      */
     public int intended_size { public set ; public get; }
+    
+    public int monitor { public set ; public get; }
+    public bool is_disabled { public set ; public get; }
 
     public bool shadow_visible { public set ; public get; }
     public bool theme_regions { public set; public get; }
@@ -56,13 +59,13 @@ public abstract class Toplevel : Gtk.Window
     public abstract void remove_applet(Budgie.AppletInfo? info);
 }
 
-public static void set_struts(Gtk.Window? window, PanelPosition position, long panel_size)
+public static void set_struts(Gtk.Window? window, PanelPosition position, int monitor, long panel_size)
 {
     Gdk.Atom atom;
     long struts[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     var screen = window.screen;
-    Gdk.Monitor mon = screen.get_display().get_primary_monitor();
-    Gdk.Rectangle primary_monitor_rect = mon.get_geometry();
+    Gdk.Monitor mon = screen.get_display().get_monitor(monitor);
+    Gdk.Rectangle monitor_rect = mon.get_geometry();
     /*
     strut-left strut-right strut-top strut-bottom
     strut-left-start-y   strut-left-end-y
@@ -71,34 +74,33 @@ public static void set_struts(Gtk.Window? window, PanelPosition position, long p
     strut-bottom-start-x strut-bottom-end-x
     */
 
-    if (!window.get_realized()) {
+    if (!window.get_realized() || mon == null) 
         return;
-    }
 
     // Struts dependent on position
     switch (position) {
         case PanelPosition.TOP:
             struts[2] = panel_size;
-            struts[8] = primary_monitor_rect.x;
-            struts[9] = (primary_monitor_rect.x + primary_monitor_rect.width) - 1;
+            struts[8] = monitor_rect.x;
+            struts[9] = (monitor_rect.x + monitor_rect.width) - 1;
             break;
         case PanelPosition.LEFT:
             panel_size += 5;
-            struts[0] = primary_monitor_rect.x + panel_size;
-            struts[4] = primary_monitor_rect.y;
-            struts[5] = primary_monitor_rect.y + (primary_monitor_rect.height - 1);
+            struts[0] = monitor_rect.x + panel_size;
+            struts[4] = monitor_rect.y;
+            struts[5] = monitor_rect.y + (monitor_rect.height - 1);
             break;
         case PanelPosition.RIGHT:
             panel_size += 5;
-            struts[1] = (screen.get_width() + panel_size) - (primary_monitor_rect.x + primary_monitor_rect.width);
-            struts[6] = primary_monitor_rect.y;
-            struts[7] = (primary_monitor_rect.y + primary_monitor_rect.height) - 1;
+            struts[1] = (screen.get_width() + panel_size) - (monitor_rect.x + monitor_rect.width);
+            struts[6] = monitor_rect.y;
+            struts[7] = (monitor_rect.y + monitor_rect.height) - 1;
             break;
         case PanelPosition.BOTTOM:
         default:
             struts[3] = panel_size;
-            struts[10] = primary_monitor_rect.x;
-            struts[11] = (primary_monitor_rect.x + primary_monitor_rect.width) - 1;
+            struts[10] = monitor_rect.x;
+            struts[11] = (monitor_rect.x + monitor_rect.width) - 1;
             break;
     }
 
