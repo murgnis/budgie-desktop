@@ -1,25 +1,75 @@
-budgie-desktop (10.5-1) unstable; urgency=medium
+budgie-desktop (10.5-0ubuntu2) eoan; urgency=medium
 
-  * Official upstream release
-    - upstream release announcement in install changelogs
-  * Diff from previous git release
-    - Includes release translation updates
-    - upstream bug fix commit to allow setting GNOME Screensaver
-      to never
-    - Fix for keyboard shortcuts occasionally stop working
-      (LP: #1818978) cleanup-keygrab.patch
-    - Fix FTBFS due to incorrect Wnck WindowTypes
-    - 1000-Obtain-gsettings-transparency-key-value-before-showi.patch
-      Refresh to remove patch fuzz
+  * Add support for nemo and desktopfolder
+    desktop-settings.patch
+  * Fix to enable pkexec apps are supported through the menu
+    pkexec-menu.patch to
+  * Sort menus using linguistic rules
+    sort-linguistic.patch
+  * Add hinting support for settings
+    add-hinting.patch
+  * Refresh animations.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 21 Jul 2019 11:44:34 +0100
+
+budgie-desktop (10.5-0ubuntu1.1) disco; urgency=medium
+
+  * Bug-fix
     - Ensure animations remain working with newer versions of mutter
        (LP: #1824102) animations.patch
   * Packaging Changes
-    - Signed release tarball; signing key updated for new upstream
-      maintainer
-    - rules: Minimize polkit crashes due to -O2 build optimization
     - budgie-desktop.gsettings-override remove disabling animation override
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 15 Apr 2019 10:11:06 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Thu, 11 Apr 2019 19:02:26 +0100
+
+budgie-desktop (10.5-0ubuntu1) disco; urgency=medium
+
+  * Official release
+    - upstream release announcement in install changelogs
+  * Diff from git release
+    - upstream bug fix commit to allow setting GNOME Screensaver
+      to never
+  * Packaging Changes
+    - Signed release tarball; signing key updated for new upstream
+      maintainer
+    - refresh patch gnome-3.32-compatability.patch to accommodate
+      the bug-fix above
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 17 Mar 2019 23:17:43 +0000
+
+budgie-desktop (10.5~git20190308-0ubuntu1) disco; urgency=medium
+
+  * Bug fix release
+    - Fix broken custom keyboard shortcuts
+      gnome-3.32-compatibility.patch refreshed with fixes
+    - Create mkrelease tarball with latest available translations
+    - Fix for keyboard shortcuts occasionally stop working
+      (LP: #1818978) cleanup-keygrab.patch
+    - Add desktop-override.patch to ensure Budgie overrides do not
+      impact other GNOME based desktop settings
+    - Fix FTBFS due to incorrect Wnck WindowTypes
+    - Refresh 0001-Polkit-Correctly-handle-the-user-dismissing-the-auth.patch
+      due to changes to the gnome-3.32-compatibility.patch
+    - Start GNOME Calendar in normal window on launch - not maximised
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 09 Mar 2019 23:32:08 +0000
+
+budgie-desktop (10.5~git20190218-1+ubuntu2) disco; urgency=medium
+
+  * gnome-3.32-compatibility.patch: Fixes for mutter 3.31.91
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Wed, 06 Mar 2019 11:26:53 +0000
+
+budgie-desktop (10.5~git20190218-1ubunu1) disco; urgency=medium
+
+  * d/p/gnome-3.30-compatability.patch:
+    - Dropped
+  * d/p/gnome-3.32-compatability.patch:
+    - Added patch to support building with libmutter-4
+  * debian/budgie-core.lintian-overrides:
+    - Updated override on budgie-wm rpath
+
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Fri, 22 Feb 2019 12:22:09 +0100
 
 budgie-desktop (10.5~git20190218-1) unstable; urgency=medium
 
