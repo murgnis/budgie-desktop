@@ -15,8 +15,10 @@ budgie-desktop (10.5-0ubuntu2) UNRELEASED; urgency=medium
     mutter5-vapi.patch
   * Add compilation support for vala 0.46
     vala046.patch
+  * Control & Compat: Update for debhelper 12
+  * Control bump StandardsVersion: no changes required
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 04 Aug 2019 10:49:25 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 04 Aug 2019 11:30:42 +0100
 
 budgie-desktop (10.5-0ubuntu1.1) disco; urgency=medium
 

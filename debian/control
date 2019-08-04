@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
 Homepage: https://solus-project.com/budgie/
 Build-Depends:
- debhelper (>= 11),
+ debhelper (>= 12),
  gir1.2-gee-0.8,
  gnome-common,
  gobject-introspection,
@@ -33,7 +33,7 @@ Build-Depends:
  sassc,
  libasound2-dev,
  libnotify-dev
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-desktop -b debian
 
