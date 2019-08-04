@@ -8,3 +8,7 @@ desktop-settings.patch
 pkexec-menu.patch
 sort-linguistic.patch
 add-hinting.patch
+vala046.patch
+mutter5-add-build-support.patch
+mutter5-generate-vapi.patch
+mutter5-vapi.patch

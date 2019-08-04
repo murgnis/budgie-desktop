@@ -1,0 +1,66 @@
+Origin: https://github.com/solus-project/budgie-desktop/pull/1856
+Author: Marco Trevisan <mail@3v1n0.net>
+Last-Update: 2019-07-25
+Description: [PATCH] wm: Add build support with mutter-5
+
+---
+ src/wm/meson.build | 13 ++++++++++---
+ src/wm/shim.vala   |  4 ++++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/wm/meson.build b/src/wm/meson.build
+index e94ab596..e39b8678 100644
+--- a/src/wm/meson.build
++++ b/src/wm/meson.build
+@@ -15,13 +15,22 @@ budgie_wm_sources = [
+     'wm.vala',
+ ]
+ 
++budgie_wm_status_vala_args = []
++
+ vapi_mutter = 'libmutter-3'
+ dep_mutter = dependency('libmutter-3', version: gnome_minimum_version, required: false)
+ if not dep_mutter.found()
+-    dep_mutter = dependency('libmutter-4', version: gnome_minimum_version)
++    dep_mutter = dependency('libmutter-4', version: gnome_minimum_version, required: false)
+     if dep_mutter.found()
+         message('Using new libmutter-4 ABI from GNOME 3.32')
+         vapi_mutter = 'libmutter-4'
++    else
++        dep_mutter = dependency('libmutter-5', version: gnome_minimum_version)
++        if dep_mutter.found()
++            message('Using new libmutter-5 ABI from GNOME 3.34')
++            vapi_mutter = 'libmutter-5'
++            budgie_wm_status_vala_args += ['-D', 'HAVE_MUTTER_5']
++        endif
+     endif
+ endif
+ 
+@@ -33,8 +42,6 @@ budgie_wm_deps = [
+     dep_ibus,
+ ]
+ 
+-budgie_wm_status_vala_args = []
+-
+ if dep_gsd.version().version_compare('>=3.31.91')
+     budgie_wm_status_vala_args += ['-D', 'HAVE_GSD_332']
+ endif
+diff --git a/src/wm/shim.vala b/src/wm/shim.vala
+index aceb03a3..4cdfa0b0 100644
+--- a/src/wm/shim.vala
++++ b/src/wm/shim.vala
+@@ -193,7 +193,11 @@ public class ShellShim : GLib.Object
+         osd_proxy = null;
+     }
+ 
++#if HAVE_MUTTER_5
++    private void on_accelerator_activated(uint action, Clutter.InputDevice dev, uint device_id)
++#else
+     private void on_accelerator_activated(uint action, uint device_id)
++#endif
+     {
+         HashTable<string,Variant> params = new HashTable<string,Variant>(str_hash, str_equal);
+ 
+-- 
+2.17.1
+
