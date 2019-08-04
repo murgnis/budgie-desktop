@@ -17,8 +17,9 @@ budgie-desktop (10.5-0ubuntu2) UNRELEASED; urgency=medium
     vala046.patch
   * Control & Compat: Update for debhelper 12
   * Control bump StandardsVersion: no changes required
+  * Rules: Update meson build options
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 04 Aug 2019 11:30:42 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 04 Aug 2019 12:01:29 +0100
 
 budgie-desktop (10.5-0ubuntu1.1) disco; urgency=medium
 
