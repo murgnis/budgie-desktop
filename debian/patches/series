@@ -12,3 +12,6 @@ vala046.patch
 mutter5-add-build-support.patch
 mutter5-generate-vapi.patch
 mutter5-vapi.patch
+wnck-shutdown.patch
+Use-panel-orientation-for-spacer-sizing.patch
+gsd334.patch

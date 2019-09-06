@@ -1,4 +1,30 @@
-budgie-desktop (10.5-0ubuntu2) UNRELEASED; urgency=medium
+budgie-desktop (10.5-0ubuntu5) eoan; urgency=medium
+
+  * Tidy of the changelog - following patch was added at ubuntu4 but
+    was not reported
+  * Remove unneeded gnome-settings-daemon v3.34 components that stops logon
+    gsd334.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Tue, 27 Aug 2019 19:28:34 +0100
+
+budgie-desktop (10.5-0ubuntu4) eoan; urgency=medium
+
+  * Don't force wnck to shutdown - this causes apport crashes since applets
+    and other wnck users haven't released memory
+    wnck-shutdown.patch
+  * Fix spacer sizing
+    Use-panel-orientation-for-spacer-sizing.patch
+  * Rules: replace manual meson build with debhelper equivalents
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 26 Aug 2019 22:48:40 +0100
+
+budgie-desktop (10.5-0ubuntu3) eoan; urgency=medium
+
+  * No-change rebuild for mutter-5
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Mon, 26 Aug 2019 08:43:09 +0100
+
+budgie-desktop (10.5-0ubuntu2) eoan; urgency=medium
 
   * Add support for nemo and desktopfolder
     desktop-settings.patch
@@ -19,7 +45,7 @@ budgie-desktop (10.5-0ubuntu2) UNRELEASED; urgency=medium
   * Control bump StandardsVersion: no changes required
   * Rules: Update meson build options
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Sun, 04 Aug 2019 12:01:29 +0100
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 17 Aug 2019 10:26:38 +0100
 
 budgie-desktop (10.5-0ubuntu1.1) disco; urgency=medium
 

@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 export DH_VERBOSE = 1
-export MAKE = ninja -v
 export LC_ALL=C.UTF-8
 export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
 
@@ -9,7 +8,6 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
 
 override_dh_clean:
 	dh_clean
-	rm -rf debian/build
 ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 
 	@if [ -e ./debian/ubuntu/applied ]; then \
@@ -19,19 +17,14 @@ ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 endif
 
 override_dh_auto_configure:
-	mkdir -p debian/build
 ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo ubuntu),ubuntu)
 	patch -p1 < debian/ubuntu/show_nm-applet_in_tray.patch
 	touch ./debian/ubuntu/applied
 endif
-	cd debian/build && LDFLAGS="-Wl,-z,now -Wl,-z,relro -O1" meson --buildtype plain --prefix=/usr --libdir=/usr/lib ../..
-
-override_dh_auto_build:
-	cd debian/build && $(MAKE)
+	dh_auto_configure -- --prefix=/usr --libdir=/usr/lib
 
 override_dh_auto_install:
 	dh_auto_install
-	cd debian/build && DESTDIR=$(CURDIR)/debian/tmp $(MAKE) install
 	mkdir -p "$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/girepository-1.0"
 	mv "$(CURDIR)/debian/tmp/usr/lib/girepository-1.0/Budgie-1.0.typelib" "$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/girepository-1.0"
 	rm -rf "$(CURDIR)/debian/tmp/usr/lib/girepository-1.0"
