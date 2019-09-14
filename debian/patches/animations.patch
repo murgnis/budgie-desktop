@@ -7,13 +7,11 @@ Description: Ensure animations work with newer versions of mutter
 Author: David Mohammed <fossfreedom@ubuntu.com>
 Bug-Ubuntu: https://bugs.launchpad.net/bugs/1824102
 Forwarded: https://github.com/solus-project/budgie-desktop/issues/1627
-Last-Update: 2019-04-10
+Last-Update: 2019-07-21
 
-Index: budgie-desktop-10.4+git20180830.02.f2dbc215fdb/src/wm/wm.vala
-===================================================================
---- budgie-desktop-10.4+git20180830.02.f2dbc215fdb.orig/src/wm/wm.vala
-+++ budgie-desktop-10.4+git20180830.02.f2dbc215fdb/src/wm/wm.vala
-@@ -599,6 +599,7 @@ public class BudgieWM : Meta.Plugin
+--- a/src/wm/wm.vala
++++ b/src/wm/wm.vala
+@@ -643,6 +643,7 @@
              return;
          }
  

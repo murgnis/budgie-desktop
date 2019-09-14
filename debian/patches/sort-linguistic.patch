@@ -1,0 +1,31 @@
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Last-Update: 2019-06-20
+Description: [PATCH] Sort menu names using locale linguistic rules #1546 (#1837)
+Origin: d80b745bd25489751b0290050566b388598b4271
+
+---
+ src/applets/budgie-menu/BudgieMenuWindow.vala | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/applets/budgie-menu/BudgieMenuWindow.vala b/src/applets/budgie-menu/BudgieMenuWindow.vala
+index dee0c225..5f791c6d 100644
+--- a/src/applets/budgie-menu/BudgieMenuWindow.vala
++++ b/src/applets/budgie-menu/BudgieMenuWindow.vala
+@@ -536,12 +536,12 @@ public class BudgieMenuWindow : Budgie.Popover
+         string parentA = searchable_string(child1.parent_menu.get_name());
+         string parentB = searchable_string(child2.parent_menu.get_name());
+         if (child1.parent_menu != child2.parent_menu && this.headers_visible) {
+-            return GLib.strcmp(parentA, parentB);
++            return parentA.collate(parentB);
+         }
+ 
+         string nameA = searchable_string(child1.info.get_display_name());
+         string nameB = searchable_string(child2.info.get_display_name());
+-        return GLib.strcmp(nameA, nameB);
++        return nameA.collate(nameB);
+     }
+ 
+ 
+-- 
+2.17.1
+

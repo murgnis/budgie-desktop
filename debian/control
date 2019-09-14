@@ -4,18 +4,24 @@ Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
 Homepage: https://solus-project.com/budgie/
 Build-Depends:
- debhelper (>= 11),
+ debhelper (>= 12),
  gir1.2-gee-0.8,
  gnome-common,
+ gnome-settings-daemon-dev (>= 3.34),
  gobject-introspection,
  gtk-doc-tools,
+ libaccountsservice-dev,
+ libasound2-dev,
+ libgdk-pixbuf2.0-dev,
  libgee-0.8-dev,
  libglib2.0-dev (>= 2.57),
  libgnome-bluetooth-dev (>= 3.16),
  libgnome-desktop-3-dev,
  libgnome-menu-3-dev,
  libgtk-3-dev,
- libmutter-3-dev (>= 3.30),
+ libibus-1.0-dev (>= 1.5.11),
+ libmutter-5-dev,
+ libnotify-dev,
  libpeas-dev,
  libpolkit-agent-1-dev,
  libpolkit-gobject-1-dev,
@@ -23,25 +29,21 @@ Build-Depends:
  libpulse-mainloop-glib0,
  libupower-glib-dev,
  libwnck-3-dev,
- uuid-dev,
- libgdk-pixbuf2.0-dev,
- libaccountsservice-dev,
- valac,
- libibus-1.0-dev (>= 1.5.11),
  meson (>= 0.40.1),
- gnome-settings-daemon-dev (>= 3.28),
  sassc,
- libasound2-dev,
- libnotify-dev
-Standards-Version: 4.3.0
+ uuid-dev,
+ valac,
+Standards-Version: 4.4.0
 Vcs-Browser: https://github.com/UbuntuBudgie/budgie-desktop/tree/debian
 Vcs-Git: https://github.com/UbuntuBudgie/budgie-desktop -b debian
 
 Package: budgie-core
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
- gnome-settings-daemon
+Depends: gnome-settings-daemon,
+ gnome-session-bin,
+ gnome-session-common,
+ gnome-screensaver,
+ ${misc:Depends}, ${shlibs:Depends}
 Description: Core package for Budgie-Desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -63,13 +65,13 @@ Architecture: any
 Depends:
  gir1.2-budgie-1.0 (= ${binary:Version}),
  libbudgie-plugin0 (= ${binary:Version}),
- libbudgietheme0 (= ${binary:Version}),
- libraven0 (= ${binary:Version}),
  libbudgie-private0 (= ${binary:Version}),
+ libbudgietheme0 (= ${binary:Version}),
  libglib2.0-dev,
  libgtk-3-dev,
  libpeas-dev,
- ${misc:Depends}
+ libraven0 (= ${binary:Version}),
+ ${misc:Depends},
 Suggests: budgie-desktop-doc
 Description: Development package for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
@@ -88,14 +90,10 @@ Architecture: all
 Depends:
  budgie-core,
  gir1.2-budgie-1.0 (>= 10.4),
- ${misc:Depends},
- gnome-session-bin,
- gnome-session-common,
- gnome-settings-daemon (>=3.26),
  gnome-control-center,
  gnome-menus,
- gnome-screensaver,
- network-manager-gnome
+ network-manager-gnome,
+ ${misc:Depends},
 Suggests: lightdm
 Description: Desktop package for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
@@ -111,10 +109,8 @@ Description: Desktop package for budgie-desktop
 Package: budgie-desktop-doc
 Section: doc
 Architecture: all
-Depends:
- ${misc:Depends}
-Suggests:
- devhelp
+Depends: ${misc:Depends}
+Suggests: devhelp
 Description: documentation files for the budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -129,10 +125,7 @@ Section: introspection
 Architecture: any
 Replaces: gir1.2-budgie-desktop-1.0 (<< 10.3.2)
 Breaks: gir1.2-budgie-desktop-1.0 (<< 10.3.2)
-Depends:
- ${misc:Depends},
- ${shlibs:Depends},
- ${gir:Depends}
+Depends: ${gir:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Description: GNOME introspection library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -146,9 +139,7 @@ Description: GNOME introspection library for budgie-desktop
 Package: libbudgie-plugin0
 Section: libs
 Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Plugin library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -158,12 +149,23 @@ Description: Plugin library for budgie-desktop
  .
  This adds the plugin library to budgie-desktop
 
+Package: libbudgie-private0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Budgie Private library for budgie-desktop
+ Budgie-Desktop is a GTK+ based desktop environment which focuses on
+ simplicity and elegance.  It provides a traditional desktop metaphor
+ based interface utilising customisable panel based menu driven system.
+ Budgie-Desktop is written from scratch utilising many GNOME based
+ sub-systems such as GNOME-Session and Mutter.
+ .
+ This provides a private ABI for raven and the budgie panel
+
 Package: libbudgietheme0
 Section: libs
 Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Theme library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -176,9 +178,7 @@ Description: Theme library for budgie-desktop
 Package: libraven0
 Section: libs
 Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Raven library for budgie-desktop
  Budgie-Desktop is a GTK+ based desktop environment which focuses on
  simplicity and elegance.  It provides a traditional desktop metaphor
@@ -187,18 +187,3 @@ Description: Raven library for budgie-desktop
  sub-systems such as GNOME-Session and Mutter.
  .
  This provides the budgie-desktop user-defined settings called raven.
-
-Package: libbudgie-private0
-Section: libs
-Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends}
-Description: Budgie Private library for budgie-desktop
- Budgie-Desktop is a GTK+ based desktop environment which focuses on
- simplicity and elegance.  It provides a traditional desktop metaphor
- based interface utilising customisable panel based menu driven system.
- Budgie-Desktop is written from scratch utilising many GNOME based
- sub-systems such as GNOME-Session and Mutter.
- .
- This provides a private ABI for raven and the budgie panel

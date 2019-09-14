@@ -1,0 +1,61 @@
+Origin: https://github.com/solus-project/budgie-desktop/pull/1856
+Author: Marco Trevisan <mail@3v1n0.net>
+Last-Update: 2019-07-25
+Description: [PATCH] vapi: Add a script to generate the mutter vapi files
+
+And update documentation about it.
+---
+ vapi/README.md               |  8 ++------
+ vapi/generate-mutter-vapi.sh | 23 +++++++++++++++++++++++
+ 2 files changed, 25 insertions(+), 6 deletions(-)
+ create mode 100755 vapi/generate-mutter-vapi.sh
+
+diff --git a/vapi/README.md b/vapi/README.md
+index 71bed969..77bc1805 100644
+--- a/vapi/README.md
++++ b/vapi/README.md
+@@ -8,10 +8,6 @@ To refresh the Polkit vapi files:
+ 
+ Then have fun un-mangling it to support vala async syntax
+ 
+-For mutter (and shipped cogl and clutter), something like:
++For mutter (and shipped cogl and clutter), once you defined the relative `*.deps`, `*.metadata` and `*-custom.vala` files, you can run:
+ 
+-vapigen --library mutter-clutter-4 mutter-clutter-4-custom.vala /usr/lib/x86_64-linux-gnu/mutter-4/Clutter-4.gir --girdir /usr/lib/x86_64-linux-gnu/mutter-4/ -d . --girdir . --vapidir . --metadatadir . --girdir /usr/lib/x86_64-linux-gnu/mutter-4/
+-
+-vapigen --library mutter-cogl-4 mutter-cogl-4-custom.vala /usr/lib/x86_64-linux-gnu/mutter-4/Cogl-4.gir --girdir /usr/lib/x86_64-linux-gnu/mutter-4/ -d . --girdir . --vapidir . --metadatadir . --girdir /usr/lib/x86_64-linux-gnu/mutter-4/
+-
+-vapigen --library libmutter-cogl-4 /usr/lib/x86_64-linux-gnu/mutter-4/Cogl-4.gir --girdir /usr/lib/x86_64-linux-gnu/mutter-4/ -d . --girdir . --vapidir . --metadatadir . --girdir /usr/lib/x86_64-linux-gnu/mutter-4/
++    ./vapi/generate-mutter-vapi.sh <mutter-version>
+diff --git a/vapi/generate-mutter-vapi.sh b/vapi/generate-mutter-vapi.sh
+new file mode 100755
+index 00000000..6b070240
+--- /dev/null
++++ b/vapi/generate-mutter-vapi.sh
+@@ -0,0 +1,23 @@
++#!/bin/bash
++set -xe
++
++version=${1-4}
++girdir=$(pkg-config libmutter-$version --variable=girdir)
++
++cd $(dirname $0)
++
++for lib in cogl clutter meta; do
++    libversion=$lib-$version
++    girname=${libversion^}
++    vapiname=mutter-$libversion
++    vapiname=${vapiname/mutter-meta/libmutter}
++    custom_vapi=""
++
++    if [ -f "$vapiname-custom.vala" ]; then
++        custom_vapi="$vapiname-custom.vala"
++    fi
++
++    vapigen --library $vapiname $girdir/$girname.gir \
++            --girdir . -d . --metadatadir . --vapidir . \
++            --girdir $girdir/ $custom_vapi
++done
+-- 
+2.17.1
+
