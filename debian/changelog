@@ -1,4 +1,4 @@
-budgie-desktop (10.5-2) UNRELEASED; urgency=medium
+budgie-desktop (10.5-2) experimental; urgency=medium
 
   * Release to support GNOME 3.34/3.32
   * Add support for mutter 5
