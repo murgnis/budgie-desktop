@@ -1,3 +1,9 @@
+budgie-desktop (10.5-3) unstable; urgency=medium
+
+  * Upload experimental package to unstable
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 30 Sep 2019 18:59:27 +0100
+
 budgie-desktop (10.5-2) experimental; urgency=medium
 
   * Release to support GNOME 3.34/3.32
@@ -33,7 +39,6 @@ budgie-desktop (10.5-2) experimental; urgency=medium
     - Control move needed runtime dependencies from budgie-desktop to
       budgie-core (Closes: #939358)
     - Rules: Update meson build options
-    - budgie-desktop.gsettings-override remove disabling animation override
     - Update budgie-core lintian-overrides to be a generic architecture
       rather than specifically amd64
 
