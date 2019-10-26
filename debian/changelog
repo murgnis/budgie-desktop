@@ -1,3 +1,9 @@
+budgie-desktop (10.5-0ubuntu6) focal; urgency=medium
+
+  * focal build
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 26 Oct 2019 20:49:17 +0100
+
 budgie-desktop (10.5-0ubuntu5) eoan; urgency=medium
 
   * Tidy of the changelog - following patch was added at ubuntu4 but
