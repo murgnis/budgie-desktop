@@ -1,3 +1,20 @@
+budgie-desktop (10.5.1-1) unstable; urgency=medium
+
+  * Official upstream release
+    - upstream release announcement in install changelogs
+  * Drop all patches except for the following (rebased where necessary)
+    1000-Obtain-gsettings-transparency-key-value-before-showi.patch
+    desktop-override.patch
+    desktop-settings.patch
+    pkexec-menu.patch
+    wnck-shutdown.patch
+    use-builtin-session-manager.patch
+  * Packaging Changes
+    Control - bump StandardsVersion - no changes required
+    Update libraven symbols
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 16 Oct 2019 15:07:53 +0100
+
 budgie-desktop (10.5-4) unstable; urgency=high
 
   [ Willem Mulder ]
