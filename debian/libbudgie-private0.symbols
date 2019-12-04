@@ -48,6 +48,7 @@ libbudgie-private.so.0 libbudgie-private0 #MINVER#
  budgie_sine_ease_in@Base 10.4
  budgie_sine_ease_in_out@Base 10.4
  budgie_sine_ease_out@Base 10.4
+ budgie_struts_get_type@Base 10.5.1
  budgie_toplevel_add_new_applet@Base 10.4
  budgie_toplevel_can_move_applet_left@Base 10.4
  budgie_toplevel_can_move_applet_right@Base 10.4

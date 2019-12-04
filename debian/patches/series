@@ -4,3 +4,6 @@ desktop-settings.patch
 pkexec-menu.patch
 wnck-shutdown.patch
 use-builtin-session-manager.patch
+strut-calc.patch
+popup-scale-factor.patch
+keygrab.patch

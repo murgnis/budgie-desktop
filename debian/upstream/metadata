@@ -1,9 +1,9 @@
 ---
 Name: budgie-desktop
-Homepage: https://solus-project.com/budgie/
-Bug-Database: https://github.com/budgie-desktop/budgie-desktop
-Cite-As: "Flagship desktop of Solus https://solus-project.com/"
-Contact: Ikey Doherty <ikey@solus-project.com>
-Repository: https://github.com/budgie-desktop/budgie-desktop.git
-Repository-Browse: https://github.com/budgie-desktop/budgie-desktop
-Screenshots: https://solus-project.com/budgie/
+Homepage: https://getsol.us/solus/experiences/
+Bug-Database: https://github.com/solus-project/budgie-desktop
+Cite-As: "Flagship desktop of Solus https://getsol.us/"
+Contact: Josh Strobl <joshua@streambits.io>
+Repository: https://github.com/solus-project/budgie-desktop.git
+Repository-Browse: https://github.com/solus-project/budgie-desktop
+Screenshots: https://getsol.us/solus/experiences/

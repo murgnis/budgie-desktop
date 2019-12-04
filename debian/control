@@ -2,9 +2,10 @@ Source: budgie-desktop
 Section: x11
 Priority: optional
 Maintainer: David Mohammed <fossfreedom@ubuntu.com>
-Homepage: https://solus-project.com/budgie/
+Homepage: https://getsol.us/solus/experiences
 Build-Depends:
  debhelper (>= 12),
+ debhelper-compat (= 12),
  gir1.2-gee-0.8,
  gnome-common,
  gnome-settings-daemon-dev (>= 3.34),

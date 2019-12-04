@@ -1,3 +1,26 @@
+budgie-desktop (10.5.1-2) unstable; urgency=medium
+
+  * Bug-fix release
+    Handle monitor-monitor window positioning
+      strut-calc.patch
+    Ensure budgie popovers handle desktop scaling beyond 100%
+      popup-scale-factor.patch
+    Manage keyboard shortcuts - resolve intermittent loss of shortcuts
+    on login
+      keygrab.patch
+  * Packaging Changes
+    control: fix home-page link to point to a valid url
+    control: add build-depends on debhelper-compat (= 12)
+    compat: remove deprecated file
+    upstream/metadata: refresh with new upstream information
+    copyright: refresh with upstream contact info
+    watch: update with revised github project name
+    changelog: fixed typo StandardsVersion --> Standards-Version
+    Update libbudgie-private0.symbols with new symbol due to
+    strut-calc.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 30 Nov 2019 10:59:21 +0000
+
 budgie-desktop (10.5.1-1) unstable; urgency=medium
 
   * Official upstream release
@@ -10,7 +33,7 @@ budgie-desktop (10.5.1-1) unstable; urgency=medium
     wnck-shutdown.patch
     use-builtin-session-manager.patch
   * Packaging Changes
-    Control - bump StandardsVersion - no changes required
+    Control - bump Standards-Version - no changes required
     Update libraven symbols
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 16 Oct 2019 15:07:53 +0100
@@ -61,7 +84,7 @@ budgie-desktop (10.5-2) experimental; urgency=medium
   * Packaging Changes:
     - Rules: replace manual meson build with debhelper equivalents
     - Control & Compat: Update for debhelper 12
-    - Control bump StandardsVersion: no changes required
+    - Control bump Standards-Version: no changes required
     - Control bump gnome-settings-daemon-dev build version
     - Control move needed runtime dependencies from budgie-desktop to
       budgie-core (Closes: #939358)
@@ -135,7 +158,7 @@ budgie-desktop (10.4+git20190110.01.1f8eceaa58e-1) unstable; urgency=medium
   * Packaging Changes
     - control add new BD libasound2-dev
     - copyright update copyright for new release together with year change
-    - control Bump StandardsVersion - fixed symbols Build-Depends-Package
+    - control Bump Standards-Version - fixed symbols Build-Depends-Package
     - Drop the following patches since they have been merged upstream
       0006-Install-missing-notification-icon-1545.patch
       0008-Add-copyright-for-notification-disabled-symbolic.svg.patch
@@ -692,7 +715,7 @@ budgie-desktop (10.4+git20190110.01.1f8eceaa58e-1) unstable; urgency=medium
   * Packaging Changes
     - control add new BD libasound2-dev
     - copyright update copyright for new release together with year change
-    - control Bump StandardsVersion - fixed symbols Build-Depends-Package
+    - control Bump Standards-Version - fixed symbols Build-Depends-Package
     - Drop the following patches since they have been merged upstream
       0006-Install-missing-notification-icon-1545.patch
       0008-Add-copyright-for-notification-disabled-symbolic.svg.patch
