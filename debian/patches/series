@@ -7,3 +7,4 @@ use-builtin-session-manager.patch
 strut-calc.patch
 popup-scale-factor.patch
 keygrab.patch
+show-tray-icon.patch

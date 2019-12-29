@@ -1,0 +1,43 @@
+Description: Show tray icon
+ Use a gsettings schema to decide whether to show
+ the network manager icon in the tray. If enabled
+ the budgie-desktop-nm-applet will autostart and
+ thus show in the tray
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Origin: other
+Forwarded: no
+Last-Update: 2019-12-28
+
+--- /dev/null
++++ b/src/applets/tray/com.solus-project.tray.gschema.xml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<schemalist gettext-domain="budgie">
++  <schema path="/com/solus-project/tray/" id="com.solus-project.tray">
++
++    <key type="b" name="show-nm-trayicon">
++      <default>true</default>
++    </key>
++
++  </schema>
++
++</schemalist>
+\ No newline at end of file
+--- a/src/applets/tray/meson.build
++++ b/src/applets/tray/meson.build
+@@ -34,3 +34,8 @@
+     install: true,
+     install_dir: applet_tray_dir,
+ )
++
++install_data(
++    'com.solus-project.tray.gschema.xml',
++    install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
++)
+--- a/src/session/budgie-desktop-nm-applet.desktop.in
++++ b/src/session/budgie-desktop-nm-applet.desktop.in
+@@ -12,3 +12,4 @@
+ X-GNOME-Bugzilla-Product=NetworkManager
+ X-GNOME-Bugzilla-Component=nm-applet
+ X-GNOME-UsesNotifications=true
++AutostartCondition=GSettings com.solus-project.tray show-nm-trayicon
