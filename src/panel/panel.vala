@@ -1,8 +1,8 @@
 /*
  * This file is part of budgie-desktop
- * 
+ *
  * Copyright © 2015-2019 Budgie Desktop Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -19,7 +19,7 @@ namespace Budgie
  */
 public class MainPanel : Gtk.Box
 {
- 
+
     public MainPanel()
     {
         Object(orientation: Gtk.Orientation.HORIZONTAL);
@@ -142,6 +142,18 @@ public class Panel : Budgie.Toplevel
             }
         }
         return false;
+    }
+
+    private void panel_box_visibility()
+    {
+        Gtk.Box[] boxarray = { start_box, center_box, end_box };
+        foreach (var box in boxarray) {
+            bool visible = true;
+            if (box.get_children().length() == 0) {
+                visible = false;
+            }
+            box.set_visible(visible);
+        }
     }
 
     /**
@@ -375,6 +387,7 @@ public class Panel : Budgie.Toplevel
         /* bit of a no-op. */
         update_sizes();
         load_applets();
+        this.applets_changed.connect(this.panel_box_visibility);
     }
 
     void do_size_allocate()
@@ -727,6 +740,7 @@ public class Panel : Budgie.Toplevel
 
         set_applets();
         budge_em_left(alignment, position);
+        panel_box_visibility();
     }
 
     void add_applet(Budgie.AppletInfo? info)
@@ -775,6 +789,7 @@ public class Panel : Budgie.Toplevel
         ulong id = info.notify.connect(applet_updated);
         info.set_data("notify_id", id);
         this.applet_added(info);
+        panel_box_visibility();
 
         if (this.is_fully_loaded) {
             return;
@@ -1556,6 +1571,8 @@ public class Panel : Budgie.Toplevel
     private bool show_panel()
     {
         show_panel_id = 0;
+
+        panel_box_visibility();
 
         if (!this.allow_animation) {
             return false;
