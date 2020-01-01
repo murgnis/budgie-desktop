@@ -5,6 +5,8 @@ budgie-desktop (10.5.1-3) UNRELEASED; urgency=medium
     show-tray-icon.patch
   * Add support for the Debian third-part applet budgie-appmenu-applet
     recalc-panel-box-visibility.patch
+  * Update keygrab.patch so that mutter-5 dbus UngrabAccelerators is
+    supported - this stops the spamming of journald
 
  -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 01 Jan 2020 20:32:35 +0000
 
