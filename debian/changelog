@@ -1,6 +1,6 @@
 budgie-desktop (10.5.1-3) UNRELEASED; urgency=medium
 
-  * Bug-fix release
+  * Cherry-pic release
     Add support to hide/show network manager applet icon via gsettings
     show-tray-icon.patch
   * Add support for the Debian third-part applet budgie-appmenu-applet
@@ -9,8 +9,10 @@ budgie-desktop (10.5.1-3) UNRELEASED; urgency=medium
     supported - this stops the spamming of journald
   * Update strut-calc.patch with the upstream accepted commit.  This
     resolves messages spamming journald
+  * Support left/right panel layouts
+    leftright-panel-layouts.patch
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 01 Jan 2020 20:32:35 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 06 Jan 2020 21:21:30 +0000
 
 budgie-desktop (10.5.1-2) unstable; urgency=medium
 

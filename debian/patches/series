@@ -9,3 +9,4 @@ popup-scale-factor.patch
 keygrab.patch
 show-tray-icon.patch
 recalc-panel-box-visibility.patch
+leftright-panel-layouts.patch
