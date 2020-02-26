@@ -1,3 +1,16 @@
+budgie-desktop (10.5.1-4) UNRELEASED; urgency=medium
+
+  [ Marco Trevisan (Treviño) ]
+  * debian/control: Build-depend on libmutter-6-dev
+  * d/p/Mutter-3.35.91-1939.patch,
+    d/p/Mutter-3.36-support-1918.patch:
+    - Support compiling with mutter-6
+
+  [ dad ]
+  * 
+
+ -- dad <dad@dad-Standard-PC-i440FX-PIIX-1996>  Wed, 26 Feb 2020 20:57:07 +0000
+
 budgie-desktop (10.5.1-3) unstable; urgency=medium
 
   * Cherry-pick release
