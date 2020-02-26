@@ -1,15 +1,20 @@
-budgie-desktop (10.5.1-4) UNRELEASED; urgency=medium
+budgie-desktop (10.5.1-4) experimental; urgency=medium
 
   [ Marco Trevisan (Treviño) ]
+  * Add support for mutter-6 (Closes: #952639)
   * debian/control: Build-depend on libmutter-6-dev
   * d/p/Mutter-3.35.91-1939.patch,
     d/p/Mutter-3.36-support-1918.patch:
     - Support compiling with mutter-6
 
-  [ dad ]
-  * 
+  [ David Mohammed ]
+  * Use github homepage rather than upsteam website
+    (Closes: #950477)
+  * control: bump Standards-Version; no changes required
+  * control: Update description for the budgie-desktop pkg
+    (Closes: #950468)
 
- -- dad <dad@dad-Standard-PC-i440FX-PIIX-1996>  Wed, 26 Feb 2020 20:57:07 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 26 Feb 2020 21:01:30 +0000
 
 budgie-desktop (10.5.1-3) unstable; urgency=medium
 
