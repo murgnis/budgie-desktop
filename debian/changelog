@@ -8,13 +8,15 @@ budgie-desktop (10.5.1-4) experimental; urgency=medium
     - Support compiling with mutter-6
 
   [ David Mohammed ]
-  * Use github homepage rather than upsteam website
+  * Use github homepage rather than upstream website
     (Closes: #950477)
   * control: bump Standards-Version; no changes required
   * control: Update description for the budgie-desktop pkg
     (Closes: #950468)
+  * Fix crash when adding more than 8 workspaces
+    workspace-max.patch
 
- -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 26 Feb 2020 21:01:30 +0000
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 09 Mar 2020 19:03:12 +0000
 
 budgie-desktop (10.5.1-3) unstable; urgency=medium
 
