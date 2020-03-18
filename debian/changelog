@@ -1,6 +1,6 @@
-budgie-desktop (10.5.1-4ubuntu1) focal; urgency=medium
+budgie-desktop (10.5.1-5) experimental; urgency=medium
 
-  * Bug fix
+  * Bug-fix
     Patch to resolve polkitdialog crashes
     polkitdialog.patch
 
