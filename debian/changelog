@@ -1,3 +1,11 @@
+budgie-desktop (10.5.1-4ubuntu1) focal; urgency=medium
+
+  * Bug fix
+    Patch to resolve polkitdialog crashes
+    polkitdialog.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Wed, 18 Mar 2020 21:58:42 +0000
+
 budgie-desktop (10.5.1-4) experimental; urgency=medium
 
   [ Marco Trevisan (Treviño) ]
