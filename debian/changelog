@@ -1,3 +1,11 @@
+budgie-desktop (10.5.1-6) experimental; urgency=medium
+
+  * Bug-fix
+    update polkitdialog.patch to ensure pkexec based dialogs
+    are shown.
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Sat, 21 Mar 2020 15:10:15 +0000
+
 budgie-desktop (10.5.1-5) experimental; urgency=medium
 
   * Bug-fix

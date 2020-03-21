@@ -8,10 +8,23 @@ Description: Resolve polkit dialog crashes
  enough to be forwarded upstream
 Author: David Mohammed <fossfreedom@ubuntu.com>
 Forwarded: no
-Last-Update: 2020-03-18
+Last-Update: 2020-03-21
 
+Index: budgie-desktop-10.5.1/src/polkit/polkitdialog.vala
+===================================================================
 --- budgie-desktop-10.5.1.orig/src/polkit/polkitdialog.vala
 +++ budgie-desktop-10.5.1/src/polkit/polkitdialog.vala
+@@ -1,8 +1,8 @@
+ /*
+  * This file is part of budgie-desktop
+- * 
++ *
+  * Copyright © 2015-2019 Budgie Desktop Developers
+- * 
++ *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation; either version 2 of the License, or
 @@ -70,7 +70,7 @@ public class AgentDialog : Gtk.Window
      }
  
@@ -30,11 +43,20 @@ Last-Update: 2020-03-18
  
          Gtk.ListStore? model = new Gtk.ListStore(2, typeof(string), typeof(Polkit.Identity));
          Gtk.TreeIter iter;
+@@ -236,7 +236,7 @@ public class AgentDialog : Gtk.Window
+                 name = ident.to_string();
+             }
+ 
+-            
++
+             model.append(out iter);
+             model.set(iter, 0, name, 1, ident);
+             ++length;
 @@ -286,6 +286,8 @@ public class Agent : PolkitAgent.Listene
      /* Theme management */
      private Budgie.ThemeManager theme_manager;
  
-+    public signal void stop ();
++    public signal void stopagent ();
 +
      public override async bool initiate_authentication(string action_id, string message, string icon_name,
          Polkit.Details details, string cookie, GLib.List<Polkit.Identity?>? identities, GLib.Cancellable cancellable) throws Polkit.Error
@@ -45,19 +67,19 @@ Last-Update: 2020-03-18
          if (quit) {
 -            Gtk.main_quit();
 +            //Gtk.main_quit();
-+            stop();
++            stopagent();
              return;
          }
          try {
-@@ -385,7 +388,10 @@ public static int main(string[] args)
-     }
+@@ -373,6 +376,11 @@ public static int main(string[] args)
+     Intl.textdomain(Budgie.GETTEXT_PACKAGE);
  
-     try {
--        PolkitAgent.register_listener(agent, subject, null);
-+        PolkitAgent.register_listener(agent, subject, "");
-+        agent.stop.connect(()=> {
-+            Gtk.main_quit();
-+        });
-     } catch (Error e) {
-         stderr.printf("Unable to register listener: %s", e.message);
-         return 1;
+     Budgie.Agent? agent = new Budgie.Agent();
++    agent.stopagent.connect(() => {
++        Gtk.main_quit();
++        return;
++    });
++
+     Polkit.Subject? subject = null;
+ 
+     int pid = Posix.getpid();
