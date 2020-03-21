@@ -71,15 +71,41 @@ Index: budgie-desktop-10.5.1/src/polkit/polkitdialog.vala
              return;
          }
          try {
-@@ -373,6 +376,11 @@ public static int main(string[] args)
+@@ -373,6 +376,7 @@ public static int main(string[] args)
      Intl.textdomain(Budgie.GETTEXT_PACKAGE);
  
      Budgie.Agent? agent = new Budgie.Agent();
-+    agent.stopagent.connect(() => {
-+        Gtk.main_quit();
-+        return;
-+    });
 +
      Polkit.Subject? subject = null;
  
      int pid = Posix.getpid();
+@@ -384,13 +388,28 @@ public static int main(string[] args)
+         return 1;
+     }
+ 
++
+     try {
+-        PolkitAgent.register_listener(agent, subject, null);
++        var agenthandle = agent.register(PolkitAgent.RegisterFlags.NONE, subject, null );
++        agent.stopagent.connect(() => {
++            PolkitAgent.Listener.unregister(agenthandle);
++            Gtk.main_quit();
++            return;
++        });
+     } catch (Error e) {
+         stderr.printf("Unable to register listener: %s", e.message);
+         return 1;
+     }
+ 
++    /*try {
++        PolkitAgent.register_listener(agent, subject, null);
++    } catch (Error e) {
++        stderr.printf("Unable to register listener: %s", e.message);
++        return 1;
++    }*/
++
++
++
+     Gtk.main();
+ 
+     return 0;
