@@ -14,3 +14,4 @@ Mutter-3.35.90-support-1918.patch
 Mutter-3.35.91-1939.patch
 workspace-max.patch
 polkitdialog.patch
+hide_default_theme.patch

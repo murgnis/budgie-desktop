@@ -1,3 +1,10 @@
+budgie-desktop (10.5.1-7) UNRELEASED; urgency=medium
+
+  * Hide the adwaita theme from budgie-desktop-settings
+    hide_default_theme.patch
+
+ -- David Mohammed <fossfreedom@ubuntu.com>  Mon, 06 Apr 2020 17:55:48 +0100
+
 budgie-desktop (10.5.1-6) experimental; urgency=medium
 
   * Bug-fix

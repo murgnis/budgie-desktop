@@ -1,0 +1,18 @@
+Description: hide the "Default" theme
+ Under Debian & Ubuntu the Adwaita theme is shown as "Default".
+ The intention of upstream code is to hide Adwaita that does not
+ render correctly in budgie. This patch hides this theme.
+Author: David Mohammed <fossfreedom@ubuntu.com>
+Forwarded: no
+Last-Update: 2020-04-06
+
+--- budgie-desktop-10.5.1.orig/src/panel/settings/themes.vala
++++ budgie-desktop-10.5.1/src/panel/settings/themes.vala
+@@ -52,6 +52,7 @@ public class ThemeScanner : GLib.Object
+ 
+     string[] gtk_theme_blacklist = {
+         "Adwaita",
++        "Default",
+         "Breeze",
+         "Clearlooks",
+         "Crux",
