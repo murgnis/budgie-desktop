@@ -1,8 +1,8 @@
 /*
  * This file is part of budgie-desktop
- * 
+ *
  * Copyright © 2015-2019 Budgie Desktop Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -117,29 +117,33 @@ public class PanelPage : Budgie.SettingsPage {
     static string get_panel_name(Budgie.Toplevel? panel)
     {
         var display = Gdk.Display.get_default();
-        string monitor_name = " (" + display.get_monitor(panel.monitor).get_model() + ")";
+        string monitor_name = "";
+        var scr = Gdk.Screen.get_default();
+        if (scr.get_n_monitors() > 1) {
+            monitor_name = " (" + display.get_monitor(panel.monitor).get_model() + ")";
+        }
 
         if (panel.dock_mode) {
             switch (panel.position) {
                 case PanelPosition.TOP:
-                    return _("Top Dock" + monitor_name);
+                    return _("Top Dock") + monitor_name;
                 case PanelPosition.RIGHT:
-                    return _("Right Dock" + monitor_name);
+                    return _("Right Dock") + monitor_name;
                 case PanelPosition.LEFT:
-                    return _("Left Dock" + monitor_name);
+                    return _("Left Dock") + monitor_name;
                 default:
-                    return _("Bottom Dock" + monitor_name);
+                    return _("Bottom Dock") + monitor_name;
             }
         } else {
             switch (panel.position) {
                 case PanelPosition.TOP:
-                    return _("Top Panel" + monitor_name);
+                    return _("Top Panel") + monitor_name;
                 case PanelPosition.RIGHT:
-                    return _("Right Panel" + monitor_name);
+                    return _("Right Panel") + monitor_name;
                 case PanelPosition.LEFT:
-                    return _("Left Panel" + monitor_name);
+                    return _("Left Panel") + monitor_name;
                 default:
-                    return _("Bottom Panel" + monitor_name);
+                    return _("Bottom Panel") + monitor_name;
             }
         }
     }
@@ -224,6 +228,7 @@ public class PanelPage : Budgie.SettingsPage {
     {
         SettingsGrid? ret = new SettingsGrid();
         Gtk.SizeGroup group = new Gtk.SizeGroup(Gtk.SizeGroupMode.HORIZONTAL);
+        var scr = Gdk.Screen.get_default();
 
         ret.border_width = 20;
 
@@ -236,11 +241,14 @@ public class PanelPage : Budgie.SettingsPage {
             _("Set the edge of the screen that this panel will stay on")));
 
         combobox_monitor = new Gtk.ComboBox();
-        monitor_id = combobox_monitor.changed.connect(this.set_monitor);
-        group.add_widget(combobox_monitor);
-        ret.add_row(new SettingsRow(combobox_monitor,
-            _("Monitor"),
-            _("Set the monitor this panel will stay on")));
+        if (scr.get_n_monitors() > 1) {
+            monitor_id = combobox_monitor.changed.connect(this.set_monitor);
+            group.add_widget(combobox_monitor);
+            ret.add_row(new SettingsRow(combobox_monitor,
+                _("Display"),
+                _("Set the display for this panel")));
+
+        }
 
         /* Size of the panel */
         spinbutton_size = new Gtk.SpinButton.with_range(16, 200, 1);
@@ -311,18 +319,18 @@ public class PanelPage : Budgie.SettingsPage {
         combobox_position.add_attribute(render, "text", 1);
         combobox_position.set_id_column(0);
 
-        var display = Gdk.Display.get_default();
-        model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(int));
-        for (int i = 0; i < display.get_n_monitors(); i++) {
-            model.append(out iter);
-            // model.set(iter, 0, i, 1, display.get_monitor(i).get_model(), -1);
-            model.set(iter, 0, i.to_string(), 1, display.get_monitor(i).get_model(), 2, i, -1);
+        if (scr.get_n_monitors() > 1) {
+            var display = Gdk.Display.get_default();
+            model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(int));
+            for (int i = 0; i < display.get_n_monitors(); i++) {
+                model.append(out iter);
+                model.set(iter, 0, i.to_string(), 1, display.get_monitor(i).get_model(), 2, i, -1);
+            }
+            combobox_monitor.set_model(model);
+            combobox_monitor.pack_start(render, true);
+            combobox_monitor.add_attribute(render, "text", 1);
+            combobox_monitor.set_id_column(0);
         }
-
-        combobox_monitor.set_model(model);
-        combobox_monitor.pack_start(render, true);
-        combobox_monitor.add_attribute(render, "text", 1);
-        combobox_monitor.set_id_column(0);
 
         /* Transparency types */
         model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(Budgie.PanelTransparency));
@@ -402,10 +410,13 @@ public class PanelPage : Budgie.SettingsPage {
                 SignalHandler.unblock(this.combobox_position, this.position_id);
                 break;
             case "monitor":
-                SignalHandler.block(this.combobox_monitor, this.monitor_id);
-                this.combobox_monitor.active_id = this.toplevel.monitor.to_string();
-                this.title = PanelPage.get_panel_name(toplevel);
-                SignalHandler.unblock(this.combobox_monitor, this.monitor_id);
+                var scr = Gdk.Screen.get_default();
+                if (scr.get_n_monitors() > 1) {
+                    SignalHandler.block(this.combobox_monitor, this.monitor_id);
+                    this.combobox_monitor.active_id = this.toplevel.monitor.to_string();
+                    this.title = PanelPage.get_panel_name(toplevel);
+                    SignalHandler.unblock(this.combobox_monitor, this.monitor_id);
+                }
                 break;
             case "intended-size":
                 SignalHandler.block(this.spinbutton_size, this.size_id);

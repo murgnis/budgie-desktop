@@ -1,14 +1,14 @@
 /*
  * This file is part of budgie-desktop
- * 
+ *
  * Copyright © 2015-2019 Budgie Desktop Developers
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  */
- 
+
 using LibUUID;
 
 namespace Budgie
@@ -679,7 +679,6 @@ public class PanelManager : DesktopManager
 
         string? key = null;
         Budgie.Panel? val = null;
-        Screen? area = screens.lookup(primary_monitor);
         var iter = HashTableIter<string,Budgie.Panel?>(panels);
         while (iter.next(out key, out val)) {
             if (val.position == Budgie.PanelPosition.TOP) {
@@ -946,21 +945,6 @@ public class PanelManager : DesktopManager
         size = settings.get_int(Budgie.PANEL_KEY_SIZE);
         panel.intended_size = (int)size;
         this.show_panel(uuid, position, monitor, transparency);
-    }
-
-    static string? pos_text(PanelPosition pos) {
-        switch (pos) {
-            case PanelPosition.TOP:
-                return "top";
-            case PanelPosition.BOTTOM:
-                return "bottom";
-            case PanelPosition.LEFT:
-                return "left";
-            case PanelPosition.RIGHT:
-                return "right";
-            default:
-                return "none";
-        }
     }
 
     void show_panel(string uuid, PanelPosition position, int monitor, PanelTransparency transparency)
