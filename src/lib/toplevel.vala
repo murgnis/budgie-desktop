@@ -40,6 +40,9 @@ public abstract class Toplevel : Gtk.Window
      * Our required size (height or width dependening on orientation
      */
     public int intended_size { public set ; public get; }
+    
+    public int monitor { public set ; public get; }
+    public bool is_disabled { public set ; public get; }
 
     public bool shadow_visible { public set ; public get; }
     public bool theme_regions { public set; public get; }
@@ -72,43 +75,42 @@ public abstract class Toplevel : Gtk.Window
     public abstract void remove_applet(Budgie.AppletInfo? info);
 }
 
-public static void set_struts(Gtk.Window? window, PanelPosition position, long panel_size)
+public static void set_struts(Gtk.Window? window, PanelPosition position, int monitor, long panel_size)
 {
     Gdk.Atom atom;
     long struts[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     var screen = window.screen;
-    Gdk.Monitor mon = screen.get_display().get_primary_monitor();
-    Gdk.Rectangle primary_monitor_rect = mon.get_geometry();
+    Gdk.Monitor mon = screen.get_display().get_monitor(monitor);
+    Gdk.Rectangle monitor_rect = mon.get_geometry();
     int scale = window.get_scale_factor();
 
-    if (!window.get_realized()) {
+    if (!window.get_realized() || mon == null) 
         return;
-    }
 
     // Struts dependent on position
     switch (position) {
         case PanelPosition.TOP:
-            struts[Struts.TOP] = (panel_size + primary_monitor_rect.y) * scale;
-            struts[Struts.TOP_START] = primary_monitor_rect.x * scale;
-            struts[Struts.TOP_END] = (primary_monitor_rect.x + primary_monitor_rect.width) * scale - 1;
+            struts[Struts.TOP] = (panel_size + monitor_rect.y) * scale;
+            struts[Struts.TOP_START] = monitor_rect.x * scale;
+            struts[Struts.TOP_END] = (monitor_rect.x + monitor_rect.width) * scale - 1;
             break;
         case PanelPosition.LEFT:
             panel_size += 5;
-            struts[Struts.LEFT] = (primary_monitor_rect.x + panel_size) * scale;
-            struts[Struts.LEFT_START] = primary_monitor_rect.y * scale;
-            struts[Struts.LEFT_END] = (primary_monitor_rect.y + primary_monitor_rect.height) * scale - 1;
+            struts[Struts.LEFT] = (monitor_rect.x + panel_size) * scale;
+            struts[Struts.LEFT_START] = monitor_rect.y * scale;
+            struts[Struts.LEFT_END] = (monitor_rect.y + monitor_rect.height) * scale - 1;
             break;
         case PanelPosition.RIGHT:
             panel_size += 5;
-            struts[Struts.RIGHT] = (screen.get_width() + panel_size) - (primary_monitor_rect.x + primary_monitor_rect.width) * scale;
-            struts[Struts.RIGHT_START] = primary_monitor_rect.y * scale;
-            struts[Struts.RIGHT_END] = (primary_monitor_rect.y + primary_monitor_rect.height) * scale - 1;
+            struts[Struts.RIGHT] = (screen.get_width() + panel_size) - (monitor_rect.x + monitor_rect.width) * scale;
+            struts[Struts.RIGHT_START] = monitor_rect.y * scale;
+            struts[Struts.RIGHT_END] = (monitor_rect.y + monitor_rect.height) * scale - 1;
             break;
         case PanelPosition.BOTTOM:
         default:
-            struts[Struts.BOTTOM] = (panel_size + screen.get_height() - primary_monitor_rect.y - primary_monitor_rect.height) * scale;
-            struts[Struts.BOTTOM_START] = primary_monitor_rect.x * scale;
-            struts[Struts.BOTTOM_END] = (primary_monitor_rect.x + primary_monitor_rect.width) * scale - 1;
+            struts[Struts.BOTTOM] = (panel_size + screen.get_height() - monitor_rect.y - monitor_rect.height) * scale;
+            struts[Struts.BOTTOM_START] = monitor_rect.x * scale;
+            struts[Struts.BOTTOM_END] = (monitor_rect.x + monitor_rect.width) * scale - 1;
             break;
     }
 
