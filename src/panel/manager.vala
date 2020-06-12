@@ -70,6 +70,8 @@ public const string ROOT_KEY_PANELS        = "panels";
 /** Panel position */
 public const string PANEL_KEY_POSITION     = "location";
 
+public const string PANEL_KEY_DISCONNECT   = "disconnect";
+
 public const string PANEL_KEY_MONITOR      = "monitor";
 
 /** Panel transparency */
@@ -149,6 +151,7 @@ public class PanelManager : DesktopManager
     HashTable<string,Budgie.Panel?> panels;
 
     int primary_monitor = 0;
+
     Settings settings;
     Peas.Engine engine;
     Peas.ExtensionSet extensions;
@@ -383,7 +386,7 @@ public class PanelManager : DesktopManager
     }
 
     /*
-     * Decide wether or not the panel should be opaque
+     * Decide whether or not the panel should be opaque
      * The panel should be opaque when:
      *   - Raven is open
      *   - a window fills these requirements:
@@ -519,6 +522,8 @@ public class PanelManager : DesktopManager
 
             if (monitor_screen == null) {
                 panel.is_disabled = true;
+                message("###no monitor");
+                continue;
             } else {
                 panel.update_geometry(monitor_screen.area, panel.position, panel.monitor);
                 panel.is_disabled = false;
@@ -526,11 +531,17 @@ public class PanelManager : DesktopManager
 
             if (panel.position == Budgie.PanelPosition.TOP) {
                 top = panel;
+                message("###top");
             } else if (panel.position == Budgie.PanelPosition.BOTTOM) {
                 bottom = panel;
+                message("###bottom");
             }
-            /* Re-take the position */
-            monitor_screen.slots |= panel.position;
+            if (panel.move_on_disconnect) {
+                /* Re-take the position */
+                message("### %d", (int)panel.move_on_disconnect);
+                monitor_screen.slots |= panel.position;
+            }
+
         }
         this.primary_monitor = mon;
 
@@ -938,7 +949,8 @@ public class PanelManager : DesktopManager
         transparency = (PanelTransparency)settings.get_enum(Budgie.PANEL_KEY_TRANSPARENCY);
         policy = (AutohidePolicy)settings.get_enum(Budgie.PANEL_KEY_AUTOHIDE);
         monitor = settings.get_int(Budgie.PANEL_KEY_MONITOR);
-
+        panel.move_on_disconnect = settings.get_boolean(Budgie.PANEL_KEY_DISCONNECT);
+        
         panel.transparency = transparency;
         panel.autohide = policy;
 
@@ -1055,6 +1067,19 @@ public class PanelManager : DesktopManager
         panel.update_transparency(transparency);
     }
 
+    public override void set_display_disconnect(string uuid, bool move_on_disconnect)
+    {
+        Budgie.Panel? panel = panels.lookup(uuid);
+
+        if (panel == null) {
+            warning("Trying to set disconnect on non-existent panel: %s", uuid);
+            return;
+        }
+        
+        panel.move_on_disconnect = move_on_disconnect;
+        message("###### %d", (int)panel.move_on_disconnect);
+
+    }
 
     public override void set_autohide(string uuid, Budgie.AutohidePolicy policy)
     {

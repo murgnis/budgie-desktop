@@ -42,6 +42,8 @@ public class PanelPage : Budgie.SettingsPage {
     ulong position_id;
     Gtk.ComboBox combobox_monitor;
     ulong monitor_id;
+    Gtk.Switch switch_display_disconnect;
+    ulong display_disconnect_id;
     Gtk.ComboBox combobox_autohide;
     ulong autohide_id;
     Gtk.ComboBox combobox_transparency;
@@ -118,8 +120,7 @@ public class PanelPage : Budgie.SettingsPage {
     {
         var display = Gdk.Display.get_default();
         string monitor_name = "";
-        var scr = Gdk.Screen.get_default();
-        if (scr.get_n_monitors() > 1) {
+        if (display.get_n_monitors() > 1) {
             monitor_name = " (" + display.get_monitor(panel.monitor).get_model() + ")";
         }
 
@@ -228,7 +229,7 @@ public class PanelPage : Budgie.SettingsPage {
     {
         SettingsGrid? ret = new SettingsGrid();
         Gtk.SizeGroup group = new Gtk.SizeGroup(Gtk.SizeGroupMode.HORIZONTAL);
-        var scr = Gdk.Screen.get_default();
+        var display = Gdk.Display.get_default();
 
         ret.border_width = 20;
 
@@ -239,16 +240,6 @@ public class PanelPage : Budgie.SettingsPage {
         ret.add_row(new SettingsRow(combobox_position,
             _("Position"),
             _("Set the edge of the screen that this panel will stay on")));
-
-        combobox_monitor = new Gtk.ComboBox();
-        if (scr.get_n_monitors() > 1) {
-            monitor_id = combobox_monitor.changed.connect(this.set_monitor);
-            group.add_widget(combobox_monitor);
-            ret.add_row(new SettingsRow(combobox_monitor,
-                _("Display"),
-                _("Set the display for this panel")));
-
-        }
 
         /* Size of the panel */
         spinbutton_size = new Gtk.SpinButton.with_range(16, 200, 1);
@@ -274,6 +265,21 @@ public class PanelPage : Budgie.SettingsPage {
         ret.add_row(new SettingsRow(combobox_transparency,
             _("Transparency"),
             _("Control when this panel should have a solid background")));
+
+        combobox_monitor = new Gtk.ComboBox();
+        switch_display_disconnect = new Gtk.Switch();
+        if (display.get_n_monitors() > 1) {
+            monitor_id = combobox_monitor.changed.connect(this.set_monitor);
+            group.add_widget(combobox_monitor);
+            ret.add_row(new SettingsRow(combobox_monitor,
+                _("Display"),
+                _("Set the display for this panel")));
+
+            ret.add_row(new SettingsRow(switch_display_disconnect,
+                _("Display disconnect"),
+                _("Move panel to primary display when the display is disconnected")));
+            display_disconnect_id = switch_display_disconnect.notify["active"].connect(this.set_display_disconnect);
+        }
 
         /* Shadow */
         switch_shadow = new Gtk.Switch();
@@ -319,8 +325,7 @@ public class PanelPage : Budgie.SettingsPage {
         combobox_position.add_attribute(render, "text", 1);
         combobox_position.set_id_column(0);
 
-        if (scr.get_n_monitors() > 1) {
-            var display = Gdk.Display.get_default();
+        if (display.get_n_monitors() > 1) {
             model = new Gtk.ListStore(3, typeof(string), typeof(string), typeof(int));
             for (int i = 0; i < display.get_n_monitors(); i++) {
                 model.append(out iter);
@@ -368,6 +373,7 @@ public class PanelPage : Budgie.SettingsPage {
         const string[] needed_props = {
             "position",
             "monitor",
+            "disconnect",
             "intended-size",
             "transparency",
             "autohide",
@@ -410,12 +416,20 @@ public class PanelPage : Budgie.SettingsPage {
                 SignalHandler.unblock(this.combobox_position, this.position_id);
                 break;
             case "monitor":
-                var scr = Gdk.Screen.get_default();
-                if (scr.get_n_monitors() > 1) {
+                var display = Gdk.Display.get_default();
+                if (display.get_n_monitors() > 1) {
                     SignalHandler.block(this.combobox_monitor, this.monitor_id);
                     this.combobox_monitor.active_id = this.toplevel.monitor.to_string();
                     this.title = PanelPage.get_panel_name(toplevel);
                     SignalHandler.unblock(this.combobox_monitor, this.monitor_id);
+                }
+                break;
+            case "disconnect":
+                var display = Gdk.Display.get_default();
+                if (display.get_n_monitors() > 1) {
+                    SignalHandler.block(this.switch_display_disconnect, this.display_disconnect_id);
+                    this.switch_display_disconnect.active = this.toplevel.move_on_disconnect;
+                    SignalHandler.unblock(this.switch_display_disconnect, this.display_disconnect_id);
                 }
                 break;
             case "intended-size":
@@ -452,6 +466,14 @@ public class PanelPage : Budgie.SettingsPage {
             default:
                 break;
         }
+    }
+
+    /**
+     * We're asking the panel to whether to move on display disconnection
+     */
+    private void set_display_disconnect()
+    {
+        this.toplevel.move_on_disconnect = this.switch_display_disconnect.active;
     }
 
     /**

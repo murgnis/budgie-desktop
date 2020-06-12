@@ -352,6 +352,9 @@ public class Panel : Budgie.Toplevel
         shadow_visible = this.settings.get_boolean(Budgie.PANEL_KEY_SHADOW);
         this.settings.bind(Budgie.PANEL_KEY_SHADOW, this, "shadow-visible", SettingsBindFlags.DEFAULT);
 
+        move_on_disconnect = this.settings.get_boolean(Budgie.PANEL_KEY_DISCONNECT);
+        this.settings.bind(Budgie.PANEL_KEY_DISCONNECT, this, "move-on-disconnect", SettingsBindFlags.DEFAULT);
+
         /* Assign our applet holder boxes */
         start_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 2);
         start_box.halign = Gtk.Align.START;

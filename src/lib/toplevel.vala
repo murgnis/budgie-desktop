@@ -48,6 +48,7 @@ public abstract class Toplevel : Gtk.Window
     public bool theme_regions { public set; public get; }
     public bool dock_mode { public set; public get; default = false; }
     public bool intersected { public set; public get; default = false; }
+    public bool move_on_disconnect { public set; public get; default = true; }
 
     /**
      * Unique identifier for this panel
