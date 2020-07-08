@@ -216,8 +216,6 @@ public class BudgieBackground : Clutter.Actor
         var background = new Meta.Background(display);
 #if HAVE_MUTTER_6
         actor.set_background(background);
-#else
-        var content = Meta.BackgroundContent(display, index);
 #endif
         rect = display.get_monitor_geometry(index);
         actor.set_size(rect.width, rect.height);
