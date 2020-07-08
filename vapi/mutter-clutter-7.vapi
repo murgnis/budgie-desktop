@@ -4657,7 +4657,7 @@ namespace Clutter {
 		[Version (since = "1.0")]
 		public void allocate_available_size (float x, float y, float available_width, float available_height);
 		[Version (since = "0.8")]
-		public void allocate_preferred_size ();
+		public void allocate_preferred_size (float x, float y);
 		[Version (since = "0.6")]
 		public void apply_relative_transform_to_point (Clutter.Actor? ancestor, Graphene.Point3D point, out unowned Graphene.Point3D vertex);
 		[NoWrapper]
@@ -4666,6 +4666,8 @@ namespace Clutter {
 		public void apply_transform_to_point (Graphene.Point3D point, out unowned Graphene.Point3D vertex);
 		[Version (since = "1.24")]
 		public void bind_model (GLib.ListModel? model, owned Clutter.ActorCreateChildFunc create_child_func);
+		[NoWrapper]
+		public virtual float calculate_resource_scale (int phase);
 		[Version (since = "1.4")]
 		public void clear_actions ();
 		[Version (since = "1.4")]
@@ -4695,13 +4697,8 @@ namespace Clutter {
 		public GLib.List<weak Clutter.Action> get_actions ();
 		[Version (since = "0.8")]
 		public Clutter.ActorBox get_allocation_box ();
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity get_anchor_point_gravity ();
 		[Version (since = "1.10")]
 		public Clutter.Color get_background_color ();
-		[CCode (cname = "clutter_get_actor_by_gid")]
-		[Version (deprecated = true, deprecated_since = "1.8", since = "0.6")]
-		public static unowned Clutter.Actor get_by_gid (uint32 id_);
 		[Version (since = "1.10")]
 		public unowned Clutter.Actor get_child_at_index (int index_);
 		[Version (since = "1.12")]
@@ -4728,8 +4725,6 @@ namespace Clutter {
 		public void get_content_scaling_filters (out Clutter.ScalingFilter min_filter, out Clutter.ScalingFilter mag_filter);
 		[Version (since = "1.10")]
 		public unowned Clutter.PaintVolume get_default_paint_volume ();
-		[Version (deprecated = true, deprecated_since = "1.12")]
-		public float get_depth ();
 		[Version (since = "1.10")]
 		public uint get_easing_delay ();
 		[Version (since = "1.10")]
@@ -4742,6 +4737,7 @@ namespace Clutter {
 		public GLib.List<weak Clutter.Effect> get_effects ();
 		[Version (since = "1.10")]
 		public unowned Clutter.Actor get_first_child ();
+		public bool get_fixed_position (out float x, out float y);
 		[Version (since = "0.8")]
 		public bool get_fixed_position_set ();
 		[Version (since = "1.0")]
@@ -4803,17 +4799,11 @@ namespace Clutter {
 		public bool get_reactive ();
 		[Version (since = "1.2")]
 		public Clutter.RequestMode get_request_mode ();
-		public bool get_resource_scale (out float resource_scale);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.8")]
-		public double get_rotation (Clutter.RotateAxis axis, out float x, out float y, out float z);
+		public float get_resource_scale ();
 		[Version (since = "1.12")]
 		public double get_rotation_angle (Clutter.RotateAxis axis);
 		[Version (since = "0.2")]
 		public void get_scale (out double scale_x, out double scale_y);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public void get_scale_center (out float center_x, out float center_y);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity get_scale_gravity ();
 		[Version (since = "1.12")]
 		public double get_scale_z ();
 		[Version (since = "0.2")]
@@ -4847,8 +4837,6 @@ namespace Clutter {
 		public bool get_y_expand ();
 		[Version (since = "1.12")]
 		public float get_z_position ();
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity get_z_rotation_gravity ();
 		[Version (since = "1.0")]
 		public void grab_key_focus ();
 		public virtual bool has_accessible ();
@@ -4875,6 +4863,8 @@ namespace Clutter {
 		public void insert_child_at_index (Clutter.Actor child, int index_);
 		[Version (since = "1.10")]
 		public void insert_child_below (Clutter.Actor child, Clutter.Actor? sibling);
+		public void invalidate_transform ();
+		public bool is_effectively_on_stage_view (Clutter.StageView view);
 		[Version (since = "1.0")]
 		public bool is_in_clone_paint ();
 		[Version (since = "1.24")]
@@ -4889,19 +4879,15 @@ namespace Clutter {
 		public bool is_visible ();
 		[Version (since = "1.0")]
 		public virtual void map ();
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public void move_anchor_point (float anchor_x, float anchor_y);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public void move_anchor_point_from_gravity (Clutter.Gravity gravity);
 		[Version (since = "0.2")]
 		public void move_by (float dx, float dy);
 		[Version (since = "1.12")]
 		public bool needs_expand (Clutter.Orientation orientation);
 		[NoWrapper]
 		public virtual void paint_node (Clutter.PaintNode root);
+		public unowned GLib.List<Clutter.StageView> peek_stage_views ();
 		public void pick_box (Clutter.PickContext pick_context, Clutter.ActorBox box);
-		public void pop_internal ();
-		public void push_internal ();
+		public unowned Clutter.FrameClock pick_frame_clock ();
 		public void queue_redraw ();
 		[Version (since = "1.10")]
 		public void queue_redraw_with_clip (Cairo.RectangleInt? clip);
@@ -4934,10 +4920,6 @@ namespace Clutter {
 		public void save_easing_state ();
 		[Version (since = "1.10")]
 		public void set_allocation (Clutter.ActorBox box);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public void set_anchor_point (float anchor_x, float anchor_y);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public void set_anchor_point_from_gravity (Clutter.Gravity gravity);
 		[Version (since = "1.10")]
 		public void set_background_color (Clutter.Color? color);
 		[Version (since = "1.10")]
@@ -4960,8 +4942,6 @@ namespace Clutter {
 		public void set_content_repeat (Clutter.ContentRepeat repeat);
 		[Version (since = "1.10")]
 		public void set_content_scaling_filters (Clutter.ScalingFilter min_filter, Clutter.ScalingFilter mag_filter);
-		[Version (deprecated = true, deprecated_since = "1.12")]
-		public void set_depth (float depth);
 		[Version (since = "1.10")]
 		public void set_easing_delay (uint msecs);
 		[Version (since = "1.10")]
@@ -4991,8 +4971,6 @@ namespace Clutter {
 		public void set_offscreen_redirect (Clutter.OffscreenRedirect redirect);
 		public void set_opacity (uint8 opacity);
 		public void set_opacity_override (int opacity);
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void set_parent (Clutter.Actor parent);
 		[Version (since = "1.12")]
 		public void set_pivot_point (float pivot_x, float pivot_y);
 		[Version (since = "1.12")]
@@ -5002,14 +4980,10 @@ namespace Clutter {
 		public void set_reactive (bool reactive);
 		[Version (since = "1.2")]
 		public void set_request_mode (Clutter.RequestMode mode);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.8")]
-		public void set_rotation (Clutter.RotateAxis axis, double angle, float x, float y, float z);
 		[Version (since = "1.12")]
 		public void set_rotation_angle (Clutter.RotateAxis axis, double angle);
 		[Version (since = "0.2")]
 		public void set_scale (double scale_x, double scale_y);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public void set_scale_full (double scale_x, double scale_y, float center_x, float center_y);
 		[Version (since = "1.12")]
 		public void set_scale_z (double scale_z);
 		public void set_size (float width, float height);
@@ -5035,18 +5009,12 @@ namespace Clutter {
 		public void set_y_expand (bool expand);
 		[Version (since = "1.12")]
 		public void set_z_position (float z_position);
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public void set_z_rotation_from_gravity (double angle, Clutter.Gravity gravity);
 		public bool should_pick_paint ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public virtual void show_all ();
 		[Version (since = "0.6")]
 		public bool transform_stage_point (float x, float y, out float x_out, out float y_out);
 		public void uninhibit_culling ();
 		[Version (since = "1.0")]
 		public virtual void unmap ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public void unparent ();
 		[Version (since = "1.0")]
 		public void unset_flags (Clutter.ActorFlags flags);
 		[NoAccessorMethod]
@@ -5055,15 +5023,6 @@ namespace Clutter {
 		[NoAccessorMethod]
 		[Version (since = "0.8")]
 		public Clutter.ActorBox allocation { owned get; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity anchor_gravity { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.8")]
-		public float anchor_x { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.8")]
-		public float anchor_y { get; set; }
 		[Version (since = "1.10")]
 		public Clutter.Color background_color { get; set; }
 		[NoAccessorMethod]
@@ -5088,8 +5047,6 @@ namespace Clutter {
 		public Clutter.ContentGravity content_gravity { get; set; }
 		[Version (since = "1.12")]
 		public Clutter.ContentRepeat content_repeat { get; set; }
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public float depth { get; set; }
 		[NoAccessorMethod]
 		[Version (since = "1.4")]
 		public Clutter.Effect effect { set; }
@@ -5173,8 +5130,6 @@ namespace Clutter {
 		[Version (since = "0.8")]
 		public Clutter.RequestMode request_mode { get; set; }
 		[NoAccessorMethod]
-		public float resource_scale { get; }
-		[NoAccessorMethod]
 		[Version (since = "0.6")]
 		public double rotation_angle_x { get; set; }
 		[NoAccessorMethod]
@@ -5183,27 +5138,6 @@ namespace Clutter {
 		[NoAccessorMethod]
 		[Version (since = "0.6")]
 		public double rotation_angle_z { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public Graphene.Point3D rotation_center_x { owned get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public Graphene.Point3D rotation_center_y { owned get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "0.6")]
-		public Graphene.Point3D rotation_center_z { owned get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity rotation_center_z_gravity { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public float scale_center_x { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public float scale_center_y { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.12", since = "1.0")]
-		public Clutter.Gravity scale_gravity { get; set; }
 		[NoAccessorMethod]
 		[Version (since = "0.6")]
 		public double scale_x { get; set; }
@@ -5289,11 +5223,13 @@ namespace Clutter {
 		[HasEmitter]
 		[Version (deprecated = true, deprecated_since = "1.16", since = "0.8")]
 		public virtual signal void realize ();
+		public virtual signal void resource_scale_changed ();
 		[Version (since = "0.6")]
 		public virtual signal bool scroll_event (Clutter.ScrollEvent event);
 		[HasEmitter]
 		[Version (since = "0.2")]
 		public virtual signal void show ();
+		public signal void stage_views_changed ();
 		[Version (since = "1.12")]
 		public virtual signal bool touch_event (Clutter.Event event);
 		[Version (since = "1.12")]
@@ -5339,12 +5275,16 @@ namespace Clutter {
 		public AlignConstraint (Clutter.Actor? source, Clutter.AlignAxis axis, float factor);
 		public Clutter.AlignAxis get_align_axis ();
 		public float get_factor ();
+		public void get_pivot_point (out unowned Graphene.Point pivot_point);
 		public unowned Clutter.Actor get_source ();
 		public void set_align_axis (Clutter.AlignAxis axis);
 		public void set_factor (float factor);
+		public void set_pivot_point (Graphene.Point pivot_point);
 		public void set_source (Clutter.Actor? source);
 		public Clutter.AlignAxis align_axis { get; set construct; }
 		public float factor { get; set construct; }
+		[NoAccessorMethod]
+		public Graphene.Point pivot_point { owned get; set; }
 		public Clutter.Actor source { get; set construct; }
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", has_type_id = false)]
@@ -5428,36 +5368,6 @@ namespace Clutter {
 	public class BlurEffect : Clutter.OffscreenEffect {
 		[CCode (has_construct_function = false, type = "ClutterEffect*")]
 		public BlurEffect ();
-	}
-	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_box_get_type ()")]
-	[Version (since = "1.2")]
-	public class Box : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
-		[CCode (has_construct_function = false, type = "ClutterActor*")]
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public Box (Clutter.LayoutManager manager);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public Clutter.Color get_color ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public unowned Clutter.LayoutManager get_layout_manager ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void pack (Clutter.Actor actor, ...);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void pack_after (Clutter.Actor actor, Clutter.Actor? sibling, ...);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void pack_at (Clutter.Actor actor, int position, ...);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void pack_before (Clutter.Actor actor, Clutter.Actor? sibling, ...);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void packv (Clutter.Actor actor, [CCode (array_length_cname = "n_properties", array_length_pos = 1.5, array_length_type = "guint")] string[] properties, [CCode (array_length_cname = "n_properties", array_length_pos = 1.5, array_length_type = "guint")] GLib.Value[] values);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void set_color (Clutter.Color? color);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public void set_layout_manager (Clutter.LayoutManager manager);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public Clutter.Color color { get; set; }
-		[NoAccessorMethod]
-		[Version (deprecated = true, deprecated_since = "1.10", since = "1.2")]
-		public bool color_set { get; set; }
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_box_layout_get_type ()")]
 	[Version (since = "1.2")]
@@ -5839,6 +5749,20 @@ namespace Clutter {
 		[Version (since = "1.16")]
 		public bool snap_to_grid { get; set; }
 	}
+	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_frame_clock_get_type ()")]
+	public class FrameClock : GLib.Object {
+		[CCode (has_construct_function = false)]
+		public FrameClock (float refresh_rate, Clutter.FrameListenerIface iface, void* user_data);
+		public void add_timeline (Clutter.Timeline timeline);
+		public float get_refresh_rate ();
+		public void inhibit ();
+		public void remove_timeline (Clutter.Timeline timeline);
+		public void schedule_update ();
+		public void schedule_update_now ();
+		public void uninhibit ();
+		[HasEmitter]
+		public signal void destroy ();
+	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_gesture_action_get_type ()")]
 	public class GestureAction : Clutter.Action {
 		[CCode (has_construct_function = false, type = "ClutterAction*")]
@@ -5926,19 +5850,6 @@ namespace Clutter {
 		public bool row_homogeneous { get; set; }
 		public uint row_spacing { get; set; }
 	}
-	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_group_get_type ()")]
-	[Version (since = "0.2")]
-	public class Group : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
-		[CCode (has_construct_function = false, type = "ClutterActor*")]
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Group ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public int get_n_children ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public unowned Clutter.Actor get_nth_child (int index_);
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void remove_all ();
-	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_image_get_type ()")]
 	[Version (since = "1.10")]
 	public class Image : GLib.Object, Clutter.Content {
@@ -5954,6 +5865,8 @@ namespace Clutter {
 	public class InputDevice : GLib.Object {
 		[CCode (has_construct_function = false)]
 		protected InputDevice ();
+		[Version (since = "1.2")]
+		public unowned Clutter.Actor get_actor (Clutter.EventSequence? sequence);
 		[Version (since = "1.6")]
 		public unowned Clutter.InputDevice get_associated_device ();
 		[Version (since = "1.6")]
@@ -5991,8 +5904,6 @@ namespace Clutter {
 		public int get_n_mode_groups ();
 		public int get_n_rings ();
 		public int get_n_strips ();
-		[Version (since = "1.2")]
-		public unowned Clutter.Actor get_pointer_actor ();
 		[Version (since = "1.2")]
 		public unowned Clutter.Stage get_pointer_stage ();
 		[Version (since = "1.22")]
@@ -6453,36 +6364,11 @@ namespace Clutter {
 	public class PropertyTransition : Clutter.Transition, Clutter.Scriptable {
 		[CCode (has_construct_function = false, type = "ClutterTransition*")]
 		public PropertyTransition (string? property_name);
+		[CCode (has_construct_function = false, type = "ClutterTransition*")]
+		public PropertyTransition.for_actor (Clutter.Actor actor, string? property_name);
 		public unowned string get_property_name ();
 		public void set_property_name (string? property_name);
 		public string property_name { get; set; }
-	}
-	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_rectangle_get_type ()")]
-	[Version (since = "0.2")]
-	public class Rectangle : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
-		[CCode (has_construct_function = false, type = "ClutterActor*")]
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Rectangle ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public Clutter.Color get_border_color ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public uint get_border_width ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Clutter.Color get_color ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void set_border_color (Clutter.Color color);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.2")]
-		public void set_border_width (uint width);
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void set_color (Clutter.Color color);
-		[CCode (has_construct_function = false, type = "ClutterActor*")]
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Rectangle.with_color (Clutter.Color color);
-		public Clutter.Color border_color { get; set; }
-		public uint border_width { get; set; }
-		public Clutter.Color color { get; set; }
-		[NoAccessorMethod]
-		public bool has_border { get; set; }
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_root_node_get_type ()")]
 	public class RootNode : Clutter.PaintNode {
@@ -6577,11 +6463,10 @@ namespace Clutter {
 		public virtual unowned Clutter.Keymap get_keymap ();
 		public virtual unowned Clutter.InputDevice get_pointer ();
 		public void get_pointer_a11y_settings (Clutter.PointerA11ySettings settings);
-		public virtual Clutter.VirtualDeviceType get_supported_virtual_device_types ();
 		public bool get_touch_mode ();
 		public void inhibit_unfocus ();
 		public bool is_unfocus_inhibited ();
-		public virtual GLib.List<weak Clutter.InputDevice> list_devices ();
+		public GLib.List<weak Clutter.InputDevice> list_devices ();
 		public void set_kbd_a11y_settings (Clutter.KbdA11ySettings settings);
 		public void set_pointer_a11y_dwell_click_type (Clutter.PointerA11yDwellClickType click_type);
 		public void set_pointer_a11y_settings (Clutter.PointerA11ySettings settings);
@@ -6692,28 +6577,20 @@ namespace Clutter {
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_stage_get_type ()")]
 	[Version (since = "0.2")]
-	public class Stage : Clutter.Group, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
+	public class Stage : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
 		[CCode (has_construct_function = false, type = "ClutterActor*")]
 		[Version (since = "0.8")]
 		public Stage ();
 		public bool capture (bool paint, Cairo.RectangleInt rect, [CCode (array_length_cname = "out_n_captures", array_length_pos = 3.1)] out Clutter.Capture[] out_captures);
 		public void capture_into (bool paint, Cairo.RectangleInt rect, uint8 data);
+		public void clear_stage_views ();
 		[CCode (cname = "clutter_stage_event")]
 		[Version (since = "0.4")]
 		public bool emit_event (Clutter.Event event);
-		[Version (deprecated = true, since = "0.8")]
-		public void ensure_current ();
-		[Version (since = "1.0")]
-		public void ensure_redraw ();
 		[Version (since = "1.0")]
 		public void ensure_viewport ();
-		public void freeze_updates ();
 		public unowned Clutter.Actor get_actor_at_pos (Clutter.PickMode pick_mode, float x, float y);
 		public bool get_capture_final_size (Cairo.RectangleInt rect, int width, int height, float scale);
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Clutter.Color get_color ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public static unowned Clutter.Stage get_default ();
 		public int64 get_frame_counter ();
 		[Version (since = "0.6")]
 		public unowned Clutter.Actor get_key_focus ();
@@ -6727,17 +6604,11 @@ namespace Clutter {
 		[Version (since = "0.4")]
 		public unowned string get_title ();
 		public bool get_use_alpha ();
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.8")]
-		public bool is_default ();
 		public bool paint_to_buffer (Cairo.RectangleInt rect, float scale, uint8 data, int stride, Cogl.PixelFormat format, Clutter.PaintFlag paint_flags) throws GLib.Error;
 		public void paint_to_framebuffer (Cogl.Framebuffer framebuffer, Cairo.RectangleInt rect, float scale, Clutter.PaintFlag paint_flags);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.8")]
-		public void queue_redraw ();
 		[CCode (array_length = false)]
 		public uint8[] read_pixels (int x, int y, int width = -1, int height = -1);
 		public void schedule_update ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void set_color (Clutter.Color color);
 		[Version (since = "0.6")]
 		public void set_key_focus (Clutter.Actor? actor);
 		[Version (since = "1.2")]
@@ -6749,10 +6620,6 @@ namespace Clutter {
 		[Version (since = "0.4")]
 		public void set_title (string title);
 		public void set_use_alpha (bool use_alpha);
-		public void thaw_updates ();
-		public void update_resource_scales ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public Clutter.Color color { get; set; }
 		[Version (since = "1.2")]
 		public Clutter.Actor key_focus { get; set; }
 		[Version (since = "0.8")]
@@ -6762,12 +6629,15 @@ namespace Clutter {
 		[Version (since = "0.6")]
 		public virtual signal void activate ();
 		[Version (since = "1.20")]
-		public signal void after_paint ();
+		public signal void after_paint (Clutter.StageView view);
+		public signal void after_update (Clutter.StageView view);
+		public signal void before_paint (Clutter.StageView view);
+		public signal void before_update (Clutter.StageView view);
 		[Version (since = "0.6")]
 		public virtual signal void deactivate ();
 		[Version (since = "1.2")]
 		public virtual signal bool delete_event (Clutter.Event event);
-		public virtual signal void paint_view (Clutter.StageView view, void* redraw_clip);
+		public virtual signal void paint_view (Clutter.StageView view, Cairo.Region redraw_clip);
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", type_id = "clutter_stage_manager_get_type ()")]
 	[Version (since = "1.0")]
@@ -6820,7 +6690,11 @@ namespace Clutter {
 		[NoAccessorMethod]
 		public string name { owned get; construct; }
 		[NoAccessorMethod]
+		public float refresh_rate { get; set construct; }
+		[NoAccessorMethod]
 		public float scale { get; set construct; }
+		[NoAccessorMethod]
+		public Clutter.Stage stage { owned get; construct; }
 		[NoAccessorMethod]
 		public bool use_shadowfb { get; construct; }
 	}
@@ -7029,7 +6903,7 @@ namespace Clutter {
 	public class Timeline : GLib.Object, Clutter.Scriptable {
 		[CCode (has_construct_function = false)]
 		[Version (since = "0.6")]
-		public Timeline (uint msecs);
+		public Timeline (uint duration_ms);
 		[Version (since = "1.14")]
 		public void add_marker (string marker_name, double progress);
 		[Version (since = "0.8")]
@@ -7037,8 +6911,11 @@ namespace Clutter {
 		public void advance (uint msecs);
 		[Version (since = "0.8")]
 		public void advance_to_marker (string marker_name);
-		[Version (deprecated = true, deprecated_since = "1.10", since = "0.4")]
-		public Clutter.Timeline clone ();
+		[CCode (has_construct_function = false)]
+		public Timeline.for_actor (Clutter.Actor actor, uint duration_ms);
+		[CCode (has_construct_function = false)]
+		public Timeline.for_frame_clock (Clutter.FrameClock frame_clock, uint duration_ms);
+		public unowned Clutter.Actor get_actor ();
 		[Version (since = "1.6")]
 		public bool get_auto_reverse ();
 		[Version (since = "1.12")]
@@ -7056,8 +6933,6 @@ namespace Clutter {
 		[Version (since = "1.10")]
 		public int64 get_duration_hint ();
 		public uint get_elapsed_time ();
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public bool get_loop ();
 		[Version (since = "0.6")]
 		public double get_progress ();
 		[Version (since = "1.10")]
@@ -7076,6 +6951,7 @@ namespace Clutter {
 		[Version (since = "0.8")]
 		public void remove_marker (string marker_name);
 		public void rewind ();
+		public void set_actor (Clutter.Actor? actor);
 		[Version (since = "1.6")]
 		public void set_auto_reverse (bool reverse);
 		[Version (since = "1.12")]
@@ -7086,8 +6962,7 @@ namespace Clutter {
 		public void set_direction (Clutter.TimelineDirection direction);
 		[Version (since = "0.6")]
 		public void set_duration (uint msecs);
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public void set_loop (bool loop);
+		public void set_frame_clock (Clutter.FrameClock frame_clock);
 		[Version (since = "1.10")]
 		public void set_progress_func (owned Clutter.TimelineProgressFunc? func);
 		[Version (since = "1.10")]
@@ -7099,6 +6974,7 @@ namespace Clutter {
 		public void skip (uint msecs);
 		public void start ();
 		public void stop ();
+		public Clutter.Actor actor { get; set construct; }
 		[Version (since = "1.6")]
 		public bool auto_reverse { get; set; }
 		[Version (since = "0.4")]
@@ -7107,8 +6983,8 @@ namespace Clutter {
 		public Clutter.TimelineDirection direction { get; set; }
 		[Version (since = "0.6")]
 		public uint duration { get; set; }
-		[Version (deprecated = true, deprecated_since = "1.10")]
-		public bool loop { get; set; }
+		[NoAccessorMethod]
+		public Clutter.FrameClock frame_clock { owned get; set construct; }
 		[Version (since = "1.10")]
 		public Clutter.AnimationMode progress_mode { get; set; }
 		[Version (since = "1.10")]
@@ -7246,6 +7122,7 @@ namespace Clutter {
 	public interface Animatable : GLib.Object {
 		[Version (since = "1.4")]
 		public abstract unowned GLib.ParamSpec find_property (string property_name);
+		public abstract unowned Clutter.Actor get_actor ();
 		[Version (since = "1.4")]
 		public abstract void get_initial_state (string property_name, GLib.Value value);
 		[Version (since = "1.8")]
@@ -7361,6 +7238,7 @@ namespace Clutter {
 		public void init_rect (float x, float y, float width, float height);
 		[Version (since = "1.2")]
 		public Clutter.ActorBox interpolate (Clutter.ActorBox final, double progress);
+		public bool is_initialized ();
 		[Version (since = "1.6")]
 		public void scale (float scale);
 		[Version (since = "1.6")]
@@ -7421,6 +7299,11 @@ namespace Clutter {
 		public uint32 to_pixel ();
 		[Version (since = "0.2")]
 		public string to_string ();
+	}
+	[CCode (cheader_filename = "clutter/clutter.h", has_type_id = false)]
+	public struct FrameListenerIface {
+		public weak global::before_frame before_frame;
+		public weak global::frame frame;
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", has_type_id = false)]
 	public struct KbdA11ySettings {
@@ -7779,6 +7662,11 @@ namespace Clutter {
 		HORIZONTAL,
 		VERTICAL
 	}
+	[CCode (cheader_filename = "clutter/clutter.h", cprefix = "CLUTTER_FRAME_RESULT_", type_id = "clutter_frame_result_get_type ()")]
+	public enum FrameResult {
+		PENDING_PRESENTED,
+		IDLE
+	}
 	[CCode (cheader_filename = "clutter/clutter.h", cprefix = "CLUTTER_GESTURE_TRIGGER_EDGE_", type_id = "clutter_gesture_trigger_edge_get_type ()")]
 	[Version (since = "1.18")]
 	public enum GestureTriggerEdge {
@@ -8077,8 +7965,7 @@ namespace Clutter {
 	[Version (since = "1.10")]
 	public enum RepaintFlags {
 		PRE_PAINT,
-		POST_PAINT,
-		QUEUE_REDRAW_ON_ADD
+		POST_PAINT
 	}
 	[CCode (cheader_filename = "clutter/clutter.h", cprefix = "CLUTTER_REQUEST_", type_id = "clutter_request_mode_get_type ()")]
 	[Version (since = "0.8")]

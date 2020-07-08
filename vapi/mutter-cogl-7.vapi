@@ -2,11 +2,12 @@
 
 [CCode (cprefix = "Cogl", gir_namespace = "Cogl", gir_version = "7", lower_case_cprefix = "cogl_")]
 namespace Cogl {
-	[CCode (cheader_filename = "cogl/cogl.h", cname = "CoglHandle", type_id = "cogl_bitmap_get_gtype ()")]
-	[Compact]
-	public class Bitmap : Cogl.Handle {
+	[CCode (cheader_filename = "cogl/cogl.h", type_id = "cogl_bitmap_get_gtype ()")]
+	public class Bitmap : Cogl.Object {
+		[CCode (has_construct_function = false)]
+		protected Bitmap ();
 		public static uint32 error_quark ();
-		[CCode (has_construct_function = false, type = "CoglBitmap*")]
+		[CCode (has_construct_function = false)]
 		[Version (since = "1.0")]
 		public Bitmap.from_file (string filename) throws GLib.Error;
 		[Version (since = "1.10")]
@@ -19,7 +20,6 @@ namespace Cogl {
 		public static bool get_size_from_file (string filename, out int width, out int height);
 		[Version (since = "1.10")]
 		public int get_width ();
-		public static Cogl.Bitmap new_from_file (string filename) throws GLib.Error;
 	}
 	[CCode (cheader_filename = "cogl/cogl.h", cname = "CoglHandle")]
 	[Compact]
@@ -32,11 +32,23 @@ namespace Cogl {
 	public class Context : Cogl.Object {
 		[CCode (has_construct_function = false)]
 		protected Context ();
+		public bool is_hardware_accelerated ();
 	}
 	[CCode (cheader_filename = "cogl/cogl.h", copy_function = "g_boxed_copy", free_function = "g_boxed_free", type_id = "cogl_frame_closure_get_gtype ()")]
 	[Compact]
 	[Version (since = "1.14")]
 	public class FrameClosure {
+	}
+	[CCode (cheader_filename = "cogl/cogl.h", type_id = "cogl_frame_info_get_gtype ()")]
+	public class FrameInfo : Cogl.Object {
+		[CCode (has_construct_function = false)]
+		protected FrameInfo ();
+		[Version (since = "1.14")]
+		public int64 get_frame_counter ();
+		[Version (since = "1.14")]
+		public int64 get_presentation_time ();
+		[Version (since = "1.14")]
+		public float get_refresh_rate ();
 	}
 	[CCode (cheader_filename = "cogl/cogl.h", ref_function = "cogl_handle_ref", unref_function = "cogl_handle_unref")]
 	[Compact]
@@ -118,6 +130,8 @@ namespace Cogl {
 		protected Onscreen ();
 		[Version (since = "1.16")]
 		public Cogl.OnscreenDirtyClosure add_dirty_callback ([CCode (delegate_target_pos = 1.5)] Cogl.OnscreenDirtyCallback callback, Cogl.UserDataDestroyCallback? destroy);
+		[Version (since = "1.14")]
+		public Cogl.FrameClosure add_frame_callback ([CCode (delegate_target_pos = 1.5)] Cogl.FrameCallback callback, Cogl.UserDataDestroyCallback? destroy);
 		[Version (since = "2.0")]
 		public Cogl.OnscreenResizeClosure add_resize_callback ([CCode (delegate_target_pos = 1.5)] Cogl.OnscreenResizeCallback callback, Cogl.UserDataDestroyCallback? destroy);
 		[Version (since = "1.14")]
@@ -139,11 +153,11 @@ namespace Cogl {
 		[Version (since = "2.0")]
 		public void show ();
 		[Version (since = "1.10")]
-		public void swap_buffers ();
+		public void swap_buffers (Cogl.FrameInfo frame_info);
 		[Version (since = "1.16")]
-		public void swap_buffers_with_damage (int rectangles, int n_rectangles);
+		public void swap_buffers_with_damage (int rectangles, int n_rectangles, Cogl.FrameInfo info);
 		[Version (since = "1.10")]
-		public void swap_region (int rectangles, int n_rectangles);
+		public void swap_region (int rectangles, int n_rectangles, Cogl.FrameInfo info);
 	}
 	[CCode (cheader_filename = "cogl/cogl.h", copy_function = "g_boxed_copy", free_function = "g_boxed_free", type_id = "cogl_onscreen_dirty_closure_get_gtype ()")]
 	[Compact]
@@ -950,6 +964,9 @@ namespace Cogl {
 	[CCode (cheader_filename = "cogl/cogl.h", instance_pos = 1.9)]
 	[Version (since = "0.10")]
 	public delegate void FeatureCallback (Cogl.FeatureID feature);
+	[CCode (cheader_filename = "cogl/cogl.h", instance_pos = 3.9)]
+	[Version (since = "1.14")]
+	public delegate void FrameCallback (Cogl.Onscreen onscreen, Cogl.FrameEvent event, Cogl.FrameInfo info);
 	[CCode (cheader_filename = "cogl/cogl.h", instance_pos = 2.9)]
 	[Version (since = "1.16")]
 	public delegate void OnscreenDirtyCallback (Cogl.Onscreen onscreen, Cogl.OnscreenDirtyInfo info);
@@ -1029,6 +1046,9 @@ namespace Cogl {
 	[CCode (cheader_filename = "cogl/cogl.h")]
 	[Version (since = "1.10")]
 	public static bool is_context (void* object);
+	[CCode (cheader_filename = "cogl/cogl.h")]
+	[Version (since = "2.0")]
+	public static bool is_frame_info (void* object);
 	[CCode (cheader_filename = "cogl/cogl.h")]
 	[Version (since = "1.10")]
 	public static bool is_framebuffer (void* object);

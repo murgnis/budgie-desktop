@@ -183,9 +183,18 @@ namespace Meta {
 	public class BackgroundActor : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
 		[CCode (has_construct_function = false, type = "ClutterActor*")]
 		public BackgroundActor (Meta.Display display, int monitor);
+		[NoAccessorMethod]
+		public Meta.Display meta_display { owned get; construct; }
+		[NoAccessorMethod]
+		public int monitor { get; construct; }
+	}
+	[CCode (cheader_filename = "meta/main.h", type_id = "meta_background_content_get_type ()")]
+	public class BackgroundContent : GLib.Object, Clutter.Content {
+		[CCode (has_construct_function = false)]
+		protected BackgroundContent ();
+		public static Clutter.Content @new (Meta.Display display, int monitor);
 		public void set_background (Meta.Background background);
 		public void set_gradient (bool enabled, int height, double tone_start);
-		public void set_monitor (int monitor);
 		public void set_vignette (bool enabled, double brightness, double sharpness);
 		[NoAccessorMethod]
 		public Meta.Background background { owned get; set; }
@@ -547,7 +556,6 @@ namespace Meta {
 		public unowned Cogl.Texture get_texture ();
 		public void set_create_mipmaps (bool create_mipmaps);
 		public void set_mask_texture (Cogl.Texture mask_texture);
-		public void set_opaque_region (owned Cairo.Region opaque_region);
 		public signal void size_changed ();
 	}
 	[CCode (cheader_filename = "meta/meta-sound-player.h", type_id = "meta_sound_player_get_type ()")]
@@ -758,11 +766,13 @@ namespace Meta {
 	public abstract class WindowActor : Clutter.Actor, Atk.Implementor, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
 		[CCode (has_construct_function = false)]
 		protected WindowActor ();
+		public void freeze ();
 		public Cairo.Surface? get_image (Cairo.RectangleInt? clip);
 		public unowned Meta.Window get_meta_window ();
 		public unowned Meta.ShapedTexture get_texture ();
 		public bool is_destroyed ();
 		public void sync_visibility ();
+		public void thaw ();
 		public Meta.Window meta_window { get; construct; }
 		public signal void damaged ();
 		public signal void effects_completed ();
@@ -799,6 +809,8 @@ namespace Meta {
 		public int index ();
 		public GLib.List<weak Meta.Window> list_windows ();
 		public void set_builtin_struts (GLib.SList<Meta.Strut?> struts);
+		[NoAccessorMethod]
+		public bool active { get; }
 		[NoAccessorMethod]
 		public uint n_windows { get; }
 		[NoAccessorMethod]
@@ -1496,4 +1508,10 @@ namespace Meta {
 	public static void test_init ();
 	[CCode (cheader_filename = "meta/main.h")]
 	public static bool x11_init_gdk_display () throws GLib.Error;
+}
+[CCode (cheader_filename = "libmutter-7-custom.h", has_type_id = false)]
+public struct before_frame {
+}
+[CCode (cheader_filename = "libmutter-7-custom.h", has_type_id = false)]
+public struct frame {
 }
