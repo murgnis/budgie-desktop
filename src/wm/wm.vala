@@ -663,7 +663,7 @@ public class BudgieWM : Meta.Plugin
         background_group.destroy_all_children();
 
         for (int i = 0; i < display.get_n_monitors(); i++) {
-            var actor = new BudgieBackground(display, i);
+            var actor = new BudgieBackground(display, i, this);
             background_group.add_child(actor);
         }
     }
@@ -1118,13 +1118,13 @@ public class BudgieWM : Meta.Plugin
         last_time = cur_time;
 
         if (cur_tabs == null) {
-            cur_tabs = display.get_tab_list(Meta.TabList.NORMAL, workspace);
-            CompareFunc<weak Meta.Window> cm = Budgie.BudgieWM.tab_sort_reverse;
-            cur_tabs.sort(cm);
+            cur_tabs = this.get_current_tabs(display, workspace, this.settings.get_boolean("show-all-windows-tabswitcher"));
         }
+
         if (cur_tabs == null) {
             return;
         }
+
         switch_switcher(true); /* true as in "yes, backward" */
     }
 
@@ -1154,13 +1154,13 @@ public class BudgieWM : Meta.Plugin
         last_time = cur_time;
 
         if (cur_tabs == null) {
-            cur_tabs = display.get_tab_list(Meta.TabList.NORMAL, workspace);
-            CompareFunc<weak Meta.Window> cm = Budgie.BudgieWM.tab_sort;
-            cur_tabs.sort(cm);
+            cur_tabs = this.get_current_tabs(display, workspace, this.settings.get_boolean("show-all-windows-tabswitcher"));
         }
+
         if (cur_tabs == null) {
             return;
         }
+
         switch_switcher();
     }
 
@@ -1190,6 +1190,26 @@ public class BudgieWM : Meta.Plugin
         }
         uint32 curr_xid = (uint32)win.get_xwindow();
         switcher_proxy.ShowSwitcher.begin(curr_xid);
+    }
+
+    /* Return sorted list of user open tabs */
+    private List<weak Meta.Window> get_current_tabs(Meta.Display display, 
+                     Meta.Workspace workspace, 
+                     bool getTabsForAllWindows)
+    {
+        List<weak Meta.Window> tabs;
+        CompareFunc<weak Meta.Window> cm = Budgie.BudgieWM.tab_sort_reverse;
+
+        if (getTabsForAllWindows) {
+            tabs = display.get_tab_list(Meta.TabList.NORMAL, null);
+        } else {
+            //  Return only tabs for the current workspace
+            tabs = display.get_tab_list(Meta.TabList.NORMAL, workspace);
+        }
+
+        tabs.sort(cm);
+
+        return tabs;
     }
 
     public void stop_switch_windows() {
