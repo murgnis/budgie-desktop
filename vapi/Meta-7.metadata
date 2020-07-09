@@ -1,6 +1,7 @@
 Backend cheader_filename="meta/meta-backend.h"
 Background cheader_filename="meta/meta-background.h"
 BackgroundActor cheader_filename="meta/meta-background-actor.h"
+BackgroundContent cheader_filename="meta/meta-background-content.h"
 BackgroundGroup cheader_filename="meta/meta-background-group.h"
 BackgroundImage cheader_filename="meta/meta-background-image.h"
 BackgroundImageCache cheader_filename="meta/meta-background-image.h"

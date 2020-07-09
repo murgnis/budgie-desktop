@@ -188,7 +188,7 @@ namespace Meta {
 		[NoAccessorMethod]
 		public int monitor { get; construct; }
 	}
-	[CCode (cheader_filename = "meta/main.h", type_id = "meta_background_content_get_type ()")]
+	[CCode (cheader_filename = "meta/meta-background-content.h", type_id = "meta_background_content_get_type ()")]
 	public class BackgroundContent : GLib.Object, Clutter.Content {
 		[CCode (has_construct_function = false)]
 		protected BackgroundContent ();
